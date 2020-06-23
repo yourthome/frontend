@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import FlatCard from './components/flat-card/flat-card'
+import MapFilter from './components/map-filter/map-filter'
 
 function App() {
   return (
@@ -12,10 +13,10 @@ function App() {
           component = {FlatCard}
           // exact 
         />
-        {/* <Route
-          path = "/"
-          component = {MainPage}
-        /> */}
+        <Route
+          path = "/mapfilter"
+          component = {MapFilter}
+        />
         {/* <Route path="/sort1" component={Sort1} />
         <Route path="/sort2" component={Sort2} />
         <Route path="/favorite" component={Favorite} /> */}

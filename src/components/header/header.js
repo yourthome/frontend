@@ -9,7 +9,9 @@ export default class Header extends Component {
     return (
       <header className="header">
         <div className="header__description">
-          <img className="header__logo" src={logo} alt="website logo"/>
+          <Link to="/mapfilter">
+            <img className="header__logo" src={logo} alt="website logo"/>
+          </Link>
           <Link to="/flatcard">
             <div className="logo-title">
               <p id="p-half1">Yurt</p><p id="p-half2">Home</p>
