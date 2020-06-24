@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import '../../styles/css/styles.css';
+import './footer.css';
 import facebook from '../../content/images/footer/facebook.svg';
 import instagram from '../../content/images/footer/instagram.svg';
 import whatsapp from '../../content/images/footer/whatsapp.svg';

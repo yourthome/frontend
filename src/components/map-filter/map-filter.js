@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import MapContainer from '../map/map'
 
-import '../../styles/css/styles.css'
 import './map-filter.css'
 import logo from '../../content/images/header/logo.svg'
 
@@ -13,7 +12,7 @@ export default class MapFilter extends Component {
       <>
         <header className="map-filter-header">
           <div className="map-filter-header__description">
-            <Link to="/flatcard">
+            <Link to="/">
               <img className="map-filter-header__logo" src={logo} alt="website logo"/>
             </Link>
           </div>
@@ -35,7 +34,7 @@ export default class MapFilter extends Component {
         </header>
         <div className="map-filter-container">
           <div className="map-filter-container-left">
-            
+
           </div>
           <MapContainer />
         </div>

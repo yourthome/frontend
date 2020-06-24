@@ -19,7 +19,7 @@ import MapContainer from '../map/map';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 
-import '../../styles/css/styles.css';
+import './flat-card.css';
 import home2 from '../../content/images/flat-card/home2.png';
 import home3 from '../../content/images/flat-card/home3.png';
 import home5 from '../../content/images/flat-card/home5.png';

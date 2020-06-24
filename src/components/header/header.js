@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import '../../styles/css/styles.css';
+import './header.css';
 import logo from '../../content/images/header/logo.svg'
 
 export default class Header extends Component {
@@ -9,7 +9,7 @@ export default class Header extends Component {
     return (
       <header className="header">
         <div className="header__description">
-          <Link to="/mapfilter">
+          <Link to="/">
             <img className="header__logo" src={logo} alt="website logo"/>
           </Link>
           <Link to="/flatcard">
