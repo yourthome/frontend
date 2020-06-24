@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 export default class MainPage extends Component {
     render() {
       return( 
-      <div>
+      <>
             <section className="intro">
                 <header>
                     <img src={logo} alt="logo"/>
@@ -124,7 +124,7 @@ export default class MainPage extends Component {
                     <button className="btn__yellow">Подать обьявление</button>
                 </div>
                     </footer>
-      </div>
+      </>
       );
     }
   }

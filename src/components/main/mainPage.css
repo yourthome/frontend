@@ -103,6 +103,7 @@ h1{
 
 .search__block button{
     border-radius: 0px 20px 20px 0px;
+    height: 100%;
 }
 
 .onMap{

@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import FlatCard from './components/flat-card/flat-card'
 import MapFilter from './components/map-filter/map-filter'
 import MainPage from './components/main/mainPage'
+import Filter from './components/filter/filter'
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
         <Route
           path = "/mapfilter"
           component = {MapFilter}
+        />
+        <Route
+          path = "/filter"
+          component = {Filter}
         />
         {/* <Route path="/sort1" component={Sort1} />
         <Route path="/sort2" component={Sort2} />
