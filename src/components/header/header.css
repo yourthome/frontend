@@ -1,0 +1,81 @@
+/* Header component */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+  width: 100%;
+  height: 125px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+.header a {
+  align-self: center;
+  text-decoration: none;
+}
+.header__description {
+  display: flex;
+  flex-direction: row;
+}
+.header__description img {
+  width: 200px;
+}
+.header .logo-title {
+  display: flex;
+  flex-direction: row;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: "Fredoka One", cursive;
+  color: #264989;
+}
+.header .logo-title p {
+  margin: 0;
+}
+.header .logo-title #p-half2 {
+  color: #feca15;
+}
+.header .header__menu {
+  display: flex;
+  flex-direction: row;
+}
+.header .header__menu p {
+  margin: 0;
+  font-size: 20px;
+  line-height: 29px;
+  padding: 10px 40px;
+}
+.header .header__menu-1 {
+  border-radius: 15px 0px 0px 15px;
+  background-color: #264989;
+  border: 2px solid #264989;
+  color: #fff;
+}
+.header .header__menu-1:hover {
+  background-color: transparent;
+  color: #264989;
+  transition: 0.3s ease-in-out;
+}
+.header .header__menu-2 {
+  border-radius: 0px 15px 15px 0px;
+  background-color: #feca15;
+  border: 2px solid #feca15;
+  color: #fff;
+}
+.header .header__menu-2:hover {
+  background-color: transparent;
+  color: #feca15;
+  transition: 0.3s ease-in-out;
+}
+.header .header__menu-2 p {
+  font-weight: 500;
+}
