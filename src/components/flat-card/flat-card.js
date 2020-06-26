@@ -57,7 +57,7 @@ export default class FlatCard extends Component {
       <>
         <Header />
 
-        <div className="flatcard-container">
+        <section className="flatcard-container">
           <div className="flatcard-images">
             <img id="flatcard-images-main" src={home2} alt="flatcard-image1"></img>
             <div className="flatcard-images-secondary">
@@ -187,7 +187,7 @@ export default class FlatCard extends Component {
             </div>
           </div>
 
-        </div>
+        </section>
         
         <Footer />
       </>

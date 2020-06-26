@@ -30,12 +30,14 @@ body {
   .flatcard-container .flatcard-images #flatcard-images-main {
     width: 50%;
     margin-bottom: 18px;
+    border-radius: 5px;
   }
   .flatcard-container .flatcard-images-secondary {
     width: 50%;
   }
   .flatcard-container .flatcard-images-secondary img {
     margin: 0 0 20px 20px;
+    border-radius: 5px;
   }
   .flatcard-container .modal-body {
     padding: 50px 0;

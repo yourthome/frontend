@@ -3,3 +3,48 @@
   height: 500px !important;
   position: relative !important;
 }
+
+.map-infobox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 350px;
+  padding: 15px 5px;
+}
+
+#map-infobox-img {
+  border-radius: 5px;
+}
+
+#map-infobox-title, #map-infobox-location, #map-infobox-cost-dollars, #map-infobox-cost-soms {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+#map-infobox-title {
+  font-weight: 700;
+  line-height: 18px;
+  color: #2f62a4;
+}
+
+#map-infobox-location {
+  font-weight: 500;
+}
+
+#map-infobox-cost-dollars {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#map-infobox-cost-soms {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#map-infobox-description {
+  font-size: 12px;
+  font-style: italic;
+  color: rgb(105, 105, 105);
+  margin: 8px 0;
+}
