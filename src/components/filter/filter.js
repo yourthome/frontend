@@ -3,16 +3,40 @@ import Header from '../header/header';
 import './filter.css';
 import arrow from '../../content/images/filter/next.png'
 import { Link } from 'react-router-dom';
-import filterImg from '../../content/images/filter/home3.jpg'
+import filterImg from '../../content/images/filter/home3.jpg';
+import LogIn from '../logIn/logIn';
+import Registration from '../registration/registration';
 
 
 
 
 export default class Filter extends Component {
+    state = {
+        isModalOpen: false,
+        isRegistrationOpen: false
+    };
+
+    toggleModal = () =>{
+        this.setState(state => ({ isModalOpen: !state.isModalOpen}));
+    };
+
+    toggleRegistration = () =>{
+        this.setState(state => ({ isRegistrationOpen: !state.isRegistrationOpen}));
+    };
+
+    toggleModalWindows = () =>{
+        this.setState(state => ({ isModalOpen: !state.isModalOpen}));
+        this.setState(state => ({ isRegistrationOpen: !state.isRegistrationOpen}));
+    }
+
     render() {
       return( 
 <>
         <Header />
+        {this.state.isModalOpen &&
+        <LogIn onClose={this.toggleModal} onToggleWindows={this.toggleModalWindows}></LogIn>}
+        {this.state.isModalOpen &&
+        <Registration onClose={this.toggleRegistration} onToggleWindows={this.toggleModalWindows}></Registration>}
         <div className="search__block__filter">
         <input type="text" placeholder="Где вы хотите снять жильё..." />
         <button className="btn__yellow">Найти</button>

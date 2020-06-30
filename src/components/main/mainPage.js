@@ -4,12 +4,32 @@ import logo from '../../content/images/main/logo.png'
 import adsImg from '../../content/images/main/ads-card.jpg'
 import faceIcon from '../../content/images/main/facebook.png'
 import instaIcon from '../../content/images/main/instagram.png'
-import whatsIcon from '../../content/images/main/whatsapp.png'
+import whatsIcon from '../../content/images/main/whatsapp.png';
 import { Link } from 'react-router-dom';
+import LogIn from '../logIn/logIn';
+import Registration from '../registration/registration';
 
 
 
 export default class MainPage extends Component {
+    state = {
+        isModalOpen: false,
+        isRegistrationOpen: false
+    };
+
+    toggleModal = () =>{
+        this.setState(state => ({ isModalOpen: !state.isModalOpen}));
+    };
+
+    toggleRegistration = () =>{
+        this.setState(state => ({ isRegistrationOpen: !state.isRegistrationOpen}));
+    };
+
+    toggleModalWindows = () =>{
+        this.setState(state => ({ isModalOpen: !state.isModalOpen}));
+        this.setState(state => ({ isRegistrationOpen: !state.isRegistrationOpen}));
+    }
+
     render() {
       return( 
       <>
@@ -17,10 +37,21 @@ export default class MainPage extends Component {
                 <header>
                     <img src={logo} alt="logo"/>
                     <div className="header__btns">
-                        <button className="btn__blue">Подать заявку</button>
-                        <button className="btn__yellow">Войти</button>
+                        <button className="btn__blue"
+                        onClick={this.toggleRegistration}>Подать заявку</button>
+                        <button className="btn__yellow" onClick={this.toggleModal}>Войти</button>
                     </div>
                 </header>
+                {
+                this.state.isModalOpen &&
+                    <LogIn onClose={this.toggleModal} onToggleWindows={this.toggleModalWindows}>
+                    </LogIn>
+                }
+                {
+                this.state.isRegistrationOpen &&
+                    <Registration onClose={this.toggleRegistration} onToggleWindows={this.toggleModalWindows}>
+                    </Registration>
+                }                             
                 <h1>Найдите лучший дом для себя</h1>
                 <div className="search__block">
                     <input type="text" placeholder="Где вы хотите снять жильё..." />
