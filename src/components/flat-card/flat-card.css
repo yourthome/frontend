@@ -9,202 +9,210 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 /* FlatCard component */
 .flatcard-container {
-    width: 100%;
-    height: auto;
-    padding: 25px;
-  }
-  .flatcard-container p {
-    margin: 0;
-    font-size: 30px;
-  }
-  .flatcard-container .flatcard-images {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  }
-  .flatcard-container .flatcard-images #flatcard-images-main {
-    width: 50%;
-    margin-bottom: 18px;
-    border-radius: 5px;
-  }
-  .flatcard-container .flatcard-images-secondary {
-    width: 50%;
-  }
-  .flatcard-container .flatcard-images-secondary img {
-    margin: 0 0 20px 20px;
-    border-radius: 5px;
-  }
-  .flatcard-container .modal-body {
-    padding: 50px 0;
-    background-color: #264989;
-  }
-  .flatcard-container .modal-body img {
-    width: 200%;
-  }
-  .flatcard-container .modal-body, .flatcard-container .modal-content {
-    border: 1px solid #feca15;
-    border-radius: 5px;
-  }
-  .flatcard-container .mdbbtn {
-    transform: translate(1065%, -390%);
-    border: 3px solid #FFFFFF;
-    box-sizing: border-box;
-    border-radius: 50px;
-    background-color: transparent;
-    position: absolute !important;
-  }
-  .flatcard-container .btn-default {
-    background: transparent !important;
-  }
-  .flatcard-container #darken-image {
-    position: relative !important;
-  }
-  .flatcard-container .flatcard-description {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 0 50px;
-    margin-top: 80px;
-    font-weight: 600;
-    line-height: 61px;
-  }
-  .flatcard-container .flatcard-description p {
-    font-size: 45px;
-  }
-  .flatcard-container .flatcard-description-currency {
-    display: flex;
-    flex-direction: row;
-  }
-  .flatcard-container .flatcard-description-som {
-    display: flex;
-    flex-direction: row;
-    padding-right: 25px;
-    border-right: 5px solid #C4C4C4;
-  }
-  .flatcard-container .flatcard-description-som p {
-    color: #264989;
-  }
-  .flatcard-container .flatcard-description-som p:last-child {
-    color: #feca15;
-  }
-  .flatcard-container .flatcard-description-dollar {
-    display: flex;
-    flex-direction: row;
-    padding-left: 25px;
-  }
-  .flatcard-container .flatcard-description-dollar p {
-    color: #264989;
-  }
-  .flatcard-container .flatcard-description-dollar p:last-child {
-    color: #feca15;
-  }
-  .flatcard-container .flatcard-info {
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-  }
-  .flatcard-container .flatcard-info .flatcard-details {
-    width: 100%;
-    padding: 0 125px;
-  }
-  .flatcard-container .flatcard-info .flatcard-details #flatcard-details-title {
-    text-align: start;
-    color: #FECA15;
-  }
-  .flatcard-container .flatcard-info .flatcard-details-p {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 350px;
-    padding-left: 25px;
-  }
-  .flatcard-container .flatcard-info .flatcard-details-p p {
-    margin-top: 30px;
-  }
-  .flatcard-container .flatcard-info .flatcard-instock-and-near {
-    display: flex;
-    flex-direction: row;
-  }
-  .flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-instock {
-    width: 100%;
-    padding: 0 125px;
-  }
-  .flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-instock #flatcard-instock-title {
-    text-align: start;
-    color: #FECA15;
-    margin-top: 70px;
-  }
-  .flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-instock-p {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    padding-left: 25px;
-  }
-  .flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-instock-p p {
-    margin-top: 30px;
-  }
-  .flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-near {
-    width: 100%;
-    padding: 0 125px;
-  }
-  .flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-near #flatcard-near-title {
-    text-align: start;
-    color: #FECA15;
-    margin-top: 70px;
-  }
-  .flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-near-p {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    flex-wrap: wrap;
-    padding-left: 25px;
-  }
-  .flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-near-p p {
-    margin-top: 30px;
-  }
-  .flatcard-container .flatcard-info .flatcard-about {
-    width: 100%;
-    padding: 0 125px;
-  }
-  .flatcard-container .flatcard-info .flatcard-about #flatcard-about-title {
-    text-align: start;
-    color: #FECA15;
-    margin-top: 70px;
-  }
-  .flatcard-container .flatcard-info .flatcard-about .flatcard-about-pos-p {
-    padding-left: 25px;
-  }
-  .flatcard-container .flatcard-info .flatcard-about .flatcard-about-pos-p #flatcard-about-description {
-    text-align: start;
-    margin: 70px 0 40px 0;
-  }
-  .flatcard-container .flatcard-info .flatcard-about .flatcard-about-pos-p-p {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-  .flatcard-container .flatcard-info .flatcard-about .flatcard-about-pos-p-p p {
-    margin-top: 15px;
-  }
-  .flatcard-container .flatcard-info .flatcard-datepicker {
-    width: 100%;
-    padding: 0 125px;
-  }
-  .flatcard-container .flatcard-info .flatcard-datepicker p {
-    color: #FECA15;
-    margin: 80px 0;
-  }
-  .flatcard-container .flatcard-info .flatcard-map {
-    width: 100%;
-    padding: 0 125px;
-  }
-  .flatcard-container .flatcard-info .flatcard-map p {
-    color: #FECA15;
-    margin: 80px 0;
-  }
+  width: 100%;
+  height: auto;
+  padding: 25px;
+}
+.flatcard-container p {
+  margin: 0;
+  font-size: 25px;
+}
+.flatcard-container .flatcard-images {
+  padding: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.flatcard-container .flatcard-images #flatcard-images-main {
+  width: 48%;
+  margin-bottom: 18px;
+  border-radius: 5px;
+}
+.flatcard-container .flatcard-images-secondary {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flatcard-container .flatcard-images-secondary img {
+  margin: 0 0 20px 20px;
+  border-radius: 5px;
+}
+.flatcard-container .modal-body {
+  padding: 0 0 20px 0;
+  background-color: #feca15;
+  border-radius: 5px;
+}
+.flatcard-container .modal-body img {
+  width: 200%;
+}
+.flatcard-container .modal-content {
+  border-radius: 5px;
+}
+.flatcard-container .mdbbtn {
+  transform: translate(1065%, -385%);
+  border: 3px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 15px;
+  background-color: transparent;
+  position: absolute !important;
+}
+.flatcard-container .btn-default {
+  background: transparent !important;
+}
+.flatcard-container .btn-default:hover {
+  background: black !important;
+  transition: 0.3s ease-out;
+}
+.flatcard-container #darken-image {
+  position: relative !important;
+}
+.flatcard-container .flatcard-description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 50px;
+  margin-top: 80px;
+  font-weight: 600;
+  line-height: 61px;
+}
+.flatcard-container .flatcard-description p {
+  font-size: 40px;
+}
+.flatcard-container .flatcard-description-currency {
+  display: flex;
+  flex-direction: row;
+}
+.flatcard-container .flatcard-description-som {
+  display: flex;
+  flex-direction: row;
+  padding-right: 25px;
+  border-right: 5px solid #C4C4C4;
+}
+.flatcard-container .flatcard-description-som p {
+  color: #264989;
+}
+.flatcard-container .flatcard-description-som p:last-child {
+  color: #feca15;
+}
+.flatcard-container .flatcard-description-dollar {
+  display: flex;
+  flex-direction: row;
+  padding-left: 25px;
+}
+.flatcard-container .flatcard-description-dollar p {
+  color: #264989;
+}
+.flatcard-container .flatcard-description-dollar p:last-child {
+  color: #feca15;
+}
+.flatcard-container .flatcard-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.flatcard-container .flatcard-info .flatcard-details {
+  width: 100%;
+  padding: 0 125px;
+}
+.flatcard-container .flatcard-info .flatcard-details #flatcard-details-title {
+  text-align: start;
+  color: #FECA15;
+}
+.flatcard-container .flatcard-info .flatcard-details-p {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 350px;
+  padding-left: 25px;
+}
+.flatcard-container .flatcard-info .flatcard-details-p p {
+  margin-top: 20px;
+}
+.flatcard-container .flatcard-info .flatcard-instock-and-near {
+  display: flex;
+  flex-direction: row;
+}
+.flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-instock {
+  width: 100%;
+  padding: 0 125px;
+}
+.flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-instock #flatcard-instock-title {
+  text-align: start;
+  color: #FECA15;
+  margin-top: 50px;
+}
+.flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-instock-p {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 25px;
+}
+.flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-instock-p p {
+  margin-top: 20px;
+}
+.flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-near {
+  width: 100%;
+  padding: 0 125px;
+}
+.flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-near #flatcard-near-title {
+  text-align: start;
+  color: #FECA15;
+  margin-top: 50px;
+}
+.flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-near-p {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-left: 25px;
+}
+.flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-near-p p {
+  margin-top: 20px;
+}
+.flatcard-container .flatcard-info .flatcard-about {
+  width: 100%;
+  padding: 0 125px;
+}
+.flatcard-container .flatcard-info .flatcard-about #flatcard-about-title {
+  text-align: start;
+  color: #FECA15;
+  margin-top: 50px;
+}
+.flatcard-container .flatcard-info .flatcard-about .flatcard-about-pos-p {
+  padding-left: 25px;
+}
+.flatcard-container .flatcard-info .flatcard-about .flatcard-about-pos-p #flatcard-about-description {
+  text-align: start;
+  margin: 20px 0 20px 0;
+}
+.flatcard-container .flatcard-info .flatcard-about .flatcard-about-pos-p-p {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.flatcard-container .flatcard-info .flatcard-about .flatcard-about-pos-p-p p {
+  margin-top: 15px;
+}
+.flatcard-container .flatcard-info .flatcard-datepicker {
+  width: 100%;
+  padding: 0 125px;
+}
+.flatcard-container .flatcard-info .flatcard-datepicker p {
+  color: #FECA15;
+  margin: 60px 0;
+}
+.flatcard-container .flatcard-info .flatcard-map {
+  width: 100%;
+  padding: 0 125px;
+}
+.flatcard-container .flatcard-info .flatcard-map #flatcard-map-description {
+  color: #FECA15;
+  margin: 60px 0;
+}

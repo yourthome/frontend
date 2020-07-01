@@ -31,8 +31,8 @@ export default class Footer extends Component {
           </Link>
         </div>
 
-        <div className="footer__menu">
-          <div className="footer__menu-links">
+        <div className="footer__group">
+          <div className="footer__group-links">
             <Link to='/flatcard'>
               <p>Карта</p>
             </Link>

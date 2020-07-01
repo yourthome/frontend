@@ -15,7 +15,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb{
-  background: var(--blue);
+  background: #264989;
   border-radius: 6px;
 }
 
@@ -110,8 +110,8 @@ body {
             color: #9F9D9D;
             background-color: #fff;
             &:hover {
-              color: #fff;
-              background-color: var(--blue);
+              color: #000;
+              background-color: var(--yellow);
               box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
             }
           }

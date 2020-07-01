@@ -28,6 +28,7 @@ class MapContainer extends Component {
        lat: store.latitude,
        lng: store.longitude
      }}
+    //  draggable={true} 
      onClick={this.onMarkerClick} 
      />
     })
@@ -77,7 +78,7 @@ class MapContainer extends Component {
             <p id="map-infobox-location">Бишкек, Горького/Советская</p>
             <p id="map-infobox-cost-dollars">$ 29 500</p>
             <p id="map-infobox-cost-soms">2 216 108 сом</p>
-            <p id="map-infobox-description">Продаж 1 кв. Советская/Горького.Квартира не угловая,дом кирпичный. Ванная кафель рабочая стена,трубы пластик ,установлены приборы учета на холодную и горячую воду.Дверь входная бронированная,тамбурная.Закрытый двор,чистый подъезд.Во дворе видеонаблюдение.</p>
+            <p id="map-infobox-description">Продаж 1 кв. Советская/Горького. Квартира не угловая, дом кирпичный. Ванная кафель рабочая стена, трубы пластик, установлены приборы учета на холодную и горячую воду. Дверь входная бронированная, тамбурная. Закрытый двор, чистый подъезд. Во дворе видеонаблюдение.</p>
           {/* </div> */}
         </div>
       </InfoWindow>

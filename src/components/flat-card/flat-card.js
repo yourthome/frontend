@@ -73,10 +73,10 @@ export default class FlatCard extends Component {
             <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
               {/* <MDBModalHeader toggle={this.toggle}>Изображения</MDBModalHeader> */}
               <MDBModalBody>
-                <div className="flatcard-images">
-                  <div className="flatcard-images-secondary">
+                <div>
+                  <div>
                     <Slider {...slickSettings}>
-                      <img id="flatcard-images-main" src={home2} alt="flatcard-image1"></img>
+                      <img src={home2} alt="flatcard-image1"></img>
                       <img src={home3} alt="flatcard-image2"></img>
                       <img src={home5} alt="flatcard-image3"></img>
                       <img src={home1} alt="flatcard-image4"></img>
@@ -170,6 +170,11 @@ export default class FlatCard extends Component {
             <div className="flatcard-datepicker">
               <p>Забронированные дни: </p>
               <DateRangePicker
+              // customInputIcon={<TestCustomInputIcon />}
+              // customArrowIcon={<TestCustomArrowIcon />}
+              // customCloseIcon={<TestCustomCloseIcon />}
+              showClearDates
+              showDefaultInputIcon
                 startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                 startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
                 endDate={this.state.endDate} // momentPropTypes.momentObj or null,
@@ -182,7 +187,7 @@ export default class FlatCard extends Component {
             </div>
 
             <div className="flatcard-map">
-              <p>Расположение на карте: </p>
+              <p id="flatcard-map-description">Расположение на карте: </p>
               <MapContainer />
             </div>
           </div>
