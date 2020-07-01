@@ -17,15 +17,15 @@ export default class Footer extends Component {
         
         <div className="footer__icons">
           <p>Следите за нами в:</p>
-          <Link to="/flatcard">
+          <Link to="/">
             {/* <Facebook width="40px"/> */}
             <img className="footer__logo" src={facebook} alt="facebook logo"/>
           </Link>
-          <Link to="/flatcard">
+          <Link to="/">
             {/* <Instagram width="40px"/> */}
             <img className="footer__logo" src={instagram} alt="instagram logo"/>
           </Link>
-          <Link to="/flatcard">
+          <Link to="/">
             {/* <Whatsapp width="40px"/> */}
             <img className="footer__logo" src={whatsapp} alt="whatsapp logo"/>
           </Link>
@@ -33,24 +33,24 @@ export default class Footer extends Component {
 
         <div className="footer__group">
           <div className="footer__group-links">
-            <Link to='/flatcard'>
+            <Link to='/mapfilter'>
               <p>Карта</p>
             </Link>
 
-            <Link to='/flatcard'>
+            <Link to='/filter'>
               <p>Фильтр</p>
             </Link>
 
-            <Link to='/flatcard'>
+            <Link to='/'>
               <p>Войти</p>
             </Link>
 
-            <Link to='/flatcard'>
+            <Link to='/'>
               <p>Заявка</p>
             </Link>
           </div>
           <div className="footer-button">
-            <Link className="footer-button-link" to='/flatcard'>
+            <Link className="footer-button-link" to='/'>
               <p>Подать объявление</p>
             </Link>
           </div>
