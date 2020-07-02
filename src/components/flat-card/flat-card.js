@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import 'react-dates/initialize';
-import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import { 
+  DateRangePicker, 
+  // SingleDatePicker, 
+  // DayPickerRangeController 
+} from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { 
+  // MDBContainer, 
+  MDBBtn, MDBModal, MDBModalBody, 
+  // MDBModalHeader, 
+  // MDBModalFooter 
+} from 'mdbreact';
 import '@fortawesome/fontawesome-free/css/all.min.css'; 
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
@@ -178,6 +187,11 @@ export default class FlatCard extends Component {
               // customCloseIcon={<TestCustomCloseIcon />}
               showClearDates
               showDefaultInputIcon
+              withPortal
+              // autoFocusEndDate 
+              keepOpenOnDateSelect 
+              hideKeyboardShortcutsPanel 
+              autoFocus
                 startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                 startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
                 endDate={this.state.endDate} // momentPropTypes.momentObj or null,
@@ -185,7 +199,10 @@ export default class FlatCard extends Component {
                 onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                 focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                 onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                keepOpenOnDateSelect autoFocus 
+                // isDayBlocked={isDayBlocked} 
+                // isDayHighlighted={isDayHighlighted}
+                // renderCalendarDay={renderCalendarDay}
+                // minimumNights={3} 
               />
             </div>
 

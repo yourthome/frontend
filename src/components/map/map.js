@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import './map.css'
 import photo from '../../content/images/flat-card/home1.png'
