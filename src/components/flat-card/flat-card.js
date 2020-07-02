@@ -35,13 +35,18 @@ import home5 from '../../content/images/flat-card/home5.png';
 import home1 from '../../content/images/flat-card/home1.png';
 import home6 from '../../content/images/flat-card/home6.png';
 
+import LogIn from '../logIn/logIn';
+import Registration from '../registration/registration';
+
 export default class FlatCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       startDate: null,
       endDate: null,
-      modal: false
+      modal: false,
+      isModalOpen: false,
+      isRegistrationOpen: false
     }
   }
 
@@ -49,6 +54,19 @@ export default class FlatCard extends Component {
     this.setState({
       modal: !this.state.modal
     });
+  }
+
+  toggleModal = () =>{
+    this.setState(state => ({ isModalOpen: !state.isModalOpen}));
+  };
+
+  toggleRegistration = () =>{
+    this.setState(state => ({ isRegistrationOpen: !state.isRegistrationOpen}));
+  };
+
+  toggleModalWindows = () =>{
+    this.setState(state => ({ isModalOpen: !state.isModalOpen}));
+    this.setState(state => ({ isRegistrationOpen: !state.isRegistrationOpen}));
   }
 
   render() {
@@ -67,8 +85,18 @@ export default class FlatCard extends Component {
     };
     return (
       <>
-        <Header />
+        <Header toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}/>
 
+        {
+          this.state.isModalOpen &&
+            <LogIn onClose={this.toggleModal} onToggleWindows={this.toggleModalWindows}>
+            </LogIn>
+          }
+          {
+          this.state.isRegistrationOpen &&
+            <Registration onClose={this.toggleRegistration} onToggleWindows={this.toggleModalWindows}>
+            </Registration>
+          }  
         <section className="flatcard-container">
           <div className="flatcard-images">
             <img id="flatcard-images-main" src={home2} alt="flatcard-image1"></img>

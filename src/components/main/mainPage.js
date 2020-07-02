@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import './mainPage.css';
-import logo from '../../content/images/main/logo.png'
 import adsImg from '../../content/images/main/ads-card.jpg'
-import faceIcon from '../../content/images/main/facebook.png'
-import instaIcon from '../../content/images/main/instagram.png'
-import whatsIcon from '../../content/images/main/whatsapp.png';
 import { Link } from 'react-router-dom';
 import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
+import Header from '../header/header';
+import Footer from '../footer/footer';
 
 
 
@@ -34,14 +32,7 @@ export default class MainPage extends Component {
     return( 
       <>
         <section className="intro">
-          <header className="main-header">
-            <img src={logo} alt="logo"/>
-            <div className="header__btns">
-              <button className="btn__blue"
-                onClick={this.toggleRegistration}>Подать заявку</button>
-              <button className="btn__yellow" onClick={this.toggleModal}>Войти</button>
-            </div>
-          </header>
+          <Header toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}/>
           {
           this.state.isModalOpen &&
             <LogIn onClose={this.toggleModal} onToggleWindows={this.toggleModalWindows}>
@@ -142,26 +133,7 @@ export default class MainPage extends Component {
           </div> 
           <button>Ещё +</button>
         </section>
-
-        <footer className="main-footer">
-          <div className="social">
-            <span>Следите за нами:</span>
-            <div className="social__icons">
-              <img src={faceIcon} alt="logo"/>
-              <img src={instaIcon} alt="logo"/>
-              <img src={whatsIcon} alt="logo"/>
-            </div>
-          </div>
-          <div className="footer__nav">
-            <div className="footer__menu">
-              <Link to="/mapfilter"><span>Карта</span></Link>
-              <Link to=""><span>Фильтр</span></Link>
-              <Link to=""><span>Войти</span></Link>
-              <Link to=""><span>Заявка</span></Link>
-            </div>
-            <button className="btn__yellow">Подать обьявление</button>
-          </div>
-        </footer>
+        <Footer />
       </>
     );
   }

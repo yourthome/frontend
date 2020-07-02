@@ -32,10 +32,10 @@ export default class Filter extends Component {
     render() {
       return( 
 <>
-        <Header />
+        <Header toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}/>
         {this.state.isModalOpen &&
         <LogIn onClose={this.toggleModal} onToggleWindows={this.toggleModalWindows}></LogIn>}
-        {this.state.isModalOpen &&
+        {this.state.isRegistrationOpen &&
         <Registration onClose={this.toggleRegistration} onToggleWindows={this.toggleModalWindows}></Registration>}
         <div className="search__block__filter">
         <input type="text" placeholder="Где вы хотите снять жильё..." />
