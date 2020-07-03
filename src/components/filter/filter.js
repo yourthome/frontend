@@ -92,6 +92,57 @@ export default class Filter extends Component {
             </li>
         </ul>
         <ul className="main_filter">
+            <li>Этажность
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                </ul>
+                <img src={arrow} alt="arrow" />
+            </li>
+            <li>Площадь
+                <ul>
+                <li>&#62;50м2</li>
+                    <li>&#62;60м2</li>
+                    <li>&#62;70м2</li>
+                    <li>&#62;80м2</li>
+                    <li>&#62;90м2</li>
+                    <li>&#62;100м2</li>
+                    <li>&#62;110м2</li>
+                    <li>&#62;120м2</li>
+                </ul>
+                <img src={arrow} alt="arrow" />
+            </li>
+            <li>Рядом есть
+                <ul>
+                <li>Рестораны, кафе</li>
+                    <li>Детский сад</li>
+                    <li>Стоянка</li>
+                    <li>Остановки</li>
+                    <li>Супермаркет</li>
+                    <li>Парк</li>
+                    <li>Зелёная зона</li>
+                    <li>Больница</li>
+                </ul>
+                <img src={arrow} alt="arrow" />
+            </li>
+            <li>Тип строения
+                <ul>
+                <li>Кирпичное</li>
+                    <li>Монолитное</li>
+                    <li>Бетонное</li>
+                    <li>Панельные</li> 
+                    <li>Деревянное</li>
+                </ul>
+                <img src={arrow} alt="arrow" />
+            </li>
+        </ul>
+        {/* <ul className="main_filter">
             <li>Город
                 <ul>
                     <li>Бишкек</li>
@@ -139,56 +190,7 @@ export default class Filter extends Component {
                 </ul>
                 <img src={arrow} alt="arrow" />
             </li>
-        </ul>
-        <ul className="main_filter">
-            <li>Город
-                <ul>
-                    <li>Бишкек</li>
-                    <li>Нарын</li>
-                    <li>Чуй</li>
-                    <li>Талас</li>
-                    <li>Ысык-куль</li>
-                    <li>Ош</li>
-                    <li>Жалал-Абад</li>
-                    <li>Баткен</li>
-                </ul>
-                <img src={arrow} alt="arrow" />
-            </li>
-            <li>Тип недвижимости
-                <ul>
-                    <li>Участок</li>
-                    <li>Квартира</li>
-                </ul>
-                <img src={arrow} alt="arrow" />
-            </li>
-            <li>Этаж
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>10</li>
-                    <li>11</li>
-                    <li>12</li>
-                </ul>
-                <img src={arrow} alt="arrow" />
-            </li>
-            <li>Кол-во комнат
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                </ul>
-                <img src={arrow} alt="arrow" />
-            </li>
-        </ul>
+        </ul> */}
     </div>
     <div className="ads__block__filter">
         <div className="ads__card__filter">
