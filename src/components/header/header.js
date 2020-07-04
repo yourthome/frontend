@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import LogIn from '../logIn/logIn';
+import Registration from '../registration/registration';
 
 import './header.css';
 import logo from '../../content/images/header/logo.svg'
 
 export default class Header extends Component {
+
   render() {
+    console.log(this.props)
     return (
       <header className="header">
         <div className="header__description">
@@ -20,13 +24,13 @@ export default class Header extends Component {
         </div>
 
         <div className="header__menu">
-          <Link className="header__menu-1" to='/flatcard'>
+          <div className="header__menu-1" onClick={this.props.toggleRegistration}>
             <p>Подать заявку</p>
-          </Link>
+          </div>
 
-          <Link className="header__menu-2" to='/flatcard'>
+          <div className="header__menu-2" onClick={this.props.toggleModal}>
             <p>Войти</p>
-          </Link>
+          </div>
         </div>
       </header>
     )
