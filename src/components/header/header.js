@@ -12,9 +12,9 @@ export default class Header extends Component {
           <Link to="/">
             <img className="header__logo" src={logo} alt="website logo"/>
           </Link>
-          <Link to="/flatcard">
+          <Link to="/">
             <div className="logo-title">
-              <p id="p-half1">Yurt</p><p id="p-half2">Home</p>
+              <p id="p-half1">Yourt</p><p id="p-half2">Home</p>
             </div> 
           </Link>
         </div>

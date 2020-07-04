@@ -6,6 +6,8 @@ import MapFilter from './components/map-filter/map-filter'
 import MainPage from './components/main/mainPage'
 import Filter from './components/filter/filter'
 
+import FlatCardUser from './components/user/flat-card-user/flat-card-user'
+
 function App() {
   return (
     <div className="App">
@@ -26,6 +28,10 @@ function App() {
         <Route
           path = "/filter"
           component = {Filter}
+        />
+        <Route
+          path = "/user/flatcard"
+          component = {FlatCardUser}
         />
         {/* <Route path="/sort1" component={Sort1} />
         <Route path="/sort2" component={Sort2} />

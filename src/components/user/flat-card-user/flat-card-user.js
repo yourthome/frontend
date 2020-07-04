@@ -23,25 +23,26 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
 
-import MapContainer from '../map/map';
+import MapContainer from '../../map/map';
 
-import Header from '../header/header';
-import Footer from '../footer/footer';
+import Header from '../../header/header';
+import Footer from '../../footer/footer';
 
-import './flat-card.css';
-import home2 from '../../content/images/flat-card/home2.png';
-import home3 from '../../content/images/flat-card/home3.png';
-import home5 from '../../content/images/flat-card/home5.png';
-import home1 from '../../content/images/flat-card/home1.png';
-import home6 from '../../content/images/flat-card/home6.png';
+import './flat-card-user.css';
+import home2 from '../../../content/images/flat-card/home2.png';
+import home3 from '../../../content/images/flat-card/home3.png';
+import home5 from '../../../content/images/flat-card/home5.png';
+import home1 from '../../../content/images/flat-card/home1.png';
+import home6 from '../../../content/images/flat-card/home6.png';
 
-export default class FlatCard extends Component {
+export default class FlatCardUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
       startDate: null,
       endDate: null,
-      modal: false
+      modal: false,
+      
     }
   }
 
@@ -70,6 +71,7 @@ export default class FlatCard extends Component {
         <Header />
 
         <section className="flatcard-container">
+
           <div className="flatcard-images">
             <img id="flatcard-images-main" src={home2} alt="flatcard-image1"></img>
             <div className="flatcard-images-secondary">
@@ -105,7 +107,7 @@ export default class FlatCard extends Component {
           {/* </MDBContainer> */}
 
           <div className="flatcard-description">
-            <p>Сдаю 3-х комнатную квартиру. </p>
+            <p>Сдаю 3-х комнатную квартиру.</p>
             <div className="flatcard-description-currency">
               <div className="flatcard-description-som">
                 <p>18000</p><p>с</p>
@@ -116,8 +118,7 @@ export default class FlatCard extends Component {
             </div>
           </div>
 
-          <div className="flatcard-info">
-            
+          <div className="flatcard-info">          
             <div className="flatcard-details">
               <p id="flatcard-details-title">Детали:</p>
               <div className="flatcard-details-p">
