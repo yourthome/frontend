@@ -6,10 +6,13 @@ import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import { fetchData } from '../../redux/actions';
 
 
 
-export default class MainPage extends Component {
+class MainPage extends Component {
   state = {
     isModalOpen: false,
     isRegistrationOpen: false
@@ -29,6 +32,8 @@ export default class MainPage extends Component {
   }
 
   render() {
+    console.log(this.props);
+
     return( 
       <>
         <section className="intro">
@@ -131,10 +136,25 @@ export default class MainPage extends Component {
               </div>
             </Link>  
           </div> 
-          <button>Ещё +</button>
+          <button onClick={() =>{
+            this.props.fetchData();
+            console.log(this.props);
+          }}>Ещё +</button>
         </section>
         <Footer />
       </>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return{
+    data: state.getData.title
+  }
+}
+
+const mapDispatchToProps = {
+  fetchData
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage)
