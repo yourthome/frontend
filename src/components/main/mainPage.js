@@ -6,8 +6,9 @@ import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 import Header from '../header/header';
 import Footer from '../footer/footer';
-import {connect} from 'react-redux';
-import {useDispatch} from 'react-redux';
+
+import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchData } from '../../redux/actions';
 
 

@@ -5,5 +5,5 @@ import {getData} from './reducer'
 
 
 export const rootReducer = combineReducers({
-    getData: getData
+    getData: getData,
 })
