@@ -9,9 +9,7 @@ import Footer from '../footer/footer';
 
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { fetchData } from '../../redux/actions';
-
-
+import { fetchData } from '../../redux/actions/actions';
 
 class MainPage extends Component {
   state = {
