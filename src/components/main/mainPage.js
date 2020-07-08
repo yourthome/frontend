@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import './mainPage.css';
-import adsImg from '../../content/images/main/ads-card.jpg'
 import { Link } from 'react-router-dom';
 import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import {MainFlatCard} from './main-flatCard';
 
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { fetchData } from '../../redux/actions';
+import { fetchData } from '../../redux/actions/actions';
 
 
 
@@ -30,11 +30,16 @@ class MainPage extends Component {
   toggleModalWindows = () =>{
     this.setState(state => ({ isModalOpen: !state.isModalOpen}));
     this.setState(state => ({ isRegistrationOpen: !state.isRegistrationOpen}));
+  };
+
+  componentDidMount(){
+    this.props.fetchData();
   }
 
   render() {
-    console.log(this.props);
-
+    let arr = this.props.data.filter(elem => {if(elem.rentalID < 7){
+      return true;
+    }} )
     return( 
       <>
         <section className="intro">
@@ -64,82 +69,13 @@ class MainPage extends Component {
         <section className="ads__section">
           <h2>Недавние обьявления</h2>
           <div className="ads__blocks">
-            <Link to="/flatcard">               
-              <div className="ads__block">
-                <img src={adsImg} alt="img"/>
-                <span>Сдаю 3-х комнатную квартиру.</span>
-                <div className="ads__price">
-                  <span>13000c</span>
-                  <Link to="/mapfilter">
-                    <span>На карте</span>
-                  </Link>
-                </div>
-              </div>
-            </Link>  
-            <Link to="/flatcard">
-              <div className="ads__block">
-                <img src={adsImg} alt="img"/>
-                <span>Сдаю 3-х комнатную квартиру.</span>
-                <div className="ads__price">
-                  <span>13000c</span>
-                  <Link to="/mapfilter">
-                    <span>На карте</span>
-                  </Link>
-                </div>
-              </div>
-            </Link>
-            <Link to="/flatcard">
-              <div className="ads__block">
-                <img src={adsImg} alt="img"/>
-                <span>Сдаю 3-х комнатную квартиру.</span>
-                <div className="ads__price">
-                  <span>13000c</span>
-                  <Link to="/mapfilter">
-                    <span>На карте</span>
-                  </Link>
-                </div>
-              </div>
-            </Link>
-            <Link to="/flatcard">
-              <div className="ads__block">
-                <img src={adsImg} alt="img"/>
-                <span>Сдаю 3-х комнатную квартиру.</span>
-                <div className="ads__price">
-                  <span>13000c</span>
-                  <Link to="/mapfilter">
-                    <span>На карте</span>
-                  </Link>
-                </div>
-              </div>
-            </Link>
-            <Link to="/flatcard">
-              <div className="ads__block">
-                <img src={adsImg} alt="img" />
-                <span>Сдаю 3-х комнатную квартиру.</span>
-                <div className="ads__price">
-                  <span>13000c</span>
-                  <Link to="/mapfilter">
-                    <span>На карте</span>
-                  </Link>
-                </div>
-              </div>
-            </Link>
-            <Link to="/flatcard">
-              <div className="ads__block">
-                <img src={adsImg} alt="img" />
-                <span>Сдаю 3-х комнатную квартиру.</span>
-                <div className="ads__price">
-                  <span>13000c</span>
-                  <Link to="/mapfilter">
-                    <span>На карте</span>
-                  </Link>
-                </div>
-              </div>
-            </Link>  
+            {
+            arr.map(elem => {
+            return <MainFlatCard cost={elem.cost} id={elem.rentalID} title={elem.description}/>
+  })}
           </div> 
           <button onClick={() =>{
             this.props.fetchData();
-            console.log(this.props);
           }}>Ещё +</button>
         </section>
         <Footer />
@@ -150,7 +86,7 @@ class MainPage extends Component {
 
 const mapStateToProps = state => {
   return{
-    data: state.getData.title
+    data: state.getData.data
   }
 }
 
