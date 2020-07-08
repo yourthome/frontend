@@ -64,6 +64,7 @@ body {
   background-color: transparent;
   color: #264989;
   transition: 0.3s ease-in-out;
+  cursor: pointer;
 }
 .header .header__menu-2 {
   border-radius: 0px 15px 15px 0px;
@@ -75,6 +76,7 @@ body {
   background-color: transparent;
   color: #feca15;
   transition: 0.3s ease-in-out;
+  cursor: pointer;
 }
 .header .header__menu-2 p {
   font-weight: 500;
