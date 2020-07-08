@@ -1,0 +1,99 @@
+.user-ads-block{
+  margin: 3em 0;
+  display: flex;
+  justify-content: center;
+}
+
+.user-ads-card{
+  width: 70%;
+  background-color: #F9F9F9;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  height: 18em;
+}
+
+.user-ads-card img{
+  width: 45%;
+}
+
+.user-ads-card-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 2em;
+}
+
+.user-ads-card-price{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 4em;
+}
+
+.user-ads-card-price span{
+  font-size: 1.3em;
+  color: var(--blue);
+  font-weight: 500;
+}
+
+#user-ads-maplink {
+  color: var(--yellow);
+}
+
+.user-personaldata-block {
+  width: 100%;
+  margin: 3em 0;
+  display: flex;
+  justify-content: center;
+}
+
+.user-personaldata-cardcontainer {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 60px;
+  background: #F7F7F7;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.user-personaldata-card {
+  display: flex;
+  flex-direction: row;
+  height: 216px;
+}
+
+.user-personaldata-data {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+#user-personaldata-data-group1, #user-personaldata-data-group2, #user-personaldata-data-group3 {
+  padding: 0 100px 0 80px;
+}
+
+#user-personaldata-data-group1 label, #user-personaldata-data-group2 label, #user-personaldata-data-group3 label {
+  color: #264989;
+}
+
+#user-personaldata-button {
+  width: 300px;
+  align-self: flex-end;
+  font-weight: 500;
+  font-size: 20px;
+  color: #fff;
+  background: #264989;
+  border: 2px solid #264989;
+  border-radius: 20px;
+  padding: 20px 80px;
+}
+
+#user-personaldata-button:hover {
+  cursor: pointer;
+  color: #264989;
+  background: transparent;
+  transition: .3s ease-out;
+}
