@@ -10,11 +10,7 @@ import {MainFlatCard} from './main-flatCard';
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { fetchData } from '../../redux/actions/actions';
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 9f0aa36f4a74f4a46bc0b56bc41c5d0d184a8406
 
 class MainPage extends Component {
   state = {
