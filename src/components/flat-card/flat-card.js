@@ -28,6 +28,9 @@ import MapContainer from '../map/map';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 
+import { connect } from 'react-redux';
+import { getCardId } from '../../redux/actions/actions';
+
 import './flat-card.css';
 import home2 from '../../content/images/flat-card/home2.png';
 import home3 from '../../content/images/flat-card/home3.png';
@@ -38,7 +41,7 @@ import home6 from '../../content/images/flat-card/home6.png';
 import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 
-export default class FlatCard extends Component {
+class FlatCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -245,3 +248,31 @@ export default class FlatCard extends Component {
     )
   }
 }
+
+// const mapStateToProps = state => {
+//   return{
+//     data: state.getCardId.cardId
+//   }
+// }
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     CardId: (id) => dispatch(getCardId(id)),
+//   }
+// }
+
+const mapStateToProps = (state) => {
+  return { 
+    data: state.getData.data
+      .filter((card) => card.rentalID === state.getCardId.cardId)
+      .pop()
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    CardId: (rentalID) => dispatch(getCardId(rentalID)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FlatCard);

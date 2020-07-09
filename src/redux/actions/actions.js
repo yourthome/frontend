@@ -1,4 +1,4 @@
-import { FETCH_DATA } from './constants';
+import { FETCH_DATA, GET_CARD_ID } from './constants';
 
 const fetchData = () => {
     return async dispatch => {
@@ -8,6 +8,14 @@ const fetchData = () => {
     }
 }
 
+const getCardId = (value) => {
+    return {
+      type: GET_CARD_ID,
+      value
+    }
+  }
+
 export {
-    fetchData
+    fetchData,
+    getCardId
 };

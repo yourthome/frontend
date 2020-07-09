@@ -10,6 +10,8 @@ import {MainFlatCard} from './main-flatCard';
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { fetchData } from '../../redux/actions/actions';
+import { getCardId } from '../../redux/actions/actions';
+
 
 
 class MainPage extends Component {
@@ -36,9 +38,9 @@ class MainPage extends Component {
   }
 
   render() {
-    let arr = this.props.data.filter(elem => {if(elem.rentalID < 7){
+    let arr = this.props.data.filter(elem => { if(elem.rentalID < 7) {
       return true;
-    }} )
+    }})
     return( 
       <>
         <section className="intro">
@@ -69,9 +71,9 @@ class MainPage extends Component {
           <h2>Недавние обьявления</h2>
           <div className="ads__blocks">
             {
-            arr.map(elem => {
-            return <MainFlatCard cost={elem.cost} id={elem.rentalID} title={elem.description}/>
-  })}
+              arr.map(elem => {
+              return <MainFlatCard onClick={() => this.props.CardId(elem.rentalID)} cost={elem.cost} id={elem.rentalID} title={elem.description}/>
+            })}
           </div> 
           <button onClick={() =>{
             this.props.fetchData();
@@ -85,12 +87,13 @@ class MainPage extends Component {
 
 const mapStateToProps = state => {
   return{
-    data: state.getData.data
+    data: state.getData.data, 
   }
 }
 
 const mapDispatchToProps = {
-  fetchData
+  fetchData,
+  CardId: (rentalID, dispatch) => dispatch(getCardId(rentalID))
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage)
