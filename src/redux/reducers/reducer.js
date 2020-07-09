@@ -1,10 +1,10 @@
 import { FETCH_DATA } from '../actions/constants'
 
 const initialState = {
-    data: [1]
+    data: [1],
 }
 
-export const getData = (state = initialState, action) =>{
+export const getData = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_DATA:
             return { 
