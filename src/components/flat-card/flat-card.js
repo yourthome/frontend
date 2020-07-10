@@ -136,13 +136,13 @@ class FlatCard extends Component {
           {/* </MDBContainer> */}
 
           <div className="flatcard-description">
-            <p>Сдаю 3-х комнатную квартиру. </p>
+            <p>{this.props.data.description} </p>
             <div className="flatcard-description-currency">
               <div className="flatcard-description-som">
-                <p>18000</p><p>с</p>
+                <p>{this.props.data.cost}</p><p>с</p>
               </div>
               <div className="flatcard-description-dollar">
-                <p>250</p><p>$</p>
+                <p>{Math.floor(this.props.data.cost / 77.8)}</p><p>$</p>
               </div>
             </div>
           </div>
@@ -152,14 +152,14 @@ class FlatCard extends Component {
             <div className="flatcard-details">
               <p id="flatcard-details-title">Детали:</p>
               <div className="flatcard-details-p">
-                <p>Комнат: 3</p>
-                <p>Этаж: 3</p>
-                <p>Этажность дома: 3</p>
-                <p>Тип ремонта: Евро</p>
-                <p>Мебелирована: Да</p>
-                <p>Общая площадь: 117м2</p>
-                <p>Тип строения: кирпичное</p>
-                <p>Планировка: раздельная</p>
+                <p>Комнат: {this.props.data.rooms}</p>
+                <p>Этаж: undefined</p>
+                <p>Этажность дома: undefined</p>
+                <p>Тип ремонта: undefined</p>
+                <p>Мебелирована: undefined</p>
+                <p>Общая площадь: undefined</p>
+                <p>Тип строения: undefined</p>
+                <p>Планировка: undefined</p>
               </div>
             </div>
 
@@ -167,28 +167,27 @@ class FlatCard extends Component {
               <div className="flatcard-instock">
                 <p id="flatcard-instock-title">В наличии:</p>
                 <div className="flatcard-instock-p">
-                  <p>Интернет</p>
-                  <p>Телефон</p>
-                  <p>Холодильник</p>
-                  <p>Кухня</p>
-                  <p>Телевизор</p>
-                  <p>Балкон</p>
-                  <p>Стиральная машина</p>
-                  <p>Кондиционер</p>
+                  <p>Интернет: {this.props.data.facilities.internet.toString()}</p>
+                  <p>Телефон: {this.props.data.facilities.phone.toString()}</p>
+                  <p>Холодильник: {this.props.data.facilities.refrigerator.toString()}</p>
+                  <p>Кухня: {this.props.data.facilities.kitchen.toString()}</p>
+                  <p>Телевизор: {this.props.data.facilities.tv.toString()}</p>
+                  <p>Балкон: {this.props.data.facilities.balcony.toString()}</p>
+                  <p>Стиральная машина: {this.props.data.facilities.washer.toString()}</p>
+                  <p>Кондиционер: {this.props.data.facilities.airConditioning.toString()}</p>
                 </div>
               </div>
 
               <div className="flatcard-near">
                 <p id="flatcard-near-title">Рядом есть:</p>
                 <div className="flatcard-near-p">
-                  <p>Рестораны, кафе</p>
-                  <p>Детский сад</p>
-                  <p>Стоянка</p>
-                  <p>Остановки</p>
-                  <p>Супермаркет</p>
-                  <p>Парк</p>
-                  <p>Зелёная зона</p>
-                  <p>Больница</p>
+                  <p>Рестораны, кафе: {this.props.data.infrastructure.cafe.toString()}</p>
+                  <p>Детский сад: {this.props.data.infrastructure.kindergarten.toString()}</p>
+                  <p>Стоянка: {this.props.data.infrastructure.parking.toString()}</p>
+                  <p>Остановки: {this.props.data.infrastructure.busStop.toString()}</p>
+                  <p>Супермаркет: {this.props.data.infrastructure.supermarket.toString()}</p>
+                  <p>Парк: {this.props.data.infrastructure.park.toString()}</p>
+                  <p>Больница: {this.props.data.infrastructure.hospital.toString()}</p>
                 </div>
               </div>
             </div>
@@ -248,18 +247,6 @@ class FlatCard extends Component {
     )
   }
 }
-
-// const mapStateToProps = state => {
-//   return{
-//     data: state.getCardId.cardId
-//   }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     CardId: (id) => dispatch(getCardId(id)),
-//   }
-// }
 
 const mapStateToProps = (state) => {
   return { 

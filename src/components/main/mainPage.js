@@ -1,18 +1,16 @@
-import React, {Component, useEffect} from 'react';
+import React, { Component } from 'react';
 import './mainPage.css';
 import { Link } from 'react-router-dom';
 import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 import Header from '../header/header';
 import Footer from '../footer/footer';
-import {MainFlatCard} from './main-flatCard';
 
 import { connect } from 'react-redux';
-import { useDispatch } from 'react-redux';
 import { fetchData } from '../../redux/actions/actions';
 import { getCardId } from '../../redux/actions/actions';
 
-
+import adsImg from '../../content/images/main/ads-card.jpg'
 
 class MainPage extends Component {
   state = {
@@ -72,8 +70,24 @@ class MainPage extends Component {
           <div className="ads__blocks">
             {
               arr.map(elem => {
-              return <MainFlatCard onClick={() => this.props.CardId(elem.rentalID)} cost={elem.cost} id={elem.rentalID} title={elem.description}/>
-            })}
+                return(
+                  <Link onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
+                    <div className="ads__block">
+                      <img src={adsImg} alt="img"/>
+                      <div className="ads__block__info">
+                      <span>{elem.description}</span>
+                      <div className="ads__price">
+                        <span>{elem.cost}c</span>
+                        <Link to="/mapfilter">
+                          <span>На карте</span>
+                        </Link>
+                      </div>
+                      </div>
+                    </div>
+                  </Link>
+                )
+              })
+            }
           </div> 
           <button onClick={() =>{
             this.props.fetchData();
@@ -86,14 +100,16 @@ class MainPage extends Component {
 }
 
 const mapStateToProps = state => {
-  return{
+  return {
     data: state.getData.data, 
   }
 }
 
-const mapDispatchToProps = {
-  fetchData,
-  CardId: (rentalID, dispatch) => dispatch(getCardId(rentalID))
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchData,
+    CardId: (rentalID) => dispatch(getCardId(rentalID))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage)
