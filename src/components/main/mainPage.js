@@ -39,6 +39,7 @@ class MainPage extends Component {
     let arr = this.props.data.filter(elem => { if(elem.rentalID < 7) {
       return true;
     }})
+    console.log(this.props);
     return( 
       <>
         <section className="intro">

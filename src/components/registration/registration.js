@@ -12,6 +12,7 @@ export default class Registration extends Component{
                 {ReactDOM.createPortal(
                     <div>
                         <div className="modal--overlay" onClick={this.props.onClose}>
+                        <span className="modal__cross__icon"></span>
                         </div>
                         <div className="modal--content">
                             <img src={bgcImg}></img>

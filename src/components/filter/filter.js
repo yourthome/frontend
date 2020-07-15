@@ -8,13 +8,15 @@ import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 
 
-
-
 export default class Filter extends Component {
-    state = {
+    constructor(){
+    super();
+    this.state = {
         isModalOpen: false,
         isRegistrationOpen: false
     };
+    this.myRef = React.createRef();
+};
 
     toggleModal = () =>{
         this.setState(state => ({ isModalOpen: !state.isModalOpen}));
@@ -43,27 +45,21 @@ export default class Filter extends Component {
     </div>
     <div className="filter__block">
         <ul className="main_filter">
-            <li>Город
-                <ul>
-                    <li>Бишкек</li>
-                    <li>Нарын</li>
-                    <li>Чуй</li>
-                    <li>Талас</li>
-                    <li>Ысык-куль</li>
-                    <li>Ош</li>
-                    <li>Жалал-Абад</li>
-                    <li>Баткен</li>
-                </ul>
-                <img src={arrow} alt="arrow" />
-            </li>
-            <li>Тип недвижимости
-                <ul>
-                    <li>Участок</li>
-                    <li>Квартира</li>
-                </ul>
-                <img src={arrow} alt="arrow" />
-            </li>
-            <li>Этаж
+            <select className="selct__block__filter">
+                <option value="all" id="city">Город</option>
+                <option value="bishkek">Бишкек</option>
+                <option value="naryn">Нарын</option>
+                <option value="osh">Ош</option>
+                <option value="kol">Ыссык-куль</option> 
+                <option value="jalal-abad">Жалал-Абад</option> 
+                <option value="batken">Баткен</option>     
+            </select>
+            <select className="selct__block__filter">
+                <option value="all">Тип недвижимости</option>
+                <option value="bishkek">Участок</option>
+                <option value="naryn">Квартира</option>  
+            </select>
+            <li id="filter-selected">Этаж
                 <ul>
                     <li>1</li>
                     <li>2</li>
@@ -92,7 +88,7 @@ export default class Filter extends Component {
             </li>
         </ul>
         <ul className="main_filter">
-            <li>Этажность
+            <li ref={this.myRef}>Этажность
                 <ul>
                     <li>1</li>
                     <li>2</li>
@@ -142,55 +138,6 @@ export default class Filter extends Component {
                 <img src={arrow} alt="arrow" />
             </li>
         </ul>
-        {/* <ul className="main_filter">
-            <li>Город
-                <ul>
-                    <li>Бишкек</li>
-                    <li>Нарын</li>
-                    <li>Чуй</li>
-                    <li>Талас</li>
-                    <li>Ысык-куль</li>
-                    <li>Ош</li>
-                    <li>Жалал-Абад</li>
-                    <li>Баткен</li>
-                </ul>
-                <img src={arrow} alt="arrow" />
-            </li>
-            <li>Тип недвижимости
-                <ul>
-                    <li>Участок</li>
-                    <li>Квартира</li>
-                </ul>
-                <img src={arrow} alt="arrow" />
-            </li>
-            <li>Этаж
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>10</li>
-                    <li>11</li>
-                    <li>12</li>
-                </ul>
-                <img src={arrow} alt="arrow" />
-            </li>
-            <li>Кол-во комнат
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                </ul>
-                <img src={arrow} alt="arrow" />
-            </li>
-        </ul> */}
     </div>
     <div className="ads__block__filter">
         <div className="ads__card__filter">

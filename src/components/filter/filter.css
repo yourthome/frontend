@@ -110,6 +110,20 @@ ul li{
     border-radius: 20px 0 0 0;
 }
 
+.selct__block__filter{
+    border-radius: 20px;
+    outline: none;
+}
+
+.selct__block__filter:hover{
+    border-radius: 20px 20px 0 0;
+}
+
+.selct__block__filter option{
+    text-align: center;
+    height: 7em;
+}
+
 li > ul{
     display: flex;
     flex-direction: column;
