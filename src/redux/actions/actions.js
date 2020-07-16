@@ -1,24 +1,31 @@
-import { FETCH_DATA, GET_CARD_ID } from './constants';
+import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER } from './constants';
 import axios from 'axios'
 
-<<<<<<< HEAD
-function fetchData() { 
-    return async dispatch =>{
-    const response = await fetch('https://yourthometest.herokuapp.com/rentals')
-    const json = await response.json()
-    dispatch({type: FETCH_DATA, payload: json })
-  }}
 
-=======
+
+function showLoader(){
+  return{
+    type: SHOW_LOADER
+  }
+}
+
+function hideLoader(){
+  return{
+    type: HIDE_LOADER
+  }
+}
+
+
 const fetchData = () => {
   return async dispatch => {
+    dispatch(showLoader())
     await axios.get('https://yourthometest.herokuapp.com/rentals')
     .then(res => {
       dispatch(fetchDataSuccess(res.data))
+      dispatch(hideLoader())
     })
   }
 }
->>>>>>> 2b5f718d1dd9630e84e16f19b6ee3f1e859fd337
 
 const fetchDataSuccess = (json) => {
   return {
@@ -34,8 +41,11 @@ const getCardId = (value) => {
   }
 }
 
+
 export {
   fetchData,
   fetchDataSuccess,
-  getCardId
+  getCardId,
+  showLoader,
+  hideLoader
 };

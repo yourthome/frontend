@@ -5,6 +5,7 @@ import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import {Loader} from '../loader/loader';
 
 import { connect } from 'react-redux';
 import { fetchData } from '../../redux/actions/actions';
@@ -70,6 +71,10 @@ class MainPage extends Component {
           <div className="ads__blocks">
             {console.log(this.props)}
             {
+              this.props.app.loading &&
+                <Loader />
+            }
+            {
               arr.map(elem => {
                 return(
                   <Link onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
@@ -102,23 +107,16 @@ class MainPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.getData.data, 
+    data: state.getData.data,
+    app: state.app 
   }
 }
 
-<<<<<<< HEAD
-const mapDispatchToProps = {
-  // return {
-    fetchData
-    // CardId: (rentalID) => dispatch(getCardId(rentalID))
-  // }
-=======
 const mapDispatchToProps = (dispatch) => {
   return {
     serverData: () => dispatch(fetchData()),
     CardId: (rentalID) => dispatch(getCardId(rentalID))
   }
->>>>>>> 2b5f718d1dd9630e84e16f19b6ee3f1e859fd337
 }
 
 // mapDispatchToProps =(dispatch)=>{
