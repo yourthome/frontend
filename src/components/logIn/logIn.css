@@ -17,6 +17,29 @@
     align-items: center;
 }
 
+.modal__cross__icon{
+    height: 2px;
+    width: 2em;
+    background-color: #fff;
+    position: absolute;
+    z-index: 6;
+    right: 0;
+    top: 0;
+    margin-top: 2em;
+    margin-right: 3em;
+    transform: rotate(45deg);
+}
+
+.modal__cross__icon::after{
+    content: "";
+    height: 2px;
+    width: 2em;
+    background-color: #fff;
+    position: absolute;
+    z-index: 6;
+    transform: rotate(90deg);
+}
+
 .modal--content{
     background-color: #fff;
     width: 60%;
