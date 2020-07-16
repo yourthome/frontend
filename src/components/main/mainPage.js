@@ -32,7 +32,7 @@ class MainPage extends Component {
   };
 
   componentDidMount(){
-    this.props.fetchData();
+    this.props.serverData();
   }
 
   render() {
@@ -107,7 +107,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchData,
+    serverData: () => dispatch(fetchData()),
     CardId: (rentalID) => dispatch(getCardId(rentalID))
   }
 }

@@ -1,15 +1,24 @@
 import { FETCH_DATA, GET_CARD_ID } from './constants';
+import axios from 'axios'
 
 const fetchData = () => {
   return async dispatch => {
-    const response = await fetch('https://yourthometest.herokuapp.com/rentals')
-    const json = await response.json()
-    dispatch({type: FETCH_DATA, payload: json})
+    await axios.get('https://yourthometest.herokuapp.com/rentals')
+    .then(res => {
+      dispatch(fetchDataSuccess(res.data))
+    })
+  }
+}
+
+const fetchDataSuccess = (json) => {
+  return {
+    type: FETCH_DATA,
+    payload: json
   }
 }
 
 const getCardId = (value) => {
-  return {
+  return  {
     type: GET_CARD_ID,
     value
   }
@@ -17,5 +26,6 @@ const getCardId = (value) => {
 
 export {
   fetchData,
+  fetchDataSuccess,
   getCardId
 };
