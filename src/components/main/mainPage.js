@@ -39,7 +39,6 @@ class MainPage extends Component {
     let arr = this.props.data.filter(elem => { if(elem.rentalID < 7) {
       return true;
     }})
-    console.log(this.props);
     return( 
       <>
         <section className="intro">
@@ -69,6 +68,7 @@ class MainPage extends Component {
         <section className="ads__section">
           <h2>Недавние обьявления</h2>
           <div className="ads__blocks">
+            {console.log(this.props)}
             {
               arr.map(elem => {
                 return(
@@ -106,11 +106,16 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchData,
-    CardId: (rentalID) => dispatch(getCardId(rentalID))
-  }
+const mapDispatchToProps = {
+  // return {
+    fetchData
+    // CardId: (rentalID) => dispatch(getCardId(rentalID))
+  // }
 }
+
+// mapDispatchToProps =(dispatch)=>{
+//   return{
+//   CardId: (rentalID) => dispatch(getCardId(rentalID))}
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage)

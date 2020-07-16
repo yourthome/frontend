@@ -1,7 +1,7 @@
 import { FETCH_DATA } from '../actions/constants'
 
 const initialState = {
-    data: [1],
+    data: [],
 }
 
 export const getData = (state = initialState, action) => {

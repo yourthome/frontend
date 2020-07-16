@@ -60,11 +60,12 @@ ul li{
     transition: all ease-in-out 0.3s;
 }
 
-.main_filter > li{
+.main_filter > select{
     width: 25%;
     border: 1px solid #9F9D9D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     position: relative;
+    transition: all ease-in-out 0.3s;
 }
 
 .main_filter > li > img{
@@ -75,7 +76,7 @@ ul li{
     top: 30%;
 }
 
-.main_filter > li:hover{
+.main_filter > select:hover{
     color: #fff;
     background-color: var(--blue);
     border-color: var(--blue);
@@ -93,30 +94,25 @@ ul li{
     overflow-y: scroll;
 }
 
-.main_filter > li:nth-child(4n){
+.main_filter > select:nth-child(4n){
     border-radius: 0 20px 20px 0;
 }
 
-.main_filter > li:nth-child(4n):hover{
+.main_filter > select:nth-child(4n):hover{
     border-radius: 0 20px 0 0;
 }
 
 
-.main_filter > li:nth-child(1){
+.main_filter > select:nth-child(1){
     border-radius: 20px 0 0 20px;
 }
 
-.main_filter > li:nth-child(1):hover{
+.main_filter > select:nth-child(1):hover{
     border-radius: 20px 0 0 0;
 }
 
 .selct__block__filter{
-    border-radius: 20px;
     outline: none;
-}
-
-.selct__block__filter:hover{
-    border-radius: 20px 20px 0 0;
 }
 
 .selct__block__filter option{

@@ -59,33 +59,16 @@ export default class Filter extends Component {
                 <option value="bishkek">Участок</option>
                 <option value="naryn">Квартира</option>  
             </select>
-            <li id="filter-selected">Этаж
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>10</li>
-                    <li>11</li>
-                    <li>12</li>
-                </ul>
-                <img src={arrow} alt="arrow" />
-            </li>
-            <li>Кол-во комнат
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                </ul>
-                <img src={arrow} alt="arrow" />
-            </li>
+            <select className="selct__block__filter">
+                <option value="all">Тип недвижимости</option>
+                <option value="bishkek">Участок</option>
+                <option value="naryn">Квартира</option>  
+            </select>
+            <select className="selct__block__filter">
+                <option value="all">Тип недвижимости</option>
+                <option value="bishkek">Участок</option>
+                <option value="naryn">Квартира</option>  
+            </select>
         </ul>
         <ul className="main_filter">
             <li ref={this.myRef}>Этажность

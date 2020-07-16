@@ -9,7 +9,6 @@ import logo from '../../content/images/header/logo.svg'
 export default class Header extends Component {
 
   render() {
-    console.log(this.props)
     return (
       <header className="header">
         <div className="header__description">
