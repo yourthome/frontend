@@ -39,7 +39,6 @@ class MainPage extends Component {
     let arr = this.props.data.filter(elem => { if(elem.rentalID < 7) {
       return true;
     }})
-    console.log(this.props);
     return( 
       <>
         <section className="intro">
@@ -111,6 +110,6 @@ const mapDispatchToProps = (dispatch) => {
     serverData: () => dispatch(fetchData()),
     CardId: (rentalID) => dispatch(getCardId(rentalID))
   }
-}
+} 
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage)
