@@ -5,6 +5,7 @@ import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import {Loader} from '../loader/loader';
 
 import { connect } from 'react-redux';
 import { fetchData } from '../../redux/actions/actions';
@@ -68,6 +69,11 @@ class MainPage extends Component {
         <section className="ads__section">
           <h2>Недавние обьявления</h2>
           <div className="ads__blocks">
+            {console.log(this.props)}
+            {
+              this.props.app.loading &&
+                <Loader />
+            }
             {
               arr.map(elem => {
                 return(
@@ -101,7 +107,8 @@ class MainPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.getData.data, 
+    data: state.getData.data,
+    app: state.app 
   }
 }
 
@@ -111,5 +118,10 @@ const mapDispatchToProps = (dispatch) => {
     CardId: (rentalID) => dispatch(getCardId(rentalID))
   }
 } 
+
+// mapDispatchToProps =(dispatch)=>{
+//   return{
+//   CardId: (rentalID) => dispatch(getCardId(rentalID))}
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage)
