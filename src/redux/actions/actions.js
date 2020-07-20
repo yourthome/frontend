@@ -1,4 +1,4 @@
-import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER } from './constants';
+import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER, ADD_FILTER_CHARECTER, GET_FILTER_RESULT } from './constants';
 import axios from 'axios'
 
 
@@ -27,6 +27,18 @@ const fetchData = () => {
   }
 }
 
+
+function getFilterData(items){
+  return async dispatch => {
+    dispatch(showLoader())
+    let itemsArr = items.region.slice(0, -1)
+    const response = await fetch(`https://yourthometest.herokuapp.com/rentals?${itemsArr}`)
+    const json = await response.json()
+    dispatch({type: GET_FILTER_RESULT, data: json})
+    dispatch(hideLoader())
+  }
+}
+
 const fetchDataSuccess = (json) => {
   return {
     type: FETCH_DATA,
@@ -41,11 +53,20 @@ const getCardId = (value) => {
   }
 }
 
+const setFilterItems = (region) => {
+  return{
+    type: ADD_FILTER_CHARECTER,
+    region: region
+  }
+}
+
 
 export {
   fetchData,
   fetchDataSuccess,
   getCardId,
   showLoader,
-  hideLoader
+  hideLoader,
+  setFilterItems,
+  getFilterData
 };

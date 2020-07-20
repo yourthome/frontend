@@ -193,3 +193,8 @@ li > ul > li:hover{
 #ads__link__map{
     color: var(--yellow);
 }
+
+.filter__btn{
+    border-radius: 20px;
+    margin-top: 1.2em;
+}

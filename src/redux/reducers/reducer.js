@@ -1,4 +1,4 @@
-import { FETCH_DATA } from '../actions/constants'
+import { FETCH_DATA, GET_FILTER_RESULT } from '../actions/constants'
 
 const initialState = {
     data: [],
