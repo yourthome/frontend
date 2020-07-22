@@ -19,7 +19,6 @@ function App() {
         <Route 
           path = "/flatcard"
           component = {FlatCard}
-          // exact 
         />
         <Route
           path = "/mapfilter"
@@ -37,9 +36,6 @@ function App() {
           path = "/user"
           component = {Profile}
         />
-        {/* <Route path="/sort1" component={Sort1} />
-        <Route path="/sort2" component={Sort2} />
-        <Route path="/favorite" component={Favorite} /> */}
       </Switch>
     </div>
   );

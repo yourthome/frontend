@@ -1,18 +1,56 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import Header from '../../header/header';
 import Footer from '../../footer/footer';
+
+import { userActions } from '../../../redux/auth_redux/_actions'
 
 import filterImg from '../../../content/images/filter/home3.jpg';
 import userImage from '../../../content/images/user/alex-harvey.png'
 import './profile.css'
 
-export default class Profile extends Component {
+class Profile extends Component {
+
+  componentDidMount() {
+    this.props.getUsers();
+  }
+
+  handleDeleteUser(id) {
+    return (e) => this.props.deleteUser(id);
+  }
+
   render() {
+    const { user, users } = this.props;
     return (
       <>
         <Header />
+        
+        <div className="col-md-6 col-md-offset-3">
+          <h1>Hi {user.firstName}!</h1>
+          <p>You're logged in!</p>
+          <h3>All registered users:</h3>
+          {users.loading && <em>Loading users...</em>}
+          {users.error && <span className="text-danger">ERROR: {users.error}</span>}
+          {users.items &&
+            <ul>
+              {users.items.map((user, index) =>
+                <li key={user.id}>
+                  {user.firstName + ' ' + user.lastName}
+                  {
+                    user.deleting ? <em> - Deleting...</em>
+                    : user.deleteError ? <span className="text-danger"> - ERROR: {user.deleteError}</span>
+                    : <span> - <a onClick={this.handleDeleteUser(user.id)}>Delete</a></span>
+                  }
+                </li>
+              )}
+            </ul>
+          }
+          <p>
+            <Link to="/login">Logout</Link>
+          </p>
+        </div>
 
         <div className="user-ads-block">
           <div className="user-ads-card">
@@ -61,3 +99,16 @@ export default class Profile extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  const { users, authentication } = state;
+  const { user } = authentication;
+  return { user, users };
+}
+
+const mapDispatchToProps = {
+  getUsers: userActions.getAll,
+  deleteUser: userActions.delete
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

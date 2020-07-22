@@ -119,9 +119,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 } 
 
-// mapDispatchToProps =(dispatch)=>{
-//   return{
-//   CardId: (rentalID) => dispatch(getCardId(rentalID))}
-// }
-
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage)
