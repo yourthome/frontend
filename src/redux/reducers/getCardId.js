@@ -7,8 +7,8 @@ const initialState = {
 export const getCardId = (state = initialState, action) => {
     switch (action.type) {
         case GET_CARD_ID:
-            return { 
-                cardId: action.value 
+            return {
+                cardId: action.value
             };
 
         default: 

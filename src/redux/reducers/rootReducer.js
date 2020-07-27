@@ -8,6 +8,8 @@ import { authentication } from '../auth_redux/_reducers/authentication.reducer';
 import { registration } from '../auth_redux/_reducers/registration.reducer';
 import { users } from '../auth_redux/_reducers/users.reducer';
 import { alert } from '../auth_redux/_reducers/alert.reducer';
+import { setFilterItem } from './filterItems'
+import { getFilterData } from './filterReducer'
 
 export const rootReducer = combineReducers({
     getData: getData,
@@ -17,5 +19,7 @@ export const rootReducer = combineReducers({
     authentication,
     registration,
     users,
-    alert
+    alert,
+    filter: setFilterItem,
+    getFilterData: getFilterData
 })
