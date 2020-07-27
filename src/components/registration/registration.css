@@ -1,14 +1,14 @@
 .reg-modal--content{
   background-color: #fff;
-  width: 70%;
-  height: 80vh;
+  width: 80%;
+  height: 90vh;
   opacity: 1;
   border-radius: 20px;
   position: fixed;
   z-index: 6;
   top: 0;
-  margin-left: 15%;
-  margin-top: 5%; 
+  margin-left: 10%;
+  margin-top: 2.5%; 
   border-radius: 20px;
   overflow: hidden;
   display: flex;

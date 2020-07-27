@@ -17,6 +17,8 @@ function login(username, password) {
         body: JSON.stringify({ username, password })
     };
 
+    
+
     return fetch(`https://yourthometest.herokuapp.com/Users/authenticate`, requestOptions)
         .then(handleResponse)
         .then(user => {
@@ -47,7 +49,7 @@ function getById(id) {
         headers: authHeader()
     };
 
-    return fetch(`https://yourthometest.herokuapp.com/Users/authenticate/${id}`, requestOptions).then(handleResponse);
+    return fetch(`https://yourthometest.herokuapp.com/Users/${id}`, requestOptions).then(handleResponse);
 }
 
 function register(user) {

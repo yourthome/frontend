@@ -1,4 +1,4 @@
-import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER, SEND_USER } from './constants';
+import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER } from './constants';
 import axios from 'axios'
 
 
@@ -13,7 +13,6 @@ function hideLoader(){
     type: HIDE_LOADER
   }
 }
-
 
 
 const fetchDataSuccess = (json) => {
@@ -44,21 +43,10 @@ const getCardId = (value) => {
 }
 
 
-
-const sendUser = (userData) => {
-  return {
-    type: SEND_USER,
-    userData
-  }
-}
-
-
-
 export {
   fetchData,
   fetchDataSuccess,
   getCardId,
   showLoader,
   hideLoader,
-  sendUser
 };

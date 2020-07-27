@@ -7,6 +7,8 @@ import MainPage from './components/main/mainPage'
 import Filter from './components/filter/filter'
 import FlatCardUser from './components/user/flat-card-user/flat-card-user'
 import Profile from './components/user/profile/profile'
+import LogIn from './components/logIn/logIn'
+import Registration from './components/registration/registration'
 
 function App() {
   return (
@@ -35,6 +37,14 @@ function App() {
         <Route
           path = "/user"
           component = {Profile}
+        />
+        <Route
+          path = "/login"
+          component = {LogIn}
+        />
+        <Route
+          path = "/registration"
+          component = {Registration}
         />
       </Switch>
     </div>

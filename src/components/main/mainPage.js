@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './mainPage.css';
-import { Link } from 'react-router-dom';
+import { Link, Switch, Route } from 'react-router-dom';
 import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 import Header from '../header/header';
@@ -13,7 +13,22 @@ import { getCardId } from '../../redux/actions/actions';
 
 import adsImg from '../../content/images/main/ads-card.jpg'
 
+import { history } from '../../redux/auth_redux/_helpers'
+import { alertActions } from '../../redux/auth_redux/_actions/';
+import { PrivateRoute } from '../user/PrivateRoute';
+import Profile from '../user/profile/profile';
+
 class MainPage extends Component {
+
+  constructor(props) {
+    super(props);
+
+    history.listen((location, action) => {
+        // clear alert on location change
+        this.props.clearAlerts();
+    });
+  }
+
   state = {
     isModalOpen: false,
     isRegistrationOpen: false
@@ -37,9 +52,10 @@ class MainPage extends Component {
   }
 
   render() {
-    let arr = this.props.data.filter(elem => { if(elem.rentalID < 7) {
+    let arr = this.props.data.filter(elem => { if(elem.rentalID <= 7) {
       return true;
-    }})
+    }});
+    const { alert } = this.props;
     return( 
       <>
         <section className="intro">
@@ -53,7 +69,16 @@ class MainPage extends Component {
           this.state.isRegistrationOpen &&
             <Registration onClose={this.toggleRegistration} onToggleWindows={this.toggleModalWindows}>
             </Registration>
-          }                             
+          }       
+          {alert.message &&
+            <div className={`alert ${alert.type}`}>{alert.message}</div>
+          }
+          <Switch>
+            <PrivateRoute exact path="/user" component={Profile} />
+            <Route path="/login" component={LogIn} />
+            <Route path="/register" component={Registration} />
+            {/* <Redirect from="*" to="/user" /> */}
+          </Switch>             
           <h1>Найдите лучший дом для себя</h1>
           <div className="search__block">
             <input type="text" placeholder="Где вы хотите снять жильё..." />
@@ -108,14 +133,16 @@ class MainPage extends Component {
 const mapStateToProps = state => {
   return {
     data: state.getData.data,
-    app: state.app 
+    app: state.app,
+    alert: state.alert
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     serverData: () => dispatch(fetchData()),
-    CardId: (rentalID) => dispatch(getCardId(rentalID))
+    CardId: (rentalID) => dispatch(getCardId(rentalID)),
+    clearAlerts: alertActions.clear
   }
 } 
 

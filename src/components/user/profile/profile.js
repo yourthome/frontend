@@ -35,13 +35,13 @@ class Profile extends Component {
           {users.error && <span className="text-danger">ERROR: {users.error}</span>}
           {users.items &&
             <ul>
-              {users.items.map((user, index) =>
+              {users.items.map((user) =>
                 <li key={user.id}>
                   {user.firstName + ' ' + user.lastName}
                   {
                     user.deleting ? <em> - Deleting...</em>
                     : user.deleteError ? <span className="text-danger"> - ERROR: {user.deleteError}</span>
-                    : <span> - <a onClick={this.handleDeleteUser(user.id)}>Delete</a></span>
+                    : <span> - <Link onClick={this.handleDeleteUser(user.id)}>Delete</Link></span>
                   }
                 </li>
               )}
@@ -78,15 +78,15 @@ class Profile extends Component {
               <div className="user-personaldata-data">
                 <div id="user-personaldata-data-group1">
                   <label>Логин:</label>
-                  <p>Бабушка123</p>
+                  <p>{user.firstName}</p>
                 </div>
                 <div id="user-personaldata-data-group2">
                   <label>Почта:</label>
-                  <p>grandma@gmail.com</p>
+                  <p>{user.lastName}</p>
                 </div>
                 <div id="user-personaldata-data-group3">
                   <label>Пароль:</label>
-                  <p>Бабу***777</p>
+                  <p>{user.password}</p>
                 </div>
               </div>
             </div>
