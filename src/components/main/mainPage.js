@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './mainPage.css';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route, Redirect } from 'react-router-dom';
 import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 import Header from '../header/header';
@@ -77,7 +77,6 @@ class MainPage extends Component {
             <PrivateRoute exact path="/user" component={Profile} />
             <Route path="/login" component={LogIn} />
             <Route path="/register" component={Registration} />
-            {/* <Redirect from="*" to="/user" /> */}
           </Switch>             
           <h1>Найдите лучший дом для себя</h1>
           <div className="search__block">
@@ -102,7 +101,7 @@ class MainPage extends Component {
             {
               arr.map(elem => {
                 return(
-                  <Link onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
+                  <Link key={elem.rentalID} onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
                     <div className="ads__block">
                       <img src={adsImg} alt="img"/>
                       <div className="ads__block__info">

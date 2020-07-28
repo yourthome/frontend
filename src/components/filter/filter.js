@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../header/header';
 import './filter.css';
-import arrow from '../../content/images/filter/next.png'
+// import arrow from '../../content/images/filter/next.png'
 import { Link } from 'react-router-dom';
 import filterImg from '../../content/images/filter/home3.jpg';
 import LogIn from '../logIn/logIn';

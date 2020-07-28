@@ -9,6 +9,7 @@ import instaIcon from '../../content/images/main/instagram.png';
 import whatsIcon from '../../content/images/main/whatsapp.png';
 
 import { userActions } from '../../redux/auth_redux/_actions';
+import { Redirect } from 'react-router-dom';
 
 class LogIn extends Component {
 
@@ -50,9 +51,9 @@ class LogIn extends Component {
       <>
         {ReactDOM.createPortal(
           <div className="modal-window-container">
-            <div className="modal--overlay" onClick={this.props.onClose}>
+            {/* <div className="modal--overlay" onClick={this.props.onClose}>
               <span className="modal__cross__icon"></span>
-            </div>
+            </div> */}
             <div className="modal--content">
               <img src={bgcImg} alt="img"></img>
               <div className="modal__form__block">
@@ -77,6 +78,7 @@ class LogIn extends Component {
                   <button type="submit">Войти</button>
                   {loggingIn &&
                     <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" alt="login modal pic" />
+                    // <Redirect to={ pathname: '/login' }/>
                   }
                 </form>
 
