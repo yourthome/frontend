@@ -11,5 +11,5 @@ export const rootReducer = combineReducers({
     getCardId: getCardId,
     app: appReducer,
     filter: setFilterItem,
-    getFilterData: getFilterData
+    getFilterData: getFilterData,
 })

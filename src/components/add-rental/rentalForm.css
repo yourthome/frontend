@@ -1,0 +1,213 @@
+.rental__form{
+    position: fixed;
+    z-index: 6;
+    top: 0;
+    background-color: #fff;
+    border-radius: 20px;
+    width: 60%;
+    margin-left: 20%;
+    height: 80%;
+    margin-top: 5%;
+}
+
+.rental__form__content{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-left: 15%;
+    align-items: center;
+}
+
+.rental__form__content input{
+    border: none;
+    border-bottom: 2px solid #111;
+    margin-top: 2em;
+    padding: 0.5em;
+    transition: ease-in-out 0.3s;
+    width: 80%;
+    position: relative;
+}
+
+.rental__form__content textarea{
+    margin-top: 2em;
+    width: 80%;
+    height: 6em;
+    padding: 0.5em;
+    border-bottom: 2px solid #111;
+}
+
+.rental__form__content select {
+    width: 10em;
+    height: 40px;
+    margin-top: 1em;
+    margin-bottom: -1em;
+    border-radius: 10px;
+}
+
+.rental__form__content select:focus{
+    border-radius: 10px 10px 0 0;
+}
+
+.rental__form__content input:focus{
+    padding-left: 0.7em;
+}
+
+.steps{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2em;
+   
+}
+
+.steps__markers{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-top: 1.5em;
+}
+
+.step{
+    display: flex;
+    align-items: center;
+}
+
+.step span{
+    background-color: var(--yellow);
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.is-active span{
+    background-color: var(--blue);
+}
+
+.is-completed .step__line{
+    background-color: var(--blue);
+}
+
+.is-completed span{
+    color: var(--blue);
+    background-color: var(--blue);
+}
+
+.step__line{
+    height: 0.2em;
+    width: 6em;
+    bottom: 0;
+    top: 1em;
+    display: block;
+    background-color: var(--yellow);
+    flex-grow: 1;
+    flex-basis: 0;
+    z-index: -1;
+}
+
+.step:last-child .step__line{
+    display: none;
+}
+
+.numberOfSteps{
+    letter-spacing: 3px;
+    color: var(--blue);
+    font-weight: 500;
+}
+
+.numberOfSteps span{
+    color: var(--yellow);
+}
+
+.rental__form__dropdowns{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+}
+
+.rental__form__dropdowns span{
+    border: 2px solid var(--blue);
+    padding: 7px 30px;
+    border-radius: 20px;
+    color: var(--blue);
+    font-weight: 500;
+    transition: ease-in-out 0.3s;
+}
+
+.rental__form__dropdowns span:hover{
+    color: #fff;
+    background-color: var(--blue);
+    cursor: pointer;
+}
+
+.rental__form__btns{
+    margin-top: 3em;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.rental__form__btns__first{
+    justify-content: center;
+}
+
+.rental__form__btns button{
+    padding: 7px 20px;
+    color: #fff;
+    border: none;
+    background-color: var(--blue);
+    border-radius: 10px;
+}
+
+.rental__form__icons{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.rental__icons__block{
+    border: 1px solid #9A9A9A;
+    width: 22%;
+    height: 4em;
+    margin-top: 1em;
+    border-radius: 10px;
+    display: flex;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.rental__icons__block__selected{
+    background-color: var(--yellow);
+    
+}
+
+.rental__icons__block span{
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.rental__icons__block img{
+    width: 1.8em;
+    height: 1.8em;
+    margin-top: 5px;
+}
+
+.rental__form__title{
+    margin-top: 1em;
+    font-weight: 500;
+}
+
+.rental__form__dropblock{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}

@@ -12,6 +12,7 @@ import whatsapp from '../../content/images/footer/whatsapp.svg';
 
 export default class Footer extends Component {
   render() {
+    const { toggleModal, toggleRentalForm } = this.props
     return (
       <footer className="footer">
         
@@ -41,7 +42,7 @@ export default class Footer extends Component {
               <p>Фильтр</p>
             </Link>
 
-            <Link to='/'>
+            <Link to='/' onClick={toggleModal}>
               <p>Войти</p>
             </Link>
 
@@ -50,7 +51,7 @@ export default class Footer extends Component {
             </Link>
           </div>
           <div className="footer-button">
-            <Link className="footer-button-link" to='/'>
+            <Link className="footer-button-link" to='/' onClick={toggleRentalForm}>
               <p>Подать объявление</p>
             </Link>
           </div>

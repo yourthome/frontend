@@ -15,7 +15,6 @@ function hideLoader(){
   }
 }
 
-
 const fetchData = () => {
   return async dispatch => {
     dispatch(showLoader())
