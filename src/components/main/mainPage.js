@@ -6,6 +6,7 @@ import Registration from '../registration/registration';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import {Loader} from '../loader/loader';
+import RentalModalComp from '../add-rental/rentalModalComp';
 
 import { connect } from 'react-redux';
 import { fetchData } from '../../redux/actions/actions';
@@ -31,7 +32,8 @@ class MainPage extends Component {
 
   state = {
     isModalOpen: false,
-    isRegistrationOpen: false
+    isRegistrationOpen: false,
+    isRentalFormOpen: true
   };
 
   toggleModal = () =>{
@@ -46,6 +48,10 @@ class MainPage extends Component {
     this.setState(state => ({ isModalOpen: !state.isModalOpen}));
     this.setState(state => ({ isRegistrationOpen: !state.isRegistrationOpen}));
   };
+
+  toggleRentalForm = () =>{
+    this.setState(state => ({isRentalFormOpen: !state.isRentalFormOpen}));
+  }
 
   componentDidMount(){
     this.props.serverData();
@@ -93,7 +99,6 @@ class MainPage extends Component {
         <section className="ads__section">
           <h2>Недавние обьявления</h2>
           <div className="ads__blocks">
-            {console.log(this.props)}
             {
               this.props.app.loading &&
                 <Loader />
@@ -123,7 +128,7 @@ class MainPage extends Component {
             this.props.fetchData();
           }}>Ещё +</button>
         </section>
-        <Footer />
+        <Footer toggleModal={this.toggleModal} toggleRentalForm={this.toggleRentalForm}/>
       </>
     );
   }

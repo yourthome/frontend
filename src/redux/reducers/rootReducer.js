@@ -19,5 +19,5 @@ export const rootReducer = combineReducers({
     users,
     alert,
     filter: setFilterItem,
-    getFilterData: getFilterData
+    getFilterData: getFilterData,
 })

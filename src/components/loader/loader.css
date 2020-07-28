@@ -4,7 +4,6 @@
     align-items: center;
     height: 16px;
     margin-top: 2em;
-    margin-left: calc(50% - 48px);
 }
 
 .loader__block > span{
