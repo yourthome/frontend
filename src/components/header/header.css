@@ -28,7 +28,8 @@ body {
   flex-direction: row;
 }
 .header__description img {
-  width: 200px;
+  width: 100px;
+  margin-right: 10px;
 }
 .header .logo-title {
   display: flex;

@@ -65,8 +65,10 @@ class MainPage extends Component {
     return( 
       <>
         <section className="intro">
-          <Header toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}/>
-          {
+          <Header 
+            // toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}
+          />
+          {/* {
           this.state.isModalOpen &&
             <LogIn onClose={this.toggleModal} onToggleWindows={this.toggleModalWindows}>
             </LogIn>
@@ -75,7 +77,7 @@ class MainPage extends Component {
           this.state.isRegistrationOpen &&
             <Registration onClose={this.toggleRegistration} onToggleWindows={this.toggleModalWindows}>
             </Registration>
-          }       
+          }        */}
           {alert.message &&
             <div className={`alert ${alert.type}`}>{alert.message}</div>
           }
