@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './mainPage.css';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route, Redirect } from 'react-router-dom';
 import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 import Header from '../header/header';
@@ -65,8 +65,10 @@ class MainPage extends Component {
     return( 
       <>
         <section className="intro">
-          <Header toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}/>
-          {
+          <Header 
+            // toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}
+          />
+          {/* {
           this.state.isModalOpen &&
             <LogIn onClose={this.toggleModal} onToggleWindows={this.toggleModalWindows}>
             </LogIn>
@@ -75,7 +77,7 @@ class MainPage extends Component {
           this.state.isRegistrationOpen &&
             <Registration onClose={this.toggleRegistration} onToggleWindows={this.toggleModalWindows}>
             </Registration>
-          }       
+          }        */}
           {alert.message &&
             <div className={`alert ${alert.type}`}>{alert.message}</div>
           }
@@ -83,7 +85,6 @@ class MainPage extends Component {
             <PrivateRoute exact path="/user" component={Profile} />
             <Route path="/login" component={LogIn} />
             <Route path="/register" component={Registration} />
-            {/* <Redirect from="*" to="/user" /> */}
           </Switch>             
           <h1>Найдите лучший дом для себя</h1>
           <div className="search__block">
@@ -107,7 +108,7 @@ class MainPage extends Component {
             {
               arr.map(elem => {
                 return(
-                  <Link onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
+                  <Link key={elem.rentalID} onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
                     <div className="ads__block">
                       <img src={adsImg} alt="img"/>
                       <div className="ads__block__info">

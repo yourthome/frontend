@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import LogIn from '../logIn/logIn';
-import Registration from '../registration/registration';
 
 import './header.css';
-import logo from '../../content/images/header/logo.svg'
+import logoblue from '../../content/images/header/logo-blue.svg'
 
 export default class Header extends Component {
 
@@ -13,7 +11,7 @@ export default class Header extends Component {
       <header className="header">
         <div className="header__description">
           <Link to="/">
-            <img className="header__logo" src={logo} alt="website logo"/>
+            <img className="header__logo" src={logoblue} alt="website logo"/>
           </Link>
           <Link to="/">
             <div className="logo-title">
@@ -23,6 +21,20 @@ export default class Header extends Component {
         </div>
 
         <div className="header__menu">
+          <Link to="/registration">
+            <div className="header__menu-1">
+              <p>Подать заявку</p>
+            </div>
+          </Link>
+
+          <Link to="/login">
+            <div className="header__menu-2">
+              <p>Войти</p>
+            </div>
+          </Link>
+        </div>
+
+        {/* <div className="header__menu">
           <div className="header__menu-1" onClick={this.props.toggleRegistration}>
             <p>Подать заявку</p>
           </div>
@@ -30,7 +42,7 @@ export default class Header extends Component {
           <div className="header__menu-2" onClick={this.props.toggleModal}>
             <p>Войти</p>
           </div>
-        </div>
+        </div> */}
       </header>
     )
   }
