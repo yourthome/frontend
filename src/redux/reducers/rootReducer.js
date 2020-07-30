@@ -10,6 +10,7 @@ import { users } from '../auth_redux/_reducers/users.reducer';
 import { alert } from '../auth_redux/_reducers/alert.reducer';
 import { setFilterItem } from './filterItems'
 import { getFilterData } from './filterReducer'
+import { getDataAdmin } from './getDataAdmin'
 
 export const rootReducer = combineReducers({
     getData: getData,
@@ -22,4 +23,5 @@ export const rootReducer = combineReducers({
     alert,
     filter: setFilterItem,
     getFilterData: getFilterData,
+    getDataAdmin: getDataAdmin
 })
