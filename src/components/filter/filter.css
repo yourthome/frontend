@@ -198,3 +198,7 @@ li > ul > li:hover{
     border-radius: 20px;
     margin-top: 1.2em;
 }
+
+.ads__blocks {
+    padding-bottom: 50px;
+}

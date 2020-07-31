@@ -71,3 +71,18 @@
 .help-block {
   color: red;
 }
+
+#hide-show-button-reg {
+  border-radius: 5px;
+  padding: 2px;
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  translate: 425% -1030%;
+}
+#hide-show-button-reg i {
+  color: #264989;
+}

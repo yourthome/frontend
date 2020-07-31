@@ -140,3 +140,24 @@
 .modal__form__social img + img{
   margin-left: 1em;
 }
+
+#hide-show-button-auth {
+  border-radius: 5px;
+  padding: 2px;
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  translate: 425% -375%;
+}
+#hide-show-button-auth i {
+  color: #264989;
+}
+
+.fa-spinner {
+  margin-top: 10px;
+  font-size: 30px;
+  color: #FECA15;
+}

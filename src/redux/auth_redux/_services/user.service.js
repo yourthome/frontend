@@ -7,7 +7,8 @@ export const userService = {
     getAll,
     getById,
     update,
-    delete: _delete
+    delete: _delete,
+    getUserRentalsService
 };
 
 function login(username, password) {
@@ -80,6 +81,16 @@ function _delete(id) {
     };
 
     return fetch(`https://yourthometest.herokuapp.com/Users/${id}`, requestOptions).then(handleResponse);
+}
+
+// PersonalPage
+function getUserRentalsService() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`https://yourthometest.herokuapp.com/PersonalPage/getuserrentals`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

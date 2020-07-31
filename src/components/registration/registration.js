@@ -22,7 +22,8 @@ class Registration extends Component{
         email: '',
         gender: ''
       },
-      submitted: false
+      submitted: false,
+      hidden: true
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -48,6 +49,10 @@ class Registration extends Component{
     if (user.firstName && user.lastName && user.username && user.password) {
       this.props.register(user);
     }
+  }
+
+  toggleShowPassword = () => {
+    this.setState({ hidden: !this.state.hidden });
   }
   
   render() {
@@ -93,7 +98,7 @@ class Registration extends Component{
                 </div>
 
                 <div className={"reg-input-group-4" + (submitted && !user.password ? ' has-error' : '')}>
-                  <input name="password" value={user.password} onChange={this.handleChange} placeholder="Пароль"></input>
+                  <input name="password" value={user.password} onChange={this.handleChange} type={this.state.hidden ? "password" : "text"} placeholder="Пароль"></input>
                   {submitted && !user.password &&
                     <div className="help-block">Password is required</div>
                   }
@@ -122,10 +127,11 @@ class Registration extends Component{
 
                 <button type="submit">Отправить</button>
                 {registering && 
-                  <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" alt="register loader"/>
+                  <i class="fa fa-spinner fa-spin"></i>
                 }
 
               </form>
+              <button id="hide-show-button-reg" onClick={this.toggleShowPassword}><i class="fa fa-eye" aria-hidden="true"></i></button>
               {/* <h4 className="modal__registration__string" onClick={this.props.onToggleWindows}>Уже зарегистрированы?</h4> */}
               <h4 className="modal__registration__string"><Link to="/login">Уже зарегистрированы?</Link></h4>
             </div>
