@@ -135,6 +135,15 @@ li > ul{
     border-radius: 0 0 20px 20px;
 }
 
+.filter_empty_alert{
+    margin-top: 2em;
+    font-weight: 500;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
 li > ul > li{
     width: 100%;
     color: #9F9D9D;

@@ -11,6 +11,7 @@ import RentalModalComp from '../add-rental/rentalModalComp';
 import { connect } from 'react-redux';
 import { fetchData } from '../../redux/actions/actions';
 import { getCardId } from '../../redux/actions/actions';
+import { setSearchVal } from '../../redux/actions/actions'
 
 import adsImg from '../../content/images/main/ads-card.jpg'
 
@@ -33,7 +34,8 @@ class MainPage extends Component {
   state = {
     isModalOpen: false,
     isRegistrationOpen: false,
-    isRentalFormOpen: true
+    isRentalFormOpen: true,
+    searchInp: ''
   };
 
   toggleModal = () =>{
@@ -56,6 +58,10 @@ class MainPage extends Component {
   componentDidMount(){
     this.props.serverData();
   }
+
+  setSearchInp = e => {
+    this.props.setInpVal(e.target.value);
+}
 
   render() {
     let arr = this.props.data.filter(elem => { if(elem.rentalID <= 7) {
@@ -88,7 +94,7 @@ class MainPage extends Component {
           </Switch>             
           <h1>Найдите лучший дом для себя</h1>
           <div className="search__block">
-            <input type="text" placeholder="Где вы хотите снять жильё..." />
+            <input type="text" placeholder="Где вы хотите снять жильё..." onChange={this.setSearchInp} defaultValue={this.props.searchVal}/>
             <Link to="/filter">
               <button className="btn__blue">Найти</button>
             </Link>
@@ -102,10 +108,7 @@ class MainPage extends Component {
           <h2>Недавние обьявления</h2>
           <div className="ads__blocks">
             {
-              this.props.app.loading &&
-                <Loader />
-            }
-            {
+              this.props.app.loading ? <Loader /> :
               arr.map(elem => {
                 return(
                   <Link key={elem.rentalID} onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
@@ -126,9 +129,7 @@ class MainPage extends Component {
               })
             }
           </div> 
-          <button onClick={() =>{
-            this.props.fetchData();
-          }}>Ещё +</button>
+          <button>Ещё +</button>
         </section>
         <Footer toggleModal={this.toggleModal} toggleRentalForm={this.toggleRentalForm}/>
       </>
@@ -140,7 +141,8 @@ const mapStateToProps = state => {
   return {
     data: state.getData.data,
     app: state.app,
-    alert: state.alert
+    alert: state.alert,
+    searchVal: state.setSearchVal.search
   }
 }
 
@@ -148,7 +150,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     serverData: () => dispatch(fetchData()),
     CardId: (rentalID) => dispatch(getCardId(rentalID)),
-    clearAlerts: alertActions.clear
+    clearAlerts: alertActions.clear,
+    setInpVal: (val) => dispatch(setSearchVal(val))
   }
 } 
 

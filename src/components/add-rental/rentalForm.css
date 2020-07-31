@@ -8,6 +8,23 @@
     margin-left: 20%;
     height: 80%;
     margin-top: 5%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.add_rental_bg{
+    width: 100%;
+    position: absolute;
+    background: url('../../content/images/main/sean-pollock-PhYq704ffdA-unsplash.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  /* width: auto; */
+  height: 100vh;
 }
 
 .rental__form__content{

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Header from '../header/header';
 import './filter.css';
-// import arrow from '../../content/images/filter/next.png'
 import { Link } from 'react-router-dom';
 import filterImg from '../../content/images/filter/home3.jpg';
 import LogIn from '../logIn/logIn';
@@ -9,6 +8,8 @@ import Registration from '../registration/registration';
 import { connect } from 'react-redux';
 import {setFilterItems, getFilterData} from '../../redux/actions/actions';
 import {Loader} from '../loader/loader';
+import { getCardId } from '../../redux/actions/actions';
+import { setSearchVal } from '../../redux/actions/actions';
 
 
 
@@ -42,12 +43,16 @@ export class Filter extends Component {
           items +=  elem.value + '&'
           }
         })
-        this.props.setFilterItems(items);
+        this.props.setFilterItemsD(items);
     };
 
     getData = () => {
-      this.props.getFilterData(this.props.items);
-    }
+      this.props.getFilterDataD(this.props.items);
+    };
+
+    setSearchInp = e => {
+      this.props.setInpVal(e.target.value);
+  }
 
     render() {
       console.log(this.props);
@@ -59,7 +64,7 @@ export class Filter extends Component {
         {this.state.isRegistrationOpen &&
         <Registration onClose={this.toggleRegistration} onToggleWindows={this.toggleModalWindows}></Registration>}
         <div className="search__block__filter">
-        <input type="text" placeholder="Где вы хотите снять жильё..." />
+        <input type="text" placeholder="Где вы хотите снять жильё..." onChange={this.setSearchInp} defaultValue={this.props.searchVal}/>
         <button className="btn__yellow">Найти</button>
     </div>
     <div className="filter__block">
@@ -143,11 +148,9 @@ export class Filter extends Component {
         <button className="btn__blue filter__btn" onClick={this.getData}>Найти</button>
     </div>
     <div className="ads__blocks">
+
     {
-              this.props.app.loading &&
-                <Loader />
-            }
-    {
+              this.props.app.loading ? <Loader /> :
               this.props.data.map(elem => {
                 return(
                   <Link onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
@@ -167,6 +170,8 @@ export class Filter extends Component {
                 )
               })
             }
+            {
+              this.props.data.length ? '' : <span className="filter_empty_alert">Нет подходящих обьявлений</span>  }
             </div>
 </>
       )}}
@@ -176,9 +181,19 @@ export class Filter extends Component {
         return {
           data: state.getFilterData.data,
           items: state.filter,
-          app: state.app 
+          app: state.app,
+          searchVal: state.setSearchVal.search
         }
       }
 
+      const mapDispatchToProps = (dispatch) => {
+        return {
+          setFilterItemsD: (item) => dispatch(setFilterItems(item)),
+          CardId: (rentalID) => dispatch(getCardId(rentalID)),
+          getFilterDataD: (items) => dispatch(getFilterData(items)),
+          setInpVal: (val) => dispatch(setSearchVal(val))
+        }
+      } 
 
-export default connect(mapStateToProps,{setFilterItems, getFilterData})(Filter);
+
+export default connect(mapStateToProps,mapDispatchToProps)(Filter);

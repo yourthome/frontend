@@ -51,7 +51,7 @@ export default class Footer extends Component {
             </Link>
           </div>
           <div className="footer-button">
-            <Link className="footer-button-link" to='/' onClick={toggleRentalForm}>
+            <Link className="footer-button-link" to='/add-rental'>
               <p>Подать объявление</p>
             </Link>
           </div>

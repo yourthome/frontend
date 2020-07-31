@@ -11,7 +11,7 @@ class AdminPanelContent extends React.Component{
 
     render(){
         const { dataRentals } = this.props;
-
+        console.log(dataRentals)
         return(
             <div className={this.props.active ? 'admin_panel_content' : 'admin_panel_content_active  admin_panel_content'}>
                 <div className="burger_col">

@@ -9,6 +9,10 @@ class AdminPanelContentUsers extends React.Component{
         this.props.getUsers();
     }
 
+    handleDeleteUser(id) {
+        return (e) => this.props.deleteUser(id);
+      }
+
     render(){
         const {user, users} = this.props;
         return(
@@ -57,7 +61,7 @@ class AdminPanelContentUsers extends React.Component{
                             <div className="admin_user_rentals">
                                 <span>Обьявлений: 3</span>
                             </div>
-                            <div className="admin_panel_bin">
+                            <div className="admin_panel_bin" onClick={this.handleDeleteUser(elem.id)}>
                                 <img src={require('../../content/images/adminPanel/bin.png')}></img>
                             </div>
                         </div>

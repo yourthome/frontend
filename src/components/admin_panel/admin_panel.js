@@ -9,7 +9,7 @@ export default class AdminPanel extends React.Component{
     state = {
         active: true,
         usersComp: false
-    }
+        }
     
     handleDeleteUser(id) {
         return (e) => this.props.deleteUser(id);

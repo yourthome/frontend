@@ -10,6 +10,7 @@ import Profile from './components/user/profile/profile'
 import LogIn from './components/logIn/logIn'
 import Registration from './components/registration/registration'
 import AdminPanel from './components/admin_panel/admin_panel'
+import RentalModalComp from './components/add-rental/rentalModalComp'
 
 function App() {
   return (
@@ -51,6 +52,10 @@ function App() {
           path = "/admin-panel"
           component = {AdminPanel}
         />
+          <Route
+          path = "/add-rental"
+          component = {RentalModalComp}
+          />
       </Switch>
     </div>
   );
