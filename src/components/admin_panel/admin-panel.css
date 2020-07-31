@@ -1,0 +1,286 @@
+.admin_panel{
+    display: flex;
+    height: 100vh;
+}
+
+.admin_panel_menu{
+    background-color: var(--blue);
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 1px;
+    transition: ease-in-out 0.3s;
+}
+
+.passive_menu{
+    margin-left: -20%;
+}
+
+.admin_panel_menu_head{
+    margin-bottom: 2em;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    align-items: center;
+}
+
+.admin_panel_burger{
+    border-radius: 50%;
+    height: 3em;
+    width: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease-in-out 0.2s;
+    cursor: pointer;
+}
+
+.admin_panel_burger div{
+    height: 2px;
+    width: 1.5em;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+}
+
+.admin_panel_burger div::after,.admin_panel_burger div::before{
+    content: "";
+    width: 1.5em;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.admin_panel_burger div::after{
+    margin-top: 7px;
+}
+
+.admin_panel_burger div::before{
+    bottom: 7px;
+}
+
+.admin_menu_catalog{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 3em;
+    cursor: pointer;
+    border-radius: 0 20px 20px 0;
+}
+
+.admin_menu_catalog_active{
+    background-color: #213966;
+}
+
+.admin_menu_catalog img{
+    width: 17px;
+    margin-left: 2em;
+    margin-right: 1em;
+}
+
+
+.admin_panel_content{
+    height: 100%;
+    display: flex;
+    width: 80%;
+    transition: ease-in-out 0.3s;
+}
+
+.admin_panel_content_active{
+    width: 100%;
+}
+
+.burger_col{
+    height: 100%;
+    background-color: var(--blue);
+}
+
+.admin_panel_content > div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.admin_panel_header{
+    width: 100%;
+    height: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.admin_panel_header > span{
+    font-weight: 600;
+    color: var(--blue);
+    margin-left: 3em;
+}
+
+.admin_panel_header > span > span{
+    color: var(--yellow);
+}
+
+.admin_icon{
+    display: flex;
+    align-items: center;
+    margin-right: 4em;
+}
+
+
+
+.admin_panel_cont_info{
+    background-color: #F2F1F1;
+    height: 100%;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.admin_cont_filter{
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    padding: 1em 2em;
+}
+
+.admin_cont_filter > span{
+    font-weight: 500;
+}
+
+.admin_cont_filter_block{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+    flex-direction: row;
+}
+
+.admin_cont_filter_block select{
+    border-radius: 10px;
+    background-color: #F2F1F1;
+    width: 12em;
+    height: 2em;
+    border: none;
+}
+
+.admin_cont_filter_block select:focus{
+    border-radius: 10px 10px 0 0;
+}
+
+.admin_cont_filter_block input{
+    border-radius: 10px;
+    height: 2em;
+    background-color: #F2F1F1;
+    border: none;
+    padding-left: 2em;
+    width: 20em;
+}
+
+.admin_cont_rentals{
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 0.7em;
+}
+
+.admin_cont_rentals_header{
+    display: flex;
+    padding: 1em;
+    border-bottom: 1px solid #F2F1F1;
+    color: #A5A5A5;
+    font-size: 14px;
+}
+
+
+.admin_cont_rentals_header span:nth-child(1){
+    width: 22em;
+}
+
+.admin_cont_rentals_header span:nth-child(2){
+    width: 12em;
+}
+
+.admin_cont_rental_row{
+    background-color: #fff;
+    border-bottom: 1px solid #F2F1F1;
+    height: 3em;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    font-size: 14px;
+    font-weight: 500;
+    transition: ease-in-out 0.2s;
+}
+
+.admin_cont_rental_row:hover{
+    background-color: #F2F1F1;
+}
+
+.admin_cont_rental_row span:nth-child(1){
+    width: 22em;
+}
+
+.admin_cont_rental_row span:nth-child(2){
+    width: 12em;
+}
+
+.admin_panel_bin{
+    width: 2em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 5em;
+    cursor: pointer;
+    justify-content: center;
+    border-radius: 50%;
+    transition: ease-in-out 0.2s;
+}
+
+.admin_panel_bin:hover{
+    background-color: #fff;
+}
+
+.admin_panel_bin img{
+    width: 1em;
+    height: 1em;
+}
+
+.admin_user_icon{
+    width: 2em;
+    height: 2em;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 1em;
+}
+
+.admin_user_icon img{
+    width: 100%;
+}
+
+.admin_user_rentals{
+    background-color: #F2F1F1;
+    border-radius: 10px;
+    margin-left: auto;
+    padding: 0.2em 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+}
+
+.admin_user_rentals:hover{
+    background-color: #fff;
+}
+
+.admin_users_loader{
+    margin-left: 10%;
+}

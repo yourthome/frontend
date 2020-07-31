@@ -9,6 +9,7 @@ import FlatCardUser from './components/user/flat-card-user/flat-card-user'
 import Profile from './components/user/profile/profile'
 import LogIn from './components/logIn/logIn'
 import Registration from './components/registration/registration'
+import AdminPanel from './components/admin_panel/admin_panel'
 
 function App() {
   return (
@@ -45,6 +46,10 @@ function App() {
         <Route
           path = "/registration"
           component = {Registration}
+        />
+          <Route
+          path = "/admin-panel"
+          component = {AdminPanel}
         />
       </Switch>
     </div>

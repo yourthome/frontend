@@ -1,4 +1,4 @@
-import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER, ADD_FILTER_CHARECTER, GET_FILTER_RESULT } from './constants';
+import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER, ADD_FILTER_CHARECTER, GET_FILTER_RESULT, GET_DATA_ADMIN } from './constants';
 import axios from 'axios'
 
 
@@ -58,6 +58,14 @@ const setFilterItems = (region) => {
     region: region
   }
 }
+
+export function getDataAdmin() {
+  return async dispatch => {
+    const response = await fetch('https://yourthometest.herokuapp.com/rentals')
+    const json = await response.json()
+    dispatch({ type: GET_DATA_ADMIN, payload: json})
+  }
+} 
 
 
 export {
