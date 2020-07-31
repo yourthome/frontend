@@ -14,26 +14,26 @@ import { setSearchVal } from '../../redux/actions/actions';
 
 
 export class Filter extends Component {
-    constructor(){
-    super();
-    this.state = {
-        isModalOpen: false,
-        isRegistrationOpen: false
-    };
+  constructor(){
+  super();
+  this.state = {
+    isModalOpen: false,
+    isRegistrationOpen: false
+  };
 };
 
-    toggleModal = () =>{
-        this.setState(state => ({ isModalOpen: !state.isModalOpen}));
-    };
+  toggleModal = () =>{
+    this.setState(state => ({ isModalOpen: !state.isModalOpen}));
+  };
 
-    toggleRegistration = () =>{
-        this.setState(state => ({ isRegistrationOpen: !state.isRegistrationOpen}));
-    };
+  toggleRegistration = () =>{
+    this.setState(state => ({ isRegistrationOpen: !state.isRegistrationOpen}));
+  };
 
-    toggleModalWindows = () =>{
-        this.setState(state => ({ isModalOpen: !state.isModalOpen}));
-        this.setState(state => ({ isRegistrationOpen: !state.isRegistrationOpen}));
-    };
+  toggleModalWindows = () =>{
+    this.setState(state => ({ isModalOpen: !state.isModalOpen}));
+    this.setState(state => ({ isRegistrationOpen: !state.isRegistrationOpen}));
+  };
 
     setFilterItems = () =>{
         let array = document.querySelectorAll('select');
@@ -54,15 +54,17 @@ export class Filter extends Component {
       this.props.setInpVal(e.target.value);
   }
 
-    render() {
-      console.log(this.props);
-      return( 
-<>
+  render() {
+  console.log(this.props);
+    return( 
+      <>
         <Header toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}/>
         {this.state.isModalOpen &&
-        <LogIn onClose={this.toggleModal} onToggleWindows={this.toggleModalWindows}></LogIn>}
+          <LogIn onClose={this.toggleModal} onToggleWindows={this.toggleModalWindows}></LogIn>
+        }
         {this.state.isRegistrationOpen &&
-        <Registration onClose={this.toggleRegistration} onToggleWindows={this.toggleModalWindows}></Registration>}
+          <Registration onClose={this.toggleRegistration} onToggleWindows={this.toggleModalWindows}></Registration>
+        }
         <div className="search__block__filter">
         <input type="text" placeholder="Где вы хотите снять жильё..." onChange={this.setSearchInp} defaultValue={this.props.searchVal}/>
         <button className="btn__yellow">Найти</button>

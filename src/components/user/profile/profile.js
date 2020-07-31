@@ -15,6 +15,7 @@ class Profile extends Component {
 
   componentDidMount() {
     this.props.getUsers();
+    this.props.getUserRentals();
   }
 
   handleDeleteUser(id) {
@@ -23,6 +24,8 @@ class Profile extends Component {
 
   render() {
     const { user, users } = this.props;
+    let rentals = this.props.rentals;
+    console.log(rentals);
     return (
       <>
         <Header />
@@ -75,22 +78,28 @@ class Profile extends Component {
 
         <div className="user-ads-block">
           <p id="user-ads-title">Мои объявления</p>
-          <div className="user-ads-card">
-            <img src={filterImg} alt="user ads card pic" />
-            <div className="user-ads-card-info">
-              <h4>Сдаю квартиру в центре Бишкека</h4>
-              <p>Отличная квартира в центре Бишкека, со всеми удобствами</p>
-              <div className="user-ads-card-price">
-                <span>13000c</span>
-                <Link to="/mapfilter">
-                  <span id="user-ads-maplink">На карте</span>
-                </Link>
-                <Link to="/user/flatcard">
-                  <span>Изменить...</span>
-                </Link>
-              </div>
-            </div>
-          </div>
+          {
+            rentals ? rentals.map(elem => {
+              return(             
+                <div key={elem.rentalID} className="user-ads-card">
+                  <img src={filterImg} alt="user ads card pic" />
+                  <div className="user-ads-card-info">
+                    <h4>{elem.description}</h4>
+                    <p>Отличная квартира в центре Бишкека, со всеми удобствами</p>
+                    <div className="user-ads-card-price">
+                      <span>{elem.cost}</span>
+                      <Link to="/mapfilter">
+                        <span id="user-ads-maplink">На карте</span>
+                      </Link>
+                      <Link to="/user/flatcard">
+                        <span>Изменить...</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )
+            }) : <div>Загрузка</div>
+          }
         </div>
 
         <div className="user-admin-users-list">
@@ -122,12 +131,17 @@ class Profile extends Component {
 const mapStateToProps = state => {
   const { users, authentication } = state;
   const { user } = authentication;
-  return { user, users };
+  return { 
+    user, 
+    users,
+    rentals: state.getUserRentalsData.rentals
+  };
 }
 
 const mapDispatchToProps = {
   getUsers: userActions.getAll,
-  deleteUser: userActions.delete
+  deleteUser: userActions.delete,
+  getUserRentals: userActions.getUserRentals
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -8,6 +8,7 @@ import logoyellow from '../../content/images/header/logo-yellow.svg'
 
 import { userActions } from '../../redux/auth_redux/_actions';
 import { Redirect, Link } from 'react-router-dom';
+import { history } from '../../redux/auth_redux/_helpers/history';
 
 class LogIn extends Component {
 
@@ -18,9 +19,10 @@ class LogIn extends Component {
     this.props.logout();
 
     this.state = {
-        username: '',
-        password: '',
-        submitted: false
+      username: '',
+      password: '',
+      submitted: false,
+      hidden: true
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -42,9 +44,16 @@ class LogIn extends Component {
     }
   }
 
+  toggleShowPassword = () => {
+    this.setState({ hidden: !this.state.hidden });
+  }
+
   render() {
-    const { loggingIn } = this.props;
+    const { loggingIn, loggedIn } = this.props;
     const { username, password, submitted } = this.state;
+
+    // if(loggedIn) { return <Redirect to="/user" /> }
+    
     return(
       <>
         {/* {ReactDOM.createPortal( */}
@@ -69,7 +78,7 @@ class LogIn extends Component {
                 </div>
 
                 <div className={"logIn-input-group-2" + (submitted && !password ? ' has-error' : '')}>
-                  <input name="password" value={password} onChange={this.handleChange} placeholder="Пароль"></input>
+                  <input name="password" value={password} onChange={this.handleChange} type={this.state.hidden ? "password" : "text"} placeholder="Пароль"></input>
                   {submitted && !password &&
                     <div className="help-block">Password is required</div>
                   }
@@ -77,10 +86,10 @@ class LogIn extends Component {
 
                 <button type="submit">Войти</button>
                 {loggingIn &&
-                  <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" alt="login modal pic" />
-                  // <Redirect to='/user' />
+                  <i class="fa fa-spinner fa-spin"></i>
                 }
               </form>
+              <button id="hide-show-button-auth" onClick={this.toggleShowPassword}><i class="fa fa-eye" aria-hidden="true"></i></button>
               {/* <h4 onClick={this.props.onToggleWindows} className="modal__registration__string">Зарегистрироваться?</h4> */}
               <h4 className="modal__registration__string">
                 <Link to="/registration">Зарегистрироваться?</Link>
@@ -97,9 +106,9 @@ class LogIn extends Component {
 
 
 const mapStateToProps = (state) => {
-  const { loggingIn } = state.authentication;
+  const { loggingIn,loggedIn } = state.authentication;
   return { 
-    loggingIn
+    loggingIn,loggedIn
   };
 }
 
