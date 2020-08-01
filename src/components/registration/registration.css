@@ -81,8 +81,15 @@
   cursor:pointer;
   overflow: hidden;
   outline:none;
-  translate: 425% -1030%;
+  translate: 425% -960%;
 }
 #hide-show-button-reg i {
   color: #264989;
+}
+
+#select-group-7 {
+  padding: 0.5em;
+  margin-top: 1em;
+  border-radius: 20px;
+  border: none;
 }

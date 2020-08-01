@@ -72,6 +72,13 @@ class Profile extends Component {
                 </button>
               </Link>
               <button id="user-personaldata-button">Изменить</button>
+              { user.username==="adminbratan" ? 
+              <Link id="admin-panel-link" to="/admin-panel">
+                <button id="admin-panel-button">
+                  Админ
+                </button>
+              </Link> : <div></div>
+              }
             </div>
           </div>
         </div>  
@@ -102,7 +109,7 @@ class Profile extends Component {
           }
         </div>
 
-        <div className="user-admin-users-list">
+        {/* <div className="user-admin-users-list">
           <h3>All registered users:</h3>
           {users.loading && <em>Loading users...</em>}
           {users.error && <span className="text-danger">ERROR: {users.error}</span>}
@@ -120,7 +127,7 @@ class Profile extends Component {
             )}
           </ul>
           }
-        </div>
+        </div> */}
 
         <Footer />
       </>

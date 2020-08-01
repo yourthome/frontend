@@ -28,7 +28,7 @@ class AdminPanelContentUsers extends React.Component{
                     <div className="admin_cont_filter">
                         <span>Пользователи</span>
                         <div className="admin_cont_filter_block">
-                            <select className="selct__block__filter" onChange={this.props.setRegion}>
+                            {/* <select className="selct__block__filter" onChange={this.props.setRegion}>
                             <option value="" id="city">Город</option>
                             <option value='0'>Бишкек</option>
                             <option value="1">Чуй</option>
@@ -38,12 +38,12 @@ class AdminPanelContentUsers extends React.Component{
                             <option value="5">Джалал-Абад</option>
                             <option value="6">Ош</option>  
                             <option value="5">Баткен</option>  
-                            </select>
-                            <select className="selct__block__filter" onChange={this.props.setPropertytype}>
+                            </select> */}
+                            {/* <select className="selct__block__filter" onChange={this.props.setPropertytype}>
                             <option value="" id="city">Тип строения</option>
                             <option value='0'>Участок</option>
                             <option value="1">Квартира</option>
-                            </select>
+                            </select> */}
                             <input placeholder="Поиск..."></input>
                         </div>
                     </div>

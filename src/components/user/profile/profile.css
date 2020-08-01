@@ -77,10 +77,27 @@
         border: 2px solid #264989;
         border-radius: 15px;
         padding: 15px 75px;
+        margin-right: 20px;
       }
         #user-personaldata-button:hover {
           cursor: pointer;
           color: #264989;
+          background: transparent;
+          transition: .3s ease-out;
+        }
+      #admin-panel-button {
+        width: 250px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #fff;
+        background: #2db433;
+        border: 2px solid #2db433;
+        border-radius: 15px;
+        padding: 15px 75px;
+      }
+        #admin-panel-button:hover {
+          cursor: pointer;
+          color: #2db433;
           background: transparent;
           transition: .3s ease-out;
         }

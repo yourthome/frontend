@@ -7,8 +7,8 @@ import bgcImg from '../../content/images/main/enterImg.jpg'
 import logoyellow from '../../content/images/header/logo-yellow.svg'
 
 import { userActions } from '../../redux/auth_redux/_actions';
-import { Redirect, Link } from 'react-router-dom';
-import { history } from '../../redux/auth_redux/_helpers/history';
+import { Link } from 'react-router-dom';
+// import { history } from '../../redux/auth_redux/_helpers/history';
 
 class LogIn extends Component {
 
@@ -88,8 +88,9 @@ class LogIn extends Component {
                 {loggingIn &&
                   <i class="fa fa-spinner fa-spin"></i>
                 }
+                <button id="hide-show-button-auth" onClick={this.toggleShowPassword}><i class="fa fa-eye" aria-hidden="true"></i></button>
               </form>
-              <button id="hide-show-button-auth" onClick={this.toggleShowPassword}><i class="fa fa-eye" aria-hidden="true"></i></button>
+              
               {/* <h4 onClick={this.props.onToggleWindows} className="modal__registration__string">Зарегистрироваться?</h4> */}
               <h4 className="modal__registration__string">
                 <Link to="/registration">Зарегистрироваться?</Link>
