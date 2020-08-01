@@ -60,7 +60,7 @@ function App() {
 
         <PrivateRoute exact path="/user" component={Profile} />
         <Route path="/login" component={LogIn} />
-        <Route path="/register" component={Registration} />
+        <Route path="/registration" component={Registration} />
       </Switch>
     </div>
   );
