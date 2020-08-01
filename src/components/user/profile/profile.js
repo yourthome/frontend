@@ -109,7 +109,7 @@ class Profile extends Component {
           }
         </div>
 
-        <div className="user-admin-users-list">
+        {/* <div className="user-admin-users-list">
           <h3>All registered users:</h3>
           {users.loading && <em>Loading users...</em>}
           {users.error && <span className="text-danger">ERROR: {users.error}</span>}
@@ -127,7 +127,7 @@ class Profile extends Component {
             )}
           </ul>
           }
-        </div>
+        </div> */}
 
         <Footer />
       </>
