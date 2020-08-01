@@ -11,7 +11,8 @@ import { setFilterItem } from './filterItems'
 import { getFilterData } from './filterReducer';
 import {setSearchVal} from './searchInp';
 import { getUserRentalsData } from '../auth_redux/_reducers/userRentals.reducer'
-import { getDataAdmin } from './getDataAdmin'
+import { getDataAdmin } from './getDataAdmin';
+import { postNewRentalData } from '../auth_redux/_reducers/postNewRental'
 
 export const rootReducer = combineReducers({
     getData: getData,
@@ -25,5 +26,6 @@ export const rootReducer = combineReducers({
     getFilterData: getFilterData,
     getDataAdmin: getDataAdmin,
     setSearchVal: setSearchVal,
-    getUserRentalsData: getUserRentalsData
+    getUserRentalsData: getUserRentalsData,
+    postNewRentalData: postNewRentalData
 })

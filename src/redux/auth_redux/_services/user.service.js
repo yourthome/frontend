@@ -8,7 +8,8 @@ export const userService = {
     getById,
     update,
     delete: _delete,
-    getUserRentalsService
+    getUserRentalsService,
+    postNewRentalService
 };
 
 function login(username, password) {
@@ -91,6 +92,18 @@ function getUserRentalsService() {
     };
 
     return fetch(`https://yourthometest.herokuapp.com/PersonalPage/getuserrentals`, requestOptions).then(handleResponse);
+}
+
+function postNewRentalService(rental){
+    const requestOptions = {
+        method: 'POST',
+        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(rental)  
+    };
+
+    return fetch(`https://yourthometest.herokuapp.com/Rentals
+    `, requestOptions).then(handleResponse);
+
 }
 
 function handleResponse(response) {

@@ -5,204 +5,227 @@ import ThirdAddRental from './stepsContent/thirdAddRental';
 import FourthAddRental from './stepsContent/fourthAddRental'
 import './rentalForm.css';
 import FormStep from './formSteps';
+import { connect } from 'react-redux';
+import { userActions } from '../../redux/auth_redux/_actions/user.actions'
 
 
-export default class RentalForm extends React.Component{
+class RentalForm extends React.Component{
     constructor(props){
         super(props);
-
         this.state = {
-            step: 1,
-            userID: 1,
-            region: 0,
-            street: null,
-            rooms: '',
-            cost: '',
-            propertyType: 0,
-            rentTime: 0,
-            floor: '',
-            title: '',
-            description: '',
-            latitude: 0,
-            longitude: 0,
-            facilities: {
-              facilitiesID: 7,
-              rentalID: 8,
-              internet: false,
-              phone: false,
-              refrigerator: false,
-              kitchen: false,
-              tv: false,
-              balcony: false,
-              washer: false,
-              airConditioning: false
-            },
-            infrastructure: {
-              infrastructureID: 8,
-              rentalID: 8,
-              cafe: false,
-              kindergarten: false,
-              parking: false,
-              busStop: false,
-              supermarket: false,
-              park: false,
-              hospital: false
-            },
-            photos: []
+        rental: {region:'',street:"string",rooms:'',cost:'',propertyType:'',rentTime:0,description:"",latitude:0,longitude:0,facilities:{internet:false,phone:false,refrigerator:false,kitchen:false,tv:false,balcony:false,washer:false,airConditioning:false},infrastructure:{cafe:false,kindergarten:false,parking:false,busStop:false,supermarket:false,park:false,hospital:false}},
+        step: 1
         }
     }
 
     toggleFacilitiesInternet = () => {
-        const { facilities } = this.state;
+        const { facilities } = this.state.rental;
+        const {rental} = this.state
         this.setState({
-            facilities: ({
-                ...facilities,
-                internet : !facilities.internet
+            rental: ({
+                ...rental,
+                facilities: ({
+                    ...facilities,
+                    internet : !facilities.internet
             })
-        } )
+        })} )
     }
 
     toggleFacilitiesPhone = () => {
-        const { facilities } = this.state;
+        const { facilities } = this.state.rental;
+        const {rental} = this.state
         this.setState({
-            facilities: ({
-                ...facilities,
-                phone : !facilities.phone
+            rental: ({
+                ...rental,
+                facilities: ({
+                    ...facilities,
+                    phone : !facilities.phone
             })
+        })
         } )
     }
 
     toggleFacilitiesKitchen = () => {
-        const { facilities } = this.state;
+        const { facilities } = this.state.rental;
+        const {rental} = this.state
         this.setState({
-            facilities: ({
-                ...facilities,
-                kitchen : !facilities.kitchen
+            rental: ({
+                ...rental,
+                facilities: ({
+                    ...facilities,
+                    kitchen : !facilities.kitchen
             })
+        })
         } )
     }
 
     toggleFacilitiesTv = () => {
-        const { facilities } = this.state;
+        const { facilities } = this.state.rental;
+        const {rental} = this.state
         this.setState({
-            facilities: ({
-                ...facilities,
-                tv : !facilities.tv
+            rental: ({
+                ...rental,
+                facilities: ({
+                    ...facilities,
+                    tv : !facilities.tv
             })
+        })
         } )
     }
 
     toggleFacilitiesBalcony = () => {
-        const { facilities } = this.state;
+        const { facilities } = this.state.rental;
+        const {rental} = this.state
         this.setState({
-            facilities: ({
-                ...facilities,
-                balcony : !facilities.balcony
+            rental: ({
+                ...rental,
+                facilities: ({
+                    ...facilities,
+                    balcony : !facilities.balcony
             })
+        })
         } )
     }
 
     toggleFacilitiesWasher = () => {
-        const { facilities } = this.state;
+        const { facilities } = this.state.rental;
+        const {rental} = this.state
         this.setState({
-            facilities: ({
-                ...facilities,
-                washer : !facilities.washer
+            rental: ({
+                ...rental,
+                facilities: ({
+                    ...facilities,
+                    washer : !facilities.washer
             })
+        })
         } )
     }
 
     toggleFacilitiesAirConditioning = () => {
-        const { facilities } = this.state;
+        const { facilities } = this.state.rental;
+        const {rental} = this.state
         this.setState({
-            facilities: ({
-                ...facilities,
-                airConditioning : !facilities.airConditioning
+            rental: ({
+                ...rental,
+                facilities: ({
+                    ...facilities,
+                    airConditioning : !facilities.airConditioning
             })
+        })
         } )
     }
 
     toggleFacilitiesRefrigerator = () => {
-        const { facilities } = this.state;
+        const { facilities } = this.state.rental;
+        const {rental} = this.state
         this.setState({
-            facilities: ({
-                ...facilities,
-                refrigerator : !facilities.refrigerator
+            rental: ({
+                ...rental,
+                facilities: ({
+                    ...facilities,
+                    refrigerator : !facilities.refrigerator
             })
+        })
         } )
     }
 
 
 
     toggleInfrastructureGarden = () => {
-        const { infrastructure } = this.state;
+        const { infrastructure } = this.state.rental;
+        const {rental} = this.state
         this.setState({
+            rental: ({
+                ...rental,
             infrastructure: ({
                 ...infrastructure,
                 kindergarten : !infrastructure.kindergarten
-            })
+            })})
         } )
     }
 
     toggleInfrastructureCafe = () => {
-        const { infrastructure } = this.state;
+        const { infrastructure } = this.state.rental;
+        const {rental} = this.state
         this.setState({
+            rental: ({
+                ...rental,
             infrastructure: ({
                 ...infrastructure,
                 cafe : !infrastructure.cafe
-            })
+            })})
         } )
     }
 
     toggleInfrastructureParking = () => {
-        const { infrastructure } = this.state;
+        const { infrastructure } = this.state.rental;
+        const {rental} = this.state
         this.setState({
+            rental: ({
+                ...rental,
             infrastructure: ({
                 ...infrastructure,
                 parking : !infrastructure.parking
-            })
+            })})
         } )
     }
 
     toggleInfrastructureBusStop = () => {
-        const { infrastructure } = this.state;
+        const { infrastructure } = this.state.rental;
+        const {rental} = this.state
         this.setState({
+            rental: ({
+                ...rental,
             infrastructure: ({
                 ...infrastructure,
                 busStop : !infrastructure.busStop
-            })
+            })})
         } )
     }
 
     toggleInfrastructureSupermarket = () => {
-        const { infrastructure } = this.state;
+        const { infrastructure } = this.state.rental;
+        const {rental} = this.state
         this.setState({
+            rental: ({
+                ...rental,
             infrastructure: ({
                 ...infrastructure,
                 supermarket : !infrastructure.supermarket
-            })
+            })})
         } )
     }
 
     toggleInfrastructurePark = () => {
-        const { infrastructure } = this.state;
+        const { infrastructure } = this.state.rental;
+        const {rental} = this.state
         this.setState({
+            rental: ({
+                ...rental,
             infrastructure: ({
                 ...infrastructure,
                 park : !infrastructure.park
-            })
+            })})
         } )
     }
 
     toggleInfrastructureHospital = () => {
-        const { infrastructure } = this.state;
+        const { infrastructure } = this.state.rental;
+        const {rental} = this.state
         this.setState({
+            rental: ({
+                ...rental,
             infrastructure: ({
                 ...infrastructure,
                 hospital : !infrastructure.hospital
-            })
+            })})
         } )
     }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.postNewRental(this.state.rental);
+      }
 
     nextStep = () => {
         const { step } = this.state;
@@ -219,23 +242,50 @@ export default class RentalForm extends React.Component{
     }
 
     handleChange = input => e => {
-        this.setState({[input]: e.target.value});
-        console.log(this.state)
+        const { rental } = this.state;
+        this.setState({
+            rental: ({
+                ...rental,
+                [input] : e.target.value
+            })
+        }) 
+    }
+
+    handleChangeNum = input => e => {
+        const { rental } = this.state;
+        this.setState({
+            rental: ({
+                ...rental,
+                [input] : +e.target.value
+            })
+        })
     }
 
     setRegion = e => {
-        this.setState({region: e.target.value});
+        const { rental } = this.state;
+        this.setState({
+            rental: ({
+                ...rental,
+                region : +e.target.value
+            })
+        })
     }
 
     setPropertytype = e => {
-        this.setState({propertyType: e.target.value});
+        const { rental } = this.state;
+        this.setState({
+            rental: ({
+                ...rental,
+                propertyType : +e.target.value
+            })
+        })
     }
 
     render(){
         const { step } = this.state;
-        const { title, rooms, description, cost, floor, region } = this.state;
+        const { title, rooms, description, cost, floor, region } = this.state.rental;
         const values = { rooms, description, cost, title, floor, region };
-        const { facilities, infrastructure } = this.state;
+        const { facilities, infrastructure } = this.state.rental;
 
         switch(step){
             case 1:
@@ -252,7 +302,7 @@ export default class RentalForm extends React.Component{
                     <>
                     <div className="rental__form">
                         <FormStep step={ step }/>
-                        <SecondAddRental  handleChange={this.handleChange} values={values} prevStep = {this.prevStep} nextStep = {this.nextStep}/>
+                        <SecondAddRental  handleChangeNum={this.handleChangeNum} values={values} prevStep = {this.prevStep} nextStep = {this.nextStep}/>
                     </div>
                     </>
                 )
@@ -270,10 +320,22 @@ export default class RentalForm extends React.Component{
                     <>
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <FourthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleChange={this.handleChange} values={values} infrastructure={ infrastructure } toggleInfrastructureCafe ={this.toggleInfrastructureCafe} toggleInfrastructureGarden={ this.toggleInfrastructureGarden } toggleInfrastructureParking={this.toggleInfrastructureParking} toggleInfrastructureBusStop={this.toggleInfrastructureBusStop} toggleInfrastructureSupermarket={this.toggleInfrastructureSupermarket} toggleInfrastructurePark={this.toggleInfrastructurePark} toggleInfrastructureHospital={this.toggleInfrastructureHospital}/>
+                        <FourthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleChangeNum={this.handleChangeNum} values={values} infrastructure={ infrastructure } toggleInfrastructureCafe ={this.toggleInfrastructureCafe} toggleInfrastructureGarden={ this.toggleInfrastructureGarden } toggleInfrastructureParking={this.toggleInfrastructureParking} toggleInfrastructureBusStop={this.toggleInfrastructureBusStop} toggleInfrastructureSupermarket={this.toggleInfrastructureSupermarket} toggleInfrastructurePark={this.toggleInfrastructurePark} toggleInfrastructureHospital={this.toggleInfrastructureHospital} showState={this.showState} handleSubmit={this.handleSubmit}/>
                     </div>
                     </>
                 )
         }
     }
 }
+
+
+const mapStateToProps = state => {
+    const { posting } = state.postNewRentalData;
+    return { posting }
+  }
+  
+  const mapDispatchToProps = {
+    postNewRental: userActions.postNewRental
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(RentalForm);

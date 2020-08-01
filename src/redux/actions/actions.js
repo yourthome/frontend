@@ -45,6 +45,24 @@ function getFilterData(items){
   }
 }
 
+// function postNewRental(rental){
+//   const requestOptions = {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(rental)
+// };
+
+//   return fetch(`https://yourthometest.herokuapp.com/Rentals
+//   `, requestOptions).then(handleResponse)
+// }
+
+// function handleResponse(response) {
+//   return response.text().then(text => {
+//       const data = text && JSON.parse(text);
+//       return data;
+//   });
+// }
+
 const getCardId = (value) => {
   return  {
     type: GET_CARD_ID,

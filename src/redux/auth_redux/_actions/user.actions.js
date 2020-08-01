@@ -9,7 +9,8 @@ export const userActions = {
     register,
     getAll,
     delete: _delete,
-    getUserRentals: getUserRentals
+    getUserRentals: getUserRentals,
+    postNewRental
 };
 
 function login(username, password) {
@@ -114,4 +115,25 @@ function getUserRentals() {
     function request() { return { type: userConstants.GETALL_USERRENTALS_REQUEST } }
     function success(rentals) { return { type: userConstants.GETALL_USERRENTALS_SUCCESS, rentals } }
     function failure(error) { return { type: userConstants.GETALL_USERRENTALS_FAILURE, error } }
+}
+
+function postNewRental(rental){
+    return dispatch => {
+        dispatch(request(rental));
+
+        userService.postNewRentalService(rental)
+            .then(
+                rental => { 
+                    dispatch(success());
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request(rental) { return { type: userConstants.POST_NEW_RENTAL_REQUEST, rental } }
+    function success(rental) { return { type: userConstants.POST_NEW_RENTAL_SUCCESS, rental } }
+    function failure(error) { return { type: userConstants.POST_NEW_RENTAL_FAILURE, error } }
 }
