@@ -11,6 +11,7 @@ import LogIn from './components/logIn/logIn'
 import Registration from './components/registration/registration'
 import AdminPanel from './components/admin_panel/admin_panel'
 import RentalModalComp from './components/add-rental/rentalModalComp'
+import { PrivateRoute } from './components/user/PrivateRoute'
 
 function App() {
   return (
@@ -36,26 +37,30 @@ function App() {
           path = "/user/flatcard"
           component = {FlatCardUser}
         />
-        <Route
+        {/* <Route
           path = "/user"
           component = {Profile}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path = "/login"
           component = {LogIn}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path = "/registration"
           component = {Registration}
-        />
+        /> */}
           <Route
           path = "/admin-panel"
           component = {AdminPanel}
         />
-          <Route
+        <Route
           path = "/add-rental"
           component = {RentalModalComp}
-          />
+        />
+
+        <PrivateRoute exact path="/user" component={Profile} />
+        <Route path="/login" component={LogIn} />
+        <Route path="/register" component={Registration} />
       </Switch>
     </div>
   );

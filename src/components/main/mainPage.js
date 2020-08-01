@@ -87,11 +87,11 @@ class MainPage extends Component {
           {alert.message &&
             <div className={`alert ${alert.type}`}>{alert.message}</div>
           }
-          <Switch>
+          {/* <Switch>
             <PrivateRoute exact path="/user" component={Profile} />
             <Route path="/login" component={LogIn} />
             <Route path="/register" component={Registration} />
-          </Switch>            
+          </Switch>             */}
           <h1>Найдите лучший дом для себя</h1>
           <div className="search__block">
             <input type="text" placeholder="Где вы хотите снять жильё..." onChange={this.setSearchInp} defaultValue={this.props.searchVal}/>
