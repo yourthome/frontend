@@ -72,6 +72,13 @@ class Profile extends Component {
                 </button>
               </Link>
               <button id="user-personaldata-button">Изменить</button>
+              { user.username==="adminbratan" ? 
+              <Link id="admin-panel-link" to="/admin-panel">
+                <button id="admin-panel-button">
+                  Админ
+                </button>
+              </Link> : <div></div>
+              }
             </div>
           </div>
         </div>  

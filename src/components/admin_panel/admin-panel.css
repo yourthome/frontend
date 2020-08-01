@@ -284,3 +284,17 @@
 .admin_users_loader{
     margin-left: 10%;
 }
+
+.logo-title {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Fredoka One", cursive;
+    color: #264989;
+    margin-left: 20px;
+}
+
+.logo-title #p-half2 {
+    color: #feca15;
+  }

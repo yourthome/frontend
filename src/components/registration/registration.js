@@ -41,6 +41,18 @@ class Registration extends Component{
     });
   }
 
+  handleChangeSelect(e){
+    console.log(this.state)
+    const { user } = this.state;
+    this.setState({
+      user: {
+        ...user,
+        gender: e
+      }
+    });
+    console.log(this.state)
+  }
+
   handleSubmit(event) {
     event.preventDefault();
 
@@ -89,7 +101,6 @@ class Registration extends Component{
                   }
                 </div>
                   
-                
                 <div className={"reg-input-group-3"  + (submitted && !user.username ? ' has-error' : '')}>
                   <input name="username" value={user.username} onChange={this.handleChange} placeholder="Логин"></input>
                   {submitted && !user.username &&
@@ -118,8 +129,18 @@ class Registration extends Component{
                   }
                 </div>
 
-                <div className={"reg-input-group-7" + (submitted && !user.gender ? ' has-error' : '')}>
+                {/* <div className={"reg-input-group-7" + (submitted && !user.gender ? ' has-error' : '')}>
                   <input name="gender" value={user.gender} onChange={this.handleChange} placeholder="Пол"></input>
+                  {submitted && !user.gender &&
+                    <div className="help-block">Gender is required</div>
+                  }
+                </div> */}
+                
+                <div className={"reg-input-group-7" + (submitted && !user.gender ? ' has-error' : '')}>
+                  <select id="select-group-7" name="gender" onChange={e => this.handleChangeSelect(e.target.value)} placeholder="Пол">
+                    <option value={0}>Мужчина</option>
+                    <option value={1}>Женщина</option>
+                  </select>
                   {submitted && !user.gender &&
                     <div className="help-block">Gender is required</div>
                   }
