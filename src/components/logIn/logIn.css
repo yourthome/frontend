@@ -109,9 +109,10 @@
   border: none;
 }
 .modal--content form input:focus{
+  box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.4);
 }
 
-.modal--content form button{
+.modal--content form #login-button{
   border-radius: 20px;
   margin-top: 2em;
   background-color: var(--yellow);
@@ -150,10 +151,15 @@
   cursor:pointer;
   overflow: hidden;
   outline:none;
-  translate: 425% -375%;
+  translate: 410% -375%;
+  border: white;
 }
 #hide-show-button-auth i {
-  color: #FECA15;
+  color: #264989;
+}
+
+.login-form #hide-show-button-auth button {
+  width: 10px !important;
 }
 
 .fa-spinner {

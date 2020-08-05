@@ -60,6 +60,7 @@ body {
   background-color: #264989;
   border: 2px solid #264989;
   color: #fff;
+  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.4);
 }
 .header .header__menu-1:hover {
   background-color: transparent;
@@ -72,6 +73,7 @@ body {
   background-color: #feca15;
   border: 2px solid #feca15;
   color: #fff;
+  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.4);
 }
 .header .header__menu-2:hover {
   background-color: transparent;
@@ -79,6 +81,6 @@ body {
   transition: 0.3s ease-in-out;
   cursor: pointer;
 }
-.header .header__menu-2 p {
-  font-weight: 500;
+.header .header__menu-1 p, .header .header__menu-2 p {
+  font-weight: 400;
 }

@@ -49,7 +49,7 @@ function App() {
           path = "/registration"
           component = {Registration}
         /> */}
-          <Route
+        <Route
           path = "/admin-panel"
           component = {AdminPanel}
         />
