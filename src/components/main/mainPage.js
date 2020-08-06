@@ -17,8 +17,8 @@ import adsImg from '../../content/images/main/ads-card.jpg'
 
 import { history } from '../../redux/auth_redux/_helpers'
 import { alertActions } from '../../redux/auth_redux/_actions/';
-import { PrivateRoute } from '../user/PrivateRoute';
-import Profile from '../user/profile/profile';
+// import { PrivateRoute } from '../user/PrivateRoute';
+// import Profile from '../user/profile/profile';
 
 class MainPage extends Component {
 
@@ -92,7 +92,7 @@ class MainPage extends Component {
             <Route path="/login" component={LogIn} />
             <Route path="/register" component={Registration} />
           </Switch>             */}
-          <h1>Найдите лучший дом для себя</h1>
+          <h1 id="main-title">Найдите лучший дом для себя</h1>
           <div className="search__block">
             <input type="text" placeholder="Где вы хотите снять жильё..." onChange={this.setSearchInp} defaultValue={this.props.searchVal}/>
             <Link to="/filter">
@@ -105,7 +105,7 @@ class MainPage extends Component {
         </section>
 
         <section className="ads__section">
-          <h2>Недавние обьявления</h2>
+          <h2>Недавние объявления</h2>
           <div className="ads__blocks">
             {
               this.props.app.loading ? <Loader /> :

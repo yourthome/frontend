@@ -69,23 +69,23 @@ class LogIn extends Component {
               <Link to='/'><img src={logoyellow} alt="main logo link"></img></Link>
               <h3>Вход</h3>
 
-              <form onSubmit={this.handleSubmit}>
+              <form className="login-form" onSubmit={this.handleSubmit}>
 
                 <div className={"logIn-input-group-1" + (submitted && !username ? ' has-error' : '')}>
                   <input name="username" value={username} onChange={this.handleChange} placeholder="Логин"></input>
                   {submitted && !username &&
-                    <div className="help-block">Username is required</div>
+                    <div className="help-block">Укажите Логин</div>
                   }
                 </div>
 
                 <div className={"logIn-input-group-2" + (submitted && !password ? ' has-error' : '')}>
                   <input name="password" value={password} onChange={this.handleChange} type={this.state.hidden ? "password" : "text"} placeholder="Пароль"></input>
                   {submitted && !password &&
-                    <div className="help-block">Password is required</div>
+                    <div className="help-block">Укажите пароль</div>
                   }
                 </div>
 
-                <button type="submit">Войти</button>
+                <button id="login-button" type="submit">Войти</button>
                 {loggingIn &&
                   <i class="fa fa-spinner fa-spin"></i>
                 }
@@ -110,7 +110,7 @@ class LogIn extends Component {
 const mapStateToProps = (state) => {
   const { loggingIn,loggedIn } = state.authentication;
   return { 
-    loggingIn,loggedIn
+    loggingIn, loggedIn
   };
 }
 
