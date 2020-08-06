@@ -18,8 +18,7 @@ export class Filter extends Component {
   super();
   this.state = {
     isModalOpen: false,
-    isRegistrationOpen: false,
-    data: []
+    isRegistrationOpen: false
   };
 };
 
@@ -82,7 +81,7 @@ export class Filter extends Component {
         }
         <div className="search__block__filter">
         <input type="text" placeholder="Где вы хотите снять жильё..." onChange={this.searching} defaultValue={this.props.searchVal}/>
-        <button className="btn__yellow">Найти</button>
+        <button className="btn__yellow" onClick={this.getData}>Найти</button>
     </div>
     <div className="filter__block">
         <ul className="main_filter">
