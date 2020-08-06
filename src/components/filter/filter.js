@@ -18,7 +18,8 @@ export class Filter extends Component {
   super();
   this.state = {
     isModalOpen: false,
-    isRegistrationOpen: false
+    isRegistrationOpen: false,
+    data: []
   };
 };
 
@@ -46,16 +47,30 @@ export class Filter extends Component {
         this.props.setFilterItemsD(items);
     };
 
+    searching = e =>{
+      this.props.setInpVal(e.target.value);
+    //   let str = e.target.value;
+    //   let obj = this.props.data;
+    //   let dat = obj.filter(elem => {
+    //     if(elem.title.search(str) == -1){
+    //       return true
+    //     }
+    //     else{
+    //       return false
+    //     }
+    //   })
+    //   console.log(dat)
+    } 
+
     getData = () => {
       this.props.getFilterDataD(this.props.items);
+      // this.setState({data: this.props.data});
     };
 
-    setSearchInp = e => {
-      this.props.setInpVal(e.target.value);
-  }
+
 
   render() {
-  console.log(this.props);
+    console.log(this.props.data)
     return( 
       <>
         <Header toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}/>
@@ -66,7 +81,7 @@ export class Filter extends Component {
           <Registration onClose={this.toggleRegistration} onToggleWindows={this.toggleModalWindows}></Registration>
         }
         <div className="search__block__filter">
-        <input type="text" placeholder="Где вы хотите снять жильё..." onChange={this.setSearchInp} defaultValue={this.props.searchVal}/>
+        <input type="text" placeholder="Где вы хотите снять жильё..." onChange={this.searching} defaultValue={this.props.searchVal}/>
         <button className="btn__yellow">Найти</button>
     </div>
     <div className="filter__block">
@@ -159,7 +174,7 @@ export class Filter extends Component {
                     <div className="ads__block">
                       <img src={filterImg} alt="img"/>
                       <div className="ads__block__info">
-                      <span>{elem.description}</span>
+                      <span>{elem.title}</span>
                       <div className="ads__price">
                         <span>{elem.cost}c</span>
                         <Link to="/mapfilter">
@@ -181,10 +196,10 @@ export class Filter extends Component {
 
       const mapStateToProps = state => {
         return {
-          data: state.getFilterData.data,
+          data: state.getFilterData.data.filter(elem => elem.title.toLowerCase().includes(state.setSearchVal.search)),
           items: state.filter,
           app: state.app,
-          searchVal: state.setSearchVal.search
+          searchVal: state.setSearchVal.search,
         }
       }
 

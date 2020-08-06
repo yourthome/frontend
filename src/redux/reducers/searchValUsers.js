@@ -1,12 +1,12 @@
-import {GET_FILTER_RESULT } from '../actions/constants'
+import {SET_SEARCH_VALUE_USERS } from '../actions/constants'
 
 const initialState = {
     data: '',
 }
 
-export const getFilterData = (state = initialState, action) => {
+export const searchValUsers = (state = initialState, action) => {
     switch (action.type) {
-        case GET_FILTER_RESULT:
+        case SET_SEARCH_VALUE_USERS:
             return { 
                 ...state, data: action.payload
             }

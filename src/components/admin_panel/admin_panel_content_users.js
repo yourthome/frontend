@@ -2,6 +2,7 @@ import React from 'react';
 import {AdminPanelHeader} from './admin_panel_header';
 import { connect } from 'react-redux';
 import { userActions } from '../../redux/auth_redux/_actions';
+import { setSearchValUsers } from '../../redux/actions/actions';
 
 class AdminPanelContentUsers extends React.Component{
 
@@ -13,8 +14,12 @@ class AdminPanelContentUsers extends React.Component{
         return (e) => this.props.deleteUser(id);
       }
 
+      setVal = e =>{
+        e.preventDefault();
+        this.props.setSearchValUsers(e.target.value)
+    }
+
     render(){
-        const {user, users} = this.props;
         return(
             <div className={this.props.active ? 'admin_panel_content' : 'admin_panel_content_active  admin_panel_content'}>
                 <div className="burger_col">
@@ -44,13 +49,13 @@ class AdminPanelContentUsers extends React.Component{
                             <option value='0'>Участок</option>
                             <option value="1">Квартира</option>
                             </select> */}
-                            <input placeholder="Поиск..."></input>
+                            <input placeholder="Поиск..." onChange={this.setVal}></input>
                         </div>
                     </div>
-                        {users.loading && <em className="admin_users_loader">Loading users...</em>}
-                        {users.items && 
+                        {this.props.users.loading && <em className="admin_users_loader">Loading users...</em>}
+                        {Array.isArray(this.props.users) && 
                          <div className="admin_cont_rentals">
-                            {users.items.map(elem => {
+                            {this.props.users.map(elem => {
                             return(
                                 <div className="admin_cont_rental_row">
                             <div className="admin_user_icon">
@@ -81,14 +86,15 @@ class AdminPanelContentUsers extends React.Component{
 
 
 const mapStateToProps = state => {
-    const { users, authentication } = state;
-    const { user } = authentication;
-    return { user, users };
+    return { 
+            users: state.users.items ? state.users.items.filter(elem => elem.username.toLowerCase().includes(state.searchValUsers.data)) : state.users
+        };
   }
   
 const mapDispatchToProps = {
     getUsers: userActions.getAll,
     deleteUser: userActions.delete,
+    setSearchValUsers
   }
 
   export default connect(mapStateToProps, mapDispatchToProps)(AdminPanelContentUsers);

@@ -2,11 +2,17 @@ import React from 'react';
 import {AdminPanelHeader} from './admin_panel_header';
 import { connect } from 'react-redux';
 import { getDataAdmin } from '../../redux/actions/actions';
+import { setSearchValRentals } from '../../redux/actions/actions';
 
 class AdminPanelContent extends React.Component{
 
     componentDidMount(){
         this.props.getDataAdmin();
+    }
+
+    setVal = e =>{
+        e.preventDefault();
+        this.props.setSearchValRentals(e.target.value)
     }
 
     render(){
@@ -41,7 +47,7 @@ class AdminPanelContent extends React.Component{
                             <option value='0'>Участок</option>
                             <option value="1">Квартира</option>
                             </select>
-                            <input placeholder="Поиск..."></input>
+                            <input placeholder="Поиск..." onChange={this.setVal}></input>
                         </div>
                     </div>
                     <div className="admin_cont_rentals">
@@ -53,7 +59,7 @@ class AdminPanelContent extends React.Component{
                         {dataRentals ? dataRentals.map(elem => {
                             return(
                                 <div className="admin_cont_rental_row">
-                            <span>{elem.description}</span>
+                            <span>{elem.title}</span>
                             <span>{elem.cost}c</span>
                             <span>Оунер123</span>
                             <div className="admin_panel_bin">
@@ -74,12 +80,13 @@ class AdminPanelContent extends React.Component{
 
 const mapStateToProps = state => {
     return {
-        dataRentals: state.getDataAdmin.data
+        dataRentals: state.getDataAdmin.data.filter(elem => elem.title.toLowerCase().includes(state.searchValRentals.data))
     }
   }
   
   const mapDispatchToProps = {
-    getDataAdmin
+    getDataAdmin,
+    setSearchValRentals
   } 
   
   export default connect(mapStateToProps, mapDispatchToProps)(AdminPanelContent)

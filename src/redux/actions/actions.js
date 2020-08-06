@@ -1,4 +1,4 @@
-import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER, ADD_FILTER_CHARECTER, GET_FILTER_RESULT, GET_DATA_ADMIN, SET_SEARCH_VALUE } from './constants';
+import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER, ADD_FILTER_CHARECTER, GET_FILTER_RESULT, GET_DATA_ADMIN, SET_SEARCH_VALUE, SET_SEARCH_VALUE_RENTALS, SET_SEARCH_VALUE_USERS } from './constants';
 import axios from 'axios'
 
 
@@ -77,10 +77,31 @@ const setFilterItems = (region) => {
   }
 }
 
+// const searching = (value) => {
+//   return{
+//     type: SEARCH_RENTAL_TITLE,
+//     payload: value
+//   }
+// }
+
 const setSearchVal = (value) => {
   return  {
     type: SET_SEARCH_VALUE,
-    payload: value
+    payload: value.toLowerCase()
+  }
+}
+
+const setSearchValRentals = (value) => {
+  return  {
+    type: SET_SEARCH_VALUE_RENTALS,
+    payload: value.toLowerCase()
+  }
+}
+
+const setSearchValUsers = (value) => {
+  return  {
+    type: SET_SEARCH_VALUE_USERS,
+    payload: value.toLowerCase()
   }
 }
 
@@ -105,5 +126,7 @@ export {
   hideLoader,
   setFilterItems,
   getFilterData,
-  setSearchVal
+  setSearchVal,
+  setSearchValRentals,
+  setSearchValUsers
 };
