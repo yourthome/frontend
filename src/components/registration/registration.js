@@ -151,7 +151,7 @@ class Registration extends Component{
                 }
 
               </form>
-              <button id="hide-show-button-reg" onClick={this.toggleShowPassword}><i class="fa fa-eye" aria-hidden="true"></i></button>
+              <button id="hide-show-button-reg" onClick={this.toggleShowPassword}><i className="fa fa-eye" aria-hidden="true"></i></button>
               {/* <h4 className="modal__registration__string" onClick={this.props.onToggleWindows}>Уже зарегистрированы?</h4> */}
               <h4 className="modal__registration__string"><Link to="/login">Уже зарегистрированы?</Link></h4>
             </div>
