@@ -26,7 +26,7 @@ class Registration extends Component{
         password: '',
         phone: '',
         email: '',
-        gender: ''
+        gender: 0
       },
       submitted: false,
       hidden: true
