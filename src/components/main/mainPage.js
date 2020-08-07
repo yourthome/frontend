@@ -115,7 +115,7 @@ class MainPage extends Component {
                     <div className="ads__block">
                       <img src={adsImg} alt="img"/>
                       <div className="ads__block__info">
-                      <span>{elem.description}</span>
+                      <span>{elem.title}</span>
                       <div className="ads__price">
                         <span>{elem.cost}c</span>
                         <Link to="/mapfilter">

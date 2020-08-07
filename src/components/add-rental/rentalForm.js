@@ -13,7 +13,7 @@ class RentalForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-        rental: {region:'',street:"string",rooms:'',cost:'',propertyType:'',rentTime:0,description:"",latitude:0,longitude:0,facilities:{internet:false,phone:false,refrigerator:false,kitchen:false,tv:false,balcony:false,washer:false,airConditioning:false},infrastructure:{cafe:false,kindergarten:false,parking:false,busStop:false,supermarket:false,park:false,hospital:false}},
+        rental: {title:'',region:'',street:"string",rooms:'',cost:'',floor:'',propertyType:'',rentTime:0,description:"",latitude:0,longitude:0,facilities:{internet:false,phone:false,refrigerator:false,kitchen:false,tv:false,balcony:false,washer:false,airConditioning:false},infrastructure:{cafe:false,kindergarten:false,parking:false,busStop:false,supermarket:false,park:false,hospital:false}},
         step: 1
         }
     }

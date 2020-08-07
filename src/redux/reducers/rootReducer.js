@@ -12,7 +12,9 @@ import { getFilterData } from './filterReducer';
 import {setSearchVal} from './searchInp';
 import { getUserRentalsData } from '../auth_redux/_reducers/userRentals.reducer'
 import { getDataAdmin } from './getDataAdmin';
-import { postNewRentalData } from '../auth_redux/_reducers/postNewRental'
+import { postNewRentalData } from '../auth_redux/_reducers/postNewRental';
+import { searchValRentals } from '../reducers/searchValRentals';
+import { searchValUsers } from '../reducers/searchValUsers';
 
 export const rootReducer = combineReducers({
     getData: getData,
@@ -27,5 +29,7 @@ export const rootReducer = combineReducers({
     getDataAdmin: getDataAdmin,
     setSearchVal: setSearchVal,
     getUserRentalsData: getUserRentalsData,
-    postNewRentalData: postNewRentalData
+    postNewRentalData: postNewRentalData,
+    searchValRentals: searchValRentals,
+    searchValUsers: searchValUsers
 })

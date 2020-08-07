@@ -77,7 +77,7 @@ class Registration extends Component{
         {/* {ReactDOM.createPortal( */}
           <div className="reg-bg">
           </div>
-
+          <Link to='/'><div className="modal__cross__icon"></div></Link>
           {/* <div className="modal--overlay" onClick={this.props.onClose}>
             <span className="modal__cross__icon"></span>
           </div> */}
