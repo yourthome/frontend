@@ -3,6 +3,7 @@ import {AdminPanelHeader} from './admin_panel_header';
 import { connect } from 'react-redux';
 import { getDataAdmin } from '../../redux/actions/actions';
 import { setSearchValRentals } from '../../redux/actions/actions';
+import { authHeader } from '../../redux/auth_redux/_helpers/auth-header';
 
 class AdminPanelContent extends React.Component{
 
@@ -15,7 +16,16 @@ class AdminPanelContent extends React.Component{
         this.props.setSearchValRentals(e.target.value)
     }
 
+    removeRental = id =>{
+        fetch(`https://yourthometest.herokuapp.com/Admin/rentals/${id}/delete`, {
+                   method: 'DELETE',
+                   header: { ...authHeader(), 'Content-Type': 'application/json'}
+                      })
+    }
+
     render(){
+        let abc = {...authHeader(), 'Content-Type': 'application/json'} ;
+        console.log(abc)
         const { dataRentals } = this.props;
         console.log(dataRentals)
         return(
@@ -56,13 +66,17 @@ class AdminPanelContent extends React.Component{
                             <span>Цена</span>
                             <span>Владелец</span>
                         </div>
+
+                        {
+                            console.log(dataRentals)
+                        }
                         {dataRentals ? dataRentals.map(elem => {
                             return(
                                 <div className="admin_cont_rental_row">
                             <span>{elem.title}</span>
                             <span>{elem.cost}c</span>
                             <span>Оунер123</span>
-                            <div className="admin_panel_bin">
+                            <div className="admin_panel_bin" onClick={() => this.removeRental(elem.rentalID)}>
                                 <img src={require('../../content/images/adminPanel/bin.png')}></img>
                             </div>
                             </div>

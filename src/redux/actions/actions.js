@@ -45,6 +45,17 @@ function getFilterData(items){
   }
 }
 
+// function deleteRental(id){
+//     return async dispatch => {
+//       fetch(`https://yourthometest.herokuapp.com/Admin/rentals/${id}/delete`, {
+//         method: 'DELETE',
+//         header: {'Accept': 'application/json',
+//                   'Content-Type': 'application/json'
+//       }
+//           })
+//     }
+// }
+
 // function postNewRental(rental){
 //   const requestOptions = {
 //     method: 'POST',

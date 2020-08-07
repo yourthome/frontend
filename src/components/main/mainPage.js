@@ -35,7 +35,8 @@ class MainPage extends Component {
     isModalOpen: false,
     isRegistrationOpen: false,
     isRentalFormOpen: true,
-    searchInp: ''
+    searchInp: '',
+    six: 6
   };
 
   toggleModal = () =>{
@@ -59,14 +60,20 @@ class MainPage extends Component {
     this.props.serverData();
   }
 
+  handleNewRentals = () =>{
+    this.setState({
+      six: this.state.six + 6
+    })
+  }
+
   setSearchInp = e => {
     this.props.setInpVal(e.target.value);
 }
 
   render() {
-    let arr = this.props.data.filter(elem => { if(elem.rentalID <= 7) {
-      return true;
-    }});
+    let six = 6;
+    let arr = this.props.data.slice(0, this.state.six);
+    console.log(arr, this.state.six)
     const { alert } = this.props;
     return( 
       <>
@@ -129,7 +136,7 @@ class MainPage extends Component {
               })
             }
           </div> 
-          <button>Ещё +</button>
+          <button onClick={this.handleNewRentals}>Ещё +</button>
         </section>
         <Footer toggleModal={this.toggleModal} toggleRentalForm={this.toggleRentalForm}/>
       </>

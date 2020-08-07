@@ -19,6 +19,7 @@ class AdminPanelContentUsers extends React.Component{
         this.props.setSearchValUsers(e.target.value)
     }
 
+
     render(){
         return(
             <div className={this.props.active ? 'admin_panel_content' : 'admin_panel_content_active  admin_panel_content'}>

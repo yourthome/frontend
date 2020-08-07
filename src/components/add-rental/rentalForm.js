@@ -13,7 +13,7 @@ class RentalForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-        rental: {title:'',region:'',street:"string",rooms:'',cost:'',floor:'',propertyType:'',rentTime:0,description:"",latitude:0,longitude:0,facilities:{internet:false,phone:false,refrigerator:false,kitchen:false,tv:false,balcony:false,washer:false,airConditioning:false},infrastructure:{cafe:false,kindergarten:false,parking:false,busStop:false,supermarket:false,park:false,hospital:false}},
+        rental: {title:'',region:'',street:"string",rooms:'',cost:'',floor:'0',propertyType:'',rentTime:0,description:"",latitude:0,longitude:0,facilities:{internet:false,phone:false,refrigerator:false,kitchen:false,tv:false,balcony:false,washer:false,airConditioning:false},infrastructure:{cafe:false,kindergarten:false,parking:false,busStop:false,supermarket:false,park:false,hospital:false}},
         step: 1
         }
     }
@@ -286,6 +286,7 @@ class RentalForm extends React.Component{
         const { title, rooms, description, cost, floor, region } = this.state.rental;
         const values = { rooms, description, cost, title, floor, region };
         const { facilities, infrastructure } = this.state.rental;
+        const { propertyType } = this.state.rental;
 
         switch(step){
             case 1:
@@ -302,7 +303,7 @@ class RentalForm extends React.Component{
                     <>
                     <div className="rental__form">
                         <FormStep step={ step }/>
-                        <SecondAddRental  handleChangeNum={this.handleChangeNum} values={values} prevStep = {this.prevStep} nextStep = {this.nextStep}/>
+                        <SecondAddRental  handleChangeNum={this.handleChangeNum} values={values} prevStep = {this.prevStep} nextStep = {this.nextStep} propertyType={propertyType}/>
                     </div>
                     </>
                 )
