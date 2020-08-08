@@ -140,7 +140,19 @@ body {
   flex-direction: row;
 }
 .map-filter-header .map-filter-header__description img {
-  width: 200px;
+  width: 100px;
+}
+#map-filter-header__logo-1 {
+  position: absolute;
+  transition: transform 0.4s;
+}
+#map-filter-header__logo-2 {
+  position: relative;
+  transition: transform 0.4s;
+  transform: translate(-3px, -3px);
+}
+#map-filter-header__logo-2:hover {
+  transform: translate(-6px, -6px);
 }
 .map-filter-header .map-filter-header__input-group input {
   padding: 10px 140px 10px 40px;

@@ -44,6 +44,14 @@ body {
   display: flex;
   flex-direction: row;
 }
+.footer__group-links p {
+  transition: transform .2s;
+  font-weight: 400;
+}
+.footer__group-links p:hover {
+  color: #FECA15;
+  transform: scale(1.05);
+}
 .footer__group .footer-button {
   width: 60%;
   padding: 10px 10px;
@@ -55,6 +63,7 @@ body {
 .footer__group .footer-button p {
   margin: 0;
   text-align: center;
+  font-weight: 400;
 }
 .footer__group .footer-button:hover {
   background-color: transparent;
