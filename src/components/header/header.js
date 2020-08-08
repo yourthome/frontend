@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 
 import './header.css';
-import logoblue from '../../content/images/header/logo-blue.svg'
+import logoblue from '../../content/images/header/plain-logo-blue.svg'
+import logoyellow from '../../content/images/header/plain-logo-yellow.svg'
 
 class Header extends Component {
   constructor(props) {
@@ -25,7 +26,8 @@ class Header extends Component {
       <header className="header">
         <div className="header__description">
           <Link to="/">
-            <img className="header__logo" src={logoblue} alt="website logo"/>
+            <img id="header-logo-1" src={logoyellow} alt="website logo"/>
+            <img id="header-logo-2" src={logoblue} alt="website logo" />
           </Link>
           <Link to="/">
             <div className="logo-title">
@@ -53,8 +55,8 @@ class Header extends Component {
               <img id="header-user-image" src={require(`../../content/images/user/alex-harvey.png`)} alt="img"></img>
             </MDBDropdownToggle>
             <MDBDropdownMenu className="dropdown-default">
-              <MDBDropdownItem href="/user">My Profile</MDBDropdownItem>
-              <MDBDropdownItem href="/login">Logout</MDBDropdownItem>
+              <MDBDropdownItem href="/user">Мой профиль</MDBDropdownItem>
+              <MDBDropdownItem href="/login">Выйти</MDBDropdownItem>
             </MDBDropdownMenu>
           </MDBDropdown>
         }

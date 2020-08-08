@@ -22,6 +22,7 @@ body {
 .header a {
   align-self: center;
   text-decoration: none;
+  position: relative;
 }
 .header__description {
   display: flex;
@@ -29,7 +30,19 @@ body {
 }
 .header__description img {
   width: 100px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
+}
+.header__description #header-logo-1 {
+  position: absolute;
+  transition: transform 0.4s;
+}
+.header__description #header-logo-2 {
+  position: relative;
+  transition: transform 0.4s;
+  transform: translate(-3px, -3px);
+}
+.header__description #header-logo-2:hover {
+  transform: translate(-6px, -6px);
 }
 .header .logo-title {
   display: flex;
@@ -116,4 +129,8 @@ body {
   opacity: 0.8;
   transition: .2s ease-in-out;
   border-color: #feca15;
+}
+
+.dropdown-item:hover {
+  background-color: #feca15;
 }

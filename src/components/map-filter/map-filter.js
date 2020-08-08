@@ -5,7 +5,6 @@ import MapContainer from '../map/map'
 import Footer from '../footer/footer'
 
 import './map-filter.css'
-import logo from '../../content/images/header/logo.svg'
 import arrow from '../../content/images/filter/next.png'
 
 export default class MapFilter extends Component {
@@ -15,7 +14,8 @@ export default class MapFilter extends Component {
         <header className="map-filter-header">
           <div className="map-filter-header__description">
             <Link to="/">
-              <img className="map-filter-header__logo" src={logo} alt="website logo"/>
+              <img id="map-filter-header__logo-1" src={require(`../../content/images/header/plain-logo-yellow.svg`)} alt="website logo"/>
+              <img id="map-filter-header__logo-2" src={require(`../../content/images/header/plain-logo-blue.svg`)} alt="website logo"/>
             </Link>
           </div>
 
