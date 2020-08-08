@@ -4,11 +4,11 @@ import React, {Component} from 'react';
 export default class FormStep extends Component{
     render(){
         const {step} = this.props;
-        const steps = [1, 2, 3, 4]
+        const steps = [1, 2, 3, 4, 5, 6]
         return(
             <>
                 <div className="steps">
-                    <span className="numberOfSteps">Шаг {step} из <span>4</span></span>
+                    <span className="numberOfSteps">Шаг {step} из <span>6</span></span>
                     <div className="steps__markers">
                     {
                         steps.map((elem, index) => (

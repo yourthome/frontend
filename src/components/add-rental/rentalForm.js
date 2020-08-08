@@ -2,7 +2,8 @@ import React from 'react';
 import FirstAddRental from './stepsContent/firstAddRental';
 import SecondAddRental from './stepsContent/secondAddRentals';
 import ThirdAddRental from './stepsContent/thirdAddRental';
-import FourthAddRental from './stepsContent/fourthAddRental'
+import FourthAddRental from './stepsContent/fourthAddRental';
+import {FifthAddRental} from './stepsContent/fiveAddRental';
 import './rentalForm.css';
 import FormStep from './formSteps';
 import { connect } from 'react-redux';
@@ -321,9 +322,16 @@ class RentalForm extends React.Component{
                     <>
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <FourthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleChangeNum={this.handleChangeNum} values={values} infrastructure={ infrastructure } toggleInfrastructureCafe ={this.toggleInfrastructureCafe} toggleInfrastructureGarden={ this.toggleInfrastructureGarden } toggleInfrastructureParking={this.toggleInfrastructureParking} toggleInfrastructureBusStop={this.toggleInfrastructureBusStop} toggleInfrastructureSupermarket={this.toggleInfrastructureSupermarket} toggleInfrastructurePark={this.toggleInfrastructurePark} toggleInfrastructureHospital={this.toggleInfrastructureHospital} showState={this.showState} handleSubmit={this.handleSubmit}/>
+                        <FourthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleChangeNum={this.handleChangeNum} values={values} infrastructure={ infrastructure } toggleInfrastructureCafe ={this.toggleInfrastructureCafe} toggleInfrastructureGarden={ this.toggleInfrastructureGarden } toggleInfrastructureParking={this.toggleInfrastructureParking} toggleInfrastructureBusStop={this.toggleInfrastructureBusStop} toggleInfrastructureSupermarket={this.toggleInfrastructureSupermarket} toggleInfrastructurePark={this.toggleInfrastructurePark} toggleInfrastructureHospital={this.toggleInfrastructureHospital} showState={this.showState} />
                     </div>
                     </>
+                )
+            case 5:
+                return(
+                    <div className="rental__form">
+                        <FormStep step={step} nextStep={this.nextStep} prevStep={this.prevStep}/>
+                        <FifthAddRental />
+                    </div>
                 )
         }
     }
