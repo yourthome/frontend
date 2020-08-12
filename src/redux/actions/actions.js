@@ -1,4 +1,4 @@
-import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER, ADD_FILTER_CHARECTER, GET_FILTER_RESULT, GET_DATA_ADMIN, SET_SEARCH_VALUE, SET_SEARCH_VALUE_RENTALS, SET_SEARCH_VALUE_USERS } from './constants';
+import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER, ADD_FILTER_CHARECTER, GET_FILTER_RESULT, GET_DATA_ADMIN, SET_SEARCH_VALUE, SET_SEARCH_VALUE_RENTALS, SET_SEARCH_VALUE_USERS, GET_RENTAL_ID, GET_ADMIN_FILTER_RESULT } from './constants';
 import axios from 'axios'
 
 
@@ -45,6 +45,22 @@ function getFilterData(items){
   }
 }
 
+function getAdminFilterData(items){
+  return async dispatch => {
+    const response = await fetch(`https://yourthometest.herokuapp.com/rentals?${items}`)
+    const json = await response.json()
+    dispatch({type: GET_ADMIN_FILTER_RESULT, data: json})
+  }
+}
+
+// function getUserRentals(id){
+//   return async dispatch => {
+//     const response = await fetch(`https://yourthometest.herokuapp.com/rentals?${id}`)
+//     const json = await response.json()
+//     dispatch({type: GET_ADMIN_FILTER_RESULT, data: json})
+//   }
+// }
+
 // function deleteRental(id){
 //     return async dispatch => {
 //       fetch(`https://yourthometest.herokuapp.com/Admin/rentals/${id}/delete`, {
@@ -78,6 +94,13 @@ const getCardId = (value) => {
   return  {
     type: GET_CARD_ID,
     value
+  }
+}
+
+const getRentalID = (id) =>{
+  return  {
+    type: GET_RENTAL_ID,
+    payload: id
   }
 }
 
@@ -139,5 +162,7 @@ export {
   getFilterData,
   setSearchVal,
   setSearchValRentals,
-  setSearchValUsers
+  setSearchValUsers,
+  getRentalID,
+  getAdminFilterData
 };

@@ -3,11 +3,30 @@ import {AdminPanelHeader} from './admin_panel_header';
 import { connect } from 'react-redux';
 import { userActions } from '../../redux/auth_redux/_actions';
 import { setSearchValUsers } from '../../redux/actions/actions';
+import UserInfoWindow from './rental_info_window/user_info_window';
+import { authHeader } from '../../redux/auth_redux/_helpers/auth-header';
 
 class AdminPanelContentUsers extends React.Component{
 
+    state = {
+        active: false,
+        data: ''
+    }
+
     componentDidMount() {
         this.props.getUsers();
+    }
+
+    toggleRentalActive = () =>{
+        this.setState({
+            active: !this.state.active
+        })
+    }
+
+    closeRentalWindow = () =>{
+        this.setState({
+            active: false
+        })
     }
 
     handleDeleteUser(id) {
@@ -17,6 +36,21 @@ class AdminPanelContentUsers extends React.Component{
       setVal = e =>{
         e.preventDefault();
         this.props.setSearchValUsers(e.target.value)
+    }
+
+    getUserRentals(id) {
+        const requestOptions = {
+            method: 'GET',
+            headers: authHeader()
+        };
+
+        fetch(`https://yourthometest.herokuapp.com/PersonalPage/getuserrentals/`, requestOptions).then(
+            res => {
+                this.setState({
+                    data: res
+                })
+            }
+        )
     }
 
 
@@ -56,18 +90,23 @@ class AdminPanelContentUsers extends React.Component{
                         {this.props.users.loading && <em className="admin_users_loader">Loading users...</em>}
                         {Array.isArray(this.props.users) && 
                          <div className="admin_cont_rentals">
+                             {
+                                        this.state.active && <UserInfoWindow />
+                                    }
                             {this.props.users.map(elem => {
                             return(
-                                <div className="admin_cont_rental_row">
+                        <div className="admin_cont_rental_row_parent">
+                        <div className="admin_cont_rental_row">
                             <div className="admin_user_icon">
                                 <img src={require('../../content/images/adminPanel/user.jpg')}></img>
                             </div>
                             <span>{elem.username}</span>
                             <span>+996709999666</span>
-                            <div className="admin_user_rentals">
-                                <span>Обьявлений: 3</span>
+                            <div className="admin_user_rentals" /*onClick={() => this.getUserRentals(elem.id)}*/>
+                                <span>Saburov_1984@gmail.com</span>
                             </div>
-                            <div className="admin_panel_bin" onClick={this.handleDeleteUser(elem.id)}>
+                        </div>
+                        <div className="admin_panel_bin" onClick={this.handleDeleteUser(elem.id)}>
                                 <img src={require('../../content/images/adminPanel/bin.png')}></img>
                             </div>
                         </div>

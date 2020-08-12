@@ -208,6 +208,11 @@
     width: 12em;
 }
 
+.admin_cont_rental_row_parent{
+    position: relative;
+    z-index: 0;
+}
+
 .admin_cont_rental_row{
     background-color: #fff;
     border-bottom: 1px solid #F2F1F1;
@@ -237,16 +242,20 @@
     height: 2em;
     display: flex;
     align-items: center;
+    top: 0;
+    right: 0;
     margin-left: auto;
     margin-right: 5em;
     cursor: pointer;
     justify-content: center;
     border-radius: 50%;
     transition: ease-in-out 0.2s;
+    position: absolute;
+    margin-top: 3px;
 }
 
 .admin_panel_bin:hover{
-    background-color: #fff;
+    background-color: rgb(255, 74, 74);
 }
 
 .admin_panel_bin img{
@@ -272,11 +281,12 @@
 .admin_user_rentals{
     background-color: #F2F1F1;
     border-radius: 10px;
-    margin-left: auto;
+    /* margin-left: auto; */
     padding: 0.2em 1em;
     font-weight: 500;
     cursor: pointer;
     transition: ease-in-out 0.2s;
+    margin-left: 8em;
 }
 
 .admin_user_rentals:hover{
@@ -300,3 +310,80 @@
 .logo-title #p-half2 {
     color: #feca15;
   }
+
+  .rental_info_window{
+    position: absolute;
+    height: 20em;
+    width: 20em;
+    border-radius: 10px;
+    background-color: #fff;
+    margin-left: 25em;
+    margin-top: 2em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 1em;
+    z-index: 1;
+}
+
+.info_window_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #A5A5A5;
+    padding-bottom: 0.3em;
+}
+
+.info_window_header div{
+    height: 1px;
+    width: 1.2em;
+    background-color: #111;
+    position: relative;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+  
+  .info_window_header div::after{
+    content: "";
+    height: 1px;
+    width: 1.2em;
+    background-color: #111;
+    position: absolute;
+    transform: rotate(90deg);
+  }
+
+  .info_window_content{
+      display: flex;
+      flex-direction: column;
+  }
+
+  .info_window_content div{
+      margin-top: 1em;
+  }
+
+  .info_window_content div:nth-child(3){
+      height: 7em;
+      overflow-y: scroll;
+  }
+
+  .info_window_content div span{
+      color: var(--blue);
+      font-weight: 500;
+  }
+
+  .info_window_content div span + span{
+    color: #111;
+}
+
+.admin_icon_circle{
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-right: 1em;
+}
+
+.admin_icon_circle img{
+    width: 100%;
+}

@@ -15,6 +15,8 @@ import { getDataAdmin } from './getDataAdmin';
 import { postNewRentalData } from '../auth_redux/_reducers/postNewRental';
 import { searchValRentals } from '../reducers/searchValRentals';
 import { searchValUsers } from '../reducers/searchValUsers';
+import { getRentalID } from "./getRentalID";
+import { getAdminFilterData } from './getAdminFilterData';
 
 export const rootReducer = combineReducers({
     getData: getData,
@@ -31,5 +33,7 @@ export const rootReducer = combineReducers({
     getUserRentalsData: getUserRentalsData,
     postNewRentalData: postNewRentalData,
     searchValRentals: searchValRentals,
-    searchValUsers: searchValUsers
+    searchValUsers: searchValUsers,
+    getRentalID: getRentalID,
+    getAdminFilterData: getAdminFilterData
 })

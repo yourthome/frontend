@@ -11,8 +11,8 @@ export class AdminPanelHeader extends React.Component{
                     </div> 
                 </Link>
                 <div className='admin_icon'>
-                    <div>
-                        <img src={require(`../../content/images/adminPanel/user.png`)} alt="img"></img>
+                    <div className='admin_icon_circle'>
+                        <img src={require(`../../content/images/user/alex-harvey.png`)} alt="img"></img>
                     </div>
                     <span>admin</span>
                 </div>

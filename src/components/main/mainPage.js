@@ -17,6 +17,7 @@ import adsImg from '../../content/images/main/ads-card.jpg'
 
 import { history } from '../../redux/auth_redux/_helpers'
 import { alertActions } from '../../redux/auth_redux/_actions/';
+// import brazzersCarousel from 'brazzers-carousel';
 // import { PrivateRoute } from '../user/PrivateRoute';
 // import Profile from '../user/profile/profile';
 
