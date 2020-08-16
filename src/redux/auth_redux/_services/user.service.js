@@ -42,7 +42,7 @@ function getAll() {
         headers: authHeader()
     };
 
-    return fetch(`https://yourthometest.herokuapp.com/Users/`, requestOptions).then(handleResponse);
+    return fetch(`https://yourthometest.herokuapp.com/Admin/users`, requestOptions).then(handleResponse);
 }
 
 function getById(id) {
@@ -97,7 +97,7 @@ function getUserRentalsService() {
 function postNewRentalService(rental){
     const requestOptions = {
         method: 'POST',
-        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' },
         body: JSON.stringify(rental)  
     };
 

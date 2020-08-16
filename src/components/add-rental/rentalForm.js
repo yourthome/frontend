@@ -15,10 +15,15 @@ class RentalForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-        rental: {title:'',region:'',street:"string",rooms:'',cost:'',floor:'0',propertyType:'',rentTime:0,description:"",latitude:0,longitude:0,facilities:{internet:false,phone:false,refrigerator:false,kitchen:false,tv:false,balcony:false,washer:false,airConditioning:false},infrastructure:{cafe:false,kindergarten:false,parking:false,busStop:false,supermarket:false,park:false,hospital:false},photos: ''},
+        rental: {title:'',region:'',street:"string",rooms:'',cost:'',floor:'0',propertyType:'',rentTime:0,description:"",latitude:0,longitude:0,facilities:{internet:false,phone:false,refrigerator:false,kitchen:false,tv:false,balcony:false,washer:false,airConditioning:false},infrastructure:{cafe:false,kindergarten:false,parking:false,busStop:false,supermarket:false,park:false,hospital:false},photos: []},
         step: 1
         }
     }
+
+    // mapStateToForm = () =>{
+    //     const { rental } = this.state;
+    //     rental = new FormData();
+    // }
 
     toggleFacilitiesInternet = () => {
         const { facilities } = this.state.rental;
@@ -226,7 +231,23 @@ class RentalForm extends React.Component{
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.postNewRental(this.state.rental);
+        let formData = new FormData();
+        formData.set("title", "BLABLA")
+        formData.append('title', this.state.rental.title);
+        formData.append('region', this.state.rental.region);
+        formData.append('street', this.state.rental.street);
+        formData.append('rooms', this.state.rental.rooms);
+        formData.append('cost', this.state.rental.cost);
+        formData.append('floor', this.state.rental.floor);
+        formData.append('propertyType', this.state.rental.propertyType);
+        formData.append('rentTime', this.state.rental.rentTime);
+        formData.append('description', this.state.rental.description);
+        formData.append('latitude', this.state.rental.latitude);
+        formData.append('longitude', this.state.rental.longitude);
+        formData.append('facilities', this.state.rental.facilities);
+        formData.append('infrastructure', this.state.rental.infrastructure);
+        formData.append('photos', this.state.rental.photos);
+        this.props.postNewRental(formData);
       }
 
     setPhotos = (file) => {
@@ -245,6 +266,7 @@ class RentalForm extends React.Component{
         this.setState({
             step: step + 1
         })
+        console.log(this.state.rental)
     }
 
     prevStep = () => {

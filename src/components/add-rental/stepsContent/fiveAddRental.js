@@ -3,12 +3,19 @@ import React, {useState} from 'react';
 
 export function FifthAddRental({nextStep, prevStep, photos, setPhotos}){
         const [file, setFile] = useState('');
-
         const uploadImg = e =>{
             setFile(e.target.files[0]);
+            console.log(file)
             setPhotos(file);
-            console.log(file);
         }
+
+        // const setImage = e =>{
+        //     const reader = new FileReader();
+        //     reader.onload = () => {
+        //         if(reader.readyState === 2){
+        //         }
+        //     }
+        // }
 
     return(
         <div className="rental__form__content">
