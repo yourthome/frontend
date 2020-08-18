@@ -26,7 +26,7 @@ class Registration extends Component{
         password: '',
         phone: '',
         email: '',
-        gender: 0
+        gender: null
       },
       submitted: false,
       hidden: true
@@ -147,7 +147,7 @@ class Registration extends Component{
 
                 <button type="submit">Отправить</button>
                 {registering && 
-                  <i class="fa fa-spinner fa-spin"></i>
+                  <i className="fa fa-spinner fa-spin"></i>
                 }
 
               </form>

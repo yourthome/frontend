@@ -51,8 +51,8 @@ export default class FourthAddRental extends Component{
                             </div> */}
                     </div>
                     <div className="rental__form__btns">
-                    <button onClick={ this.props.prevStep}>Назад</button>
-                        <button onClick={ this.props.nextStep}>Далее</button>
+                    <button onClick={ this.props.prevStep }>Назад</button>
+                        <button onClick={ this.props.nextStep }>Далее</button>
                     </div>
                 </div>  
         )

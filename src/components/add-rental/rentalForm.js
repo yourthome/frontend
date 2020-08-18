@@ -4,7 +4,7 @@ import SecondAddRental from './stepsContent/secondAddRentals';
 import ThirdAddRental from './stepsContent/thirdAddRental';
 import FourthAddRental from './stepsContent/fourthAddRental';
 import {FifthAddRental} from './stepsContent/fiveAddRental';
-import {SixthAddRental} from './stepsContent/sixthAddRental';
+import SixthAddRental from './stepsContent/sixthAddRental';
 import './rentalForm.css';
 import FormStep from './formSteps';
 import { connect } from 'react-redux';
@@ -15,7 +15,38 @@ class RentalForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-        rental: {title:'',region:'',street:"string",rooms:'',cost:'',floor:'0',propertyType:'',rentTime:0,description:"",latitude:0,longitude:0,facilities:{internet:false,phone:false,refrigerator:false,kitchen:false,tv:false,balcony:false,washer:false,airConditioning:false},infrastructure:{cafe:false,kindergarten:false,parking:false,busStop:false,supermarket:false,park:false,hospital:false},photos: []},
+        rental: {
+            title: '',
+            region: '',
+            street: "string",
+            rooms: '',
+            cost: '',
+            floor: '0',
+            propertyType: '',
+            rentTime: 0,
+            description: "",
+            latitude: 0,
+            longitude: 0,
+            facilities: {
+                internet: false,
+                phone: false,
+                refrigerator: false,
+                kitchen: false,
+                tv: false,
+                balcony: false,
+                washer: false,
+                airConditioning: false
+            },
+            infrastructure: {
+                cafe: false,
+                kindergarten: false,
+                parking: false,
+                busStop: false,
+                supermarket: false,
+                park: false,
+                hospital: false
+            },
+            photos: ''},
         step: 1
         }
     }
@@ -374,6 +405,7 @@ class RentalForm extends React.Component{
                         <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleSubmit={this.handleSubmit}/>
                     </div>
                 )
+            default:
         }
     }
 }

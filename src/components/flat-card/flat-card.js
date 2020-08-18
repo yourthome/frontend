@@ -86,6 +86,7 @@ class FlatCard extends Component {
       autoplay: true,
       autoplaySpeed: 2000,
     };
+    const { description, cost, rooms, street, rentTime, facilities, infrastructure } = this.props.data;
     return (
       <>
         <Header toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}/>
@@ -101,6 +102,7 @@ class FlatCard extends Component {
             </Registration>
           }  
         <section className="flatcard-container">
+          
           <div className="flatcard-images">
             <img id="flatcard-images-main" src={home2} alt="flatcard-image1"></img>
             <div className="flatcard-images-secondary">
@@ -136,13 +138,13 @@ class FlatCard extends Component {
           {/* </MDBContainer> */}
 
           <div className="flatcard-description">
-            <p>{this.props.data.description} </p>
+            <p>{description} </p>
             <div className="flatcard-description-currency">
               <div className="flatcard-description-som">
-                <p>{this.props.data.cost}</p><p>с</p>
+                <p>{cost}</p><p>с</p>
               </div>
               <div className="flatcard-description-dollar">
-                <p>{Math.floor(this.props.data.cost / 77.8)}</p><p>$</p>
+                <p>{Math.floor(cost / 77.8)}</p><p>$</p>
               </div>
             </div>
           </div>
@@ -152,9 +154,9 @@ class FlatCard extends Component {
             <div className="flatcard-details">
               <p id="flatcard-details-title">Детали:</p>
               <div className="flatcard-details-p">
-                <p>Комнат: {this.props.data.rooms}</p>
-                <p>Улица: {this.props.data.street}</p>
-                <p>Срок аренды: {this.props.data.rentTime}</p>
+                <p>Комнат: {rooms}</p>
+                <p>Улица: {street}</p>
+                <p>Срок аренды: {rentTime}</p>
                 {/* <p>Этаж: undefined</p>
                 <p>Этажность дома: undefined</p>
                 <p>Тип ремонта: undefined</p>
@@ -169,27 +171,27 @@ class FlatCard extends Component {
               <div className="flatcard-instock">
                 <p id="flatcard-instock-title">В наличии:</p>
                 <div className="flatcard-instock-p">
-                  <p>Интернет: {this.props.data.facilities.internet=true ? 'Да':'Нет'}</p>
-                  <p>Телефон: {this.props.data.facilities.phone=true ? 'Да':'Нет'}</p>
-                  <p>Холодильник: {this.props.data.facilities.refrigerator=true ? 'Да':'Нет'}</p>
-                  <p>Кухня: {this.props.data.facilities.kitchen=true ? 'Да':'Нет'}</p>
-                  <p>Телевизор: {this.props.data.facilities.tv=true ? 'Да':'Нет'}</p>
-                  <p>Балкон: {this.props.data.facilities.balcony=true ? 'Да':'Нет'}</p>
-                  <p>Стиральная машина: {this.props.data.facilities.washer=true ? 'Да':'Нет'}</p>
-                  <p>Кондиционер: {this.props.data.facilities.airConditioning=true ? 'Да':'Нет'}</p>
+                  <p>Интернет: {facilities.internet=true ? 'Да':'Нет'}</p>
+                  <p>Телефон: {facilities.phone=true ? 'Да':'Нет'}</p>
+                  <p>Холодильник: {facilities.refrigerator=true ? 'Да':'Нет'}</p>
+                  <p>Кухня: {facilities.kitchen=true ? 'Да':'Нет'}</p>
+                  <p>Телевизор: {facilities.tv=true ? 'Да':'Нет'}</p>
+                  <p>Балкон: {facilities.balcony=true ? 'Да':'Нет'}</p>
+                  <p>Стиральная машина: {facilities.washer=true ? 'Да':'Нет'}</p>
+                  <p>Кондиционер: {facilities.airConditioning=true ? 'Да':'Нет'}</p>
                 </div>
               </div>
 
               <div className="flatcard-near">
                 <p id="flatcard-near-title">Рядом есть:</p>
                 <div className="flatcard-near-p">
-                  <p>Рестораны, кафе: {this.props.data.infrastructure.cafe=true ? 'Да':'Нет'}</p>
-                  <p>Детский сад: {this.props.data.infrastructure.kindergarten=true ? 'Да':'Нет'}</p>
-                  <p>Стоянка: {this.props.data.infrastructure.parking=true ? 'Да':'Нет'}</p>
-                  <p>Остановки: {this.props.data.infrastructure.busStop=true ? 'Да':'Нет'}</p>
-                  <p>Супермаркет: {this.props.data.infrastructure.supermarket=true ? 'Да':'Нет'}</p>
-                  <p>Парк: {this.props.data.infrastructure.park=true ? 'Да':'Нет'}</p>
-                  <p>Больница: {this.props.data.infrastructure.hospital=true ? 'Да':'Нет'}</p>
+                  <p>Рестораны, кафе: {infrastructure.cafe=true ? 'Да':'Нет'}</p>
+                  <p>Детский сад: {infrastructure.kindergarten=true ? 'Да':'Нет'}</p>
+                  <p>Стоянка: {infrastructure.parking=true ? 'Да':'Нет'}</p>
+                  <p>Остановки: {infrastructure.busStop=true ? 'Да':'Нет'}</p>
+                  <p>Супермаркет: {infrastructure.supermarket=true ? 'Да':'Нет'}</p>
+                  <p>Парк: {infrastructure.park=true ? 'Да':'Нет'}</p>
+                  <p>Больница: {infrastructure.hospital=true ? 'Да':'Нет'}</p>
                 </div>
               </div>
             </div>

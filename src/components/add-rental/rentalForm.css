@@ -1,5 +1,21 @@
-.rental__form{
+.big-bg {
+    width: 100%;
     position: absolute;
+    background: url('../../content/images/main/sean-pollock-PhYq704ffdA-unsplash.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px); */
+  /* filter: blur(5px); */
+  /* width: auto; */
+  height: 100vh;
+}
+
+.rental__form{
+    /* position: fixed; */
     z-index: 6;
     top: 0;
     background-color: #fff;
@@ -122,7 +138,7 @@
     background-color: var(--yellow);
     flex-grow: 1;
     flex-basis: 0;
-    z-index: -1;
+    /* z-index: -1; */
 }
 
 .step:last-child .step__line{
@@ -133,6 +149,7 @@
     letter-spacing: 3px;
     color: var(--blue);
     font-weight: 500;
+    margin-top: 15px;
 }
 
 .numberOfSteps span{
@@ -269,5 +286,58 @@
     border-radius: 10px;
     border: 1px solid var(--blue);
     background-color: var(--blue);
-    margin-top: 1em;
+    margin-top: 1em;}
+
+#add-rental-map {
+    margin-top: 15px;
+}
+
+#image-compass-button {
+    width: 40px;
+}
+
+.locate {
+    position: absolute;
+    top: 27%;
+    right: 28%;
+    border-radius: 35px;
+    padding: 2px;
+    background-color: transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.sixth-search {
+    position: absolute;
+    bottom: 67%;
+    left: 37%;
+    margin-left: 55px;
+    width: 100%;
+    max-width: 400px;
+    z-index: 10;
+}
+.sixth-search input {
+    margin-top: 0;
+}
+
+ul[role="listbox"] {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
+    height: auto;
+}
+
+/* div[role="data-reach-combobox"] {
+
+}
+
+div[role="data-reach-popover"] {
+
+} */
+
+li[role="option"]:hover {
+    background-color: #feca15;
 }

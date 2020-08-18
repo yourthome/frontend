@@ -34,11 +34,11 @@ body {
 }
 .header__description #header-logo-1 {
   position: absolute;
-  transition: transform 0.4s;
+  transition: transform 0.3s;
 }
 .header__description #header-logo-2 {
   position: relative;
-  transition: transform 0.4s;
+  transition: transform 0.3s;
   transform: translate(-3px, -3px);
 }
 .header__description #header-logo-2:hover {
