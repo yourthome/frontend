@@ -6,7 +6,7 @@ export const userService = {
     register,
     getAll,
     getById,
-    update,
+    update: _update,
     delete: _delete,
     getUserRentalsService,
     postNewRentalService
@@ -64,7 +64,7 @@ function register(user) {
     return fetch(`https://yourthometest.herokuapp.com/Users/register`, requestOptions).then(handleResponse);
 }
 
-function update(user) {
+function _update(user) {
     const requestOptions = {
         method: 'PUT',
         headers: { ...authHeader(), 'Content-Type': 'application/json' },

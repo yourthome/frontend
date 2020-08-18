@@ -6,13 +6,12 @@ import facebook from '../../content/images/footer/facebook.svg';
 import instagram from '../../content/images/footer/instagram.svg';
 import whatsapp from '../../content/images/footer/whatsapp.svg';
 
-// import {ReactComponent as Facebook} from '../content/images/footer/facebook.svg';
-// import {ReactComponent as Instagram} from '../content/images/footer/instagram.svg';
-// import {ReactComponent as Whatsapp} from '../content/images/footer/whatsapp.svg';
-
 export default class Footer extends Component {
   render() {
-    const { toggleModal, toggleRentalForm } = this.props
+    const { 
+      toggleModal, 
+      // toggleRentalForm 
+    } = this.props
     return (
       <footer className="footer">
         
