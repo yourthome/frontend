@@ -70,7 +70,6 @@ export default function SixthAddRental({nextStep, prevStep, handleSubmit, setMap
         onClick={onMapClick}
         onLoad={onMapLoad}
       >
-        {console.log(latitude)}
         {markers.map((marker) => (
           <Marker 
             key={`${marker.lat}-${marker.lng}`} 

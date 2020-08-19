@@ -46,15 +46,9 @@ class RentalForm extends React.Component{
                 park: false,
                 hospital: false
             },
-            photos: ''},
         step: 6
-        }
-    }
-
-    // mapStateToForm = () =>{
-    //     const { rental } = this.state;
-    //     rental = new FormData();
-    // }
+        }}
+        }    // }
 
     toggleFacilitiesInternet = () => {
         const { facilities } = this.state.rental;
@@ -347,16 +341,18 @@ class RentalForm extends React.Component{
         })
     }
 
-    setMapCoordination = (lat, lng) =>{
+    handleMarker = marker => {
         const { rental } = this.state;
         this.setState({
             rental: ({
                 ...rental,
-                latitude: lat,
-                longitude: lng
+                latitude: marker.lat,
+                longitude: marker.lng,
             })
-        });
+        })
+        console.log(marker)
     }
+    
 
     render(){
         const { step } = this.state;
@@ -370,9 +366,9 @@ class RentalForm extends React.Component{
             case 1:
                 return(
                     <>
-                     <div className="rental__form">
-                    <FormStep step={ step } />
-                    <FirstAddRental handleChange={this.handleChange} values={values} nextStep = {this.nextStep} setRegion={this.setRegion} setPropertytype={this.setPropertytype}/>
+                    <div className="rental__form">
+                        <FormStep step={ step } />
+                        <FirstAddRental handleChange={this.handleChange} values={values} nextStep = {this.nextStep} setRegion={this.setRegion} setPropertytype={this.setPropertytype}/>
                     </div>
                     </>
                 )
@@ -414,7 +410,7 @@ class RentalForm extends React.Component{
                 return(
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleSubmit={this.handleSubmit} setMapCoordination={this.setMapCoordination} latitude={latitude} longitude={longitude}/>
+                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleSubmit={this.handleSubmit} handleMarker={this.handleMarker} />
                     </div>
                 )
             default:
