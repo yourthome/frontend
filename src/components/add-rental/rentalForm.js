@@ -259,7 +259,7 @@ class RentalForm extends React.Component{
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.postNewRental(this.state.rental);
-      }
+    }
 
     setPhotos = (file) => {
         const {rental} = this.state;
@@ -326,6 +326,19 @@ class RentalForm extends React.Component{
         })
     }
 
+    handleMarker = marker => {
+        const { rental } = this.state;
+        this.setState({
+            rental: ({
+                ...rental,
+                latitude: marker.lat,
+                longitude: marker.lng,
+            })
+        })
+        console.log(marker)
+    }
+    
+
     render(){
         const { step } = this.state;
         const { title, rooms, description, cost, floor, region } = this.state.rental;
@@ -337,9 +350,9 @@ class RentalForm extends React.Component{
             case 1:
                 return(
                     <>
-                     <div className="rental__form">
-                    <FormStep step={ step } />
-                    <FirstAddRental handleChange={this.handleChange} values={values} nextStep = {this.nextStep} setRegion={this.setRegion} setPropertytype={this.setPropertytype}/>
+                    <div className="rental__form">
+                        <FormStep step={ step } />
+                        <FirstAddRental handleChange={this.handleChange} values={values} nextStep = {this.nextStep} setRegion={this.setRegion} setPropertytype={this.setPropertytype}/>
                     </div>
                     </>
                 )
@@ -381,7 +394,7 @@ class RentalForm extends React.Component{
                 return(
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleSubmit={this.handleSubmit}  />
+                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleSubmit={this.handleSubmit} handleMarker={this.handleMarker} />
                     </div>
                 )
             default:

@@ -15,22 +15,26 @@ const center = {
 const libraries = ["places"];
 
 
-export default function SixthAddRental({nextStep, prevStep, handleSubmit}, props) {
+export default function SixthAddRental({ prevStep, handleSubmit, handleMarker }, props) {
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries
   })
 
-  const [marker, setMarker] = useState([]);
+  const [marker, setMarker] = useState({});
   const [selected, setSelected] = useState(null);
   
-  const onMapCLick = useCallback((event) => {
+  const onMapCLick = (event) => {
     setMarker({
       lat: event.latLng.lat(),
       lng: event.latLng.lng()
     });
-  }, []);
+    handleMarker({
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng()
+    });
+  };
 
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
