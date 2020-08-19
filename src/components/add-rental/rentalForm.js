@@ -46,7 +46,8 @@ class RentalForm extends React.Component{
                 park: false,
                 hospital: false
             },
-            photos: ''},
+            photos: ''
+        },
         step: 1
         }
     }
@@ -380,7 +381,7 @@ class RentalForm extends React.Component{
                 return(
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleSubmit={this.handleSubmit}/>
+                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleSubmit={this.handleSubmit}  />
                     </div>
                 )
             default:
