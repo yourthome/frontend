@@ -15,7 +15,7 @@ const center = {
 const libraries = ["places"];
 
 
-export default function SixthAddRental({nextStep, prevStep, handleSubmit}, props) {
+export default function SixthAddRental({nextStep, prevStep, handleSubmit, setMapCoordination, longitude, latitude}, props) {
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
@@ -25,23 +25,27 @@ export default function SixthAddRental({nextStep, prevStep, handleSubmit}, props
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
   
-  const onMapCLick = useCallback((event) => {
-    setMarkers(current => [
-      ...current, 
-      {
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng()
-      },
-    ]);
-  }, []);
+  // const onMapCLick = useCallback((event) => {
+  //   setMarkers(current => [
+  //     ...current, 
+  //     {
+  //       lat: event.latLng.lat(),
+  //       lng: event.latLng.lng()
+  //     },
+  //   ]);
+  // }, []);
+
+  const onMapClick = useCallback((event) => {
+    setMapCoordination(event.latLng.lat(), event.latLng.lng())
+  });
 
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
 
-  const panTo = useCallback(({ lat, lng }) => {
-    mapRef.current.panTo({ lat, lng });
+  const panTo = useCallback(( latitude, longitude ) => {
+    mapRef.current.panTo({ latitude, longitude });
     mapRef.current.setZoom(18);
   }, []);
 
@@ -63,19 +67,19 @@ export default function SixthAddRental({nextStep, prevStep, handleSubmit}, props
         mapContainerStyle={containerStyle}
         center={center}
         zoom={12}
-        onClick={onMapCLick}
+        onClick={onMapClick}
         onLoad={onMapLoad}
       >
+        {console.log(latitude)}
         {markers.map((marker) => (
           <Marker 
             key={`${marker.lat}-${marker.lng}`} 
-            position={{ lat: marker.lat, lng: marker.lng }} 
-            onClick={() => {
-              setSelected(marker);
-            }}
+            position={{ lat: latitude, lng: longitude }} 
+            // onClick={() => {
+            //   setSelected(marker);
+            // }}
           />
         ))}
-
         {selected ? (
           <InfoWindow 
             position={{lat: selected.lat, lng: selected.lng}}

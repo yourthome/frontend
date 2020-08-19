@@ -47,7 +47,7 @@ class RentalForm extends React.Component{
                 hospital: false
             },
             photos: ''},
-        step: 1
+        step: 6
         }
     }
 
@@ -347,12 +347,24 @@ class RentalForm extends React.Component{
         })
     }
 
+    setMapCoordination = (lat, lng) =>{
+        const { rental } = this.state;
+        this.setState({
+            rental: ({
+                ...rental,
+                latitude: lat,
+                longitude: lng
+            })
+        });
+    }
+
     render(){
         const { step } = this.state;
         const { title, rooms, description, cost, floor, region } = this.state.rental;
         const values = { rooms, description, cost, title, floor, region };
         const { facilities, infrastructure } = this.state.rental;
         const { propertyType } = this.state.rental;
+        const {latitude, longitude} = this.state.rental;
 
         switch(step){
             case 1:
@@ -402,7 +414,7 @@ class RentalForm extends React.Component{
                 return(
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleSubmit={this.handleSubmit}/>
+                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleSubmit={this.handleSubmit} setMapCoordination={this.setMapCoordination} latitude={latitude} longitude={longitude}/>
                     </div>
                 )
             default:
