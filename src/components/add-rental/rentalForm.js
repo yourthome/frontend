@@ -366,6 +366,7 @@ class RentalForm extends React.Component{
         const values = { rooms, description, cost, title, floor, region };
         const { facilities, infrastructure } = this.state.rental;
         const { propertyType } = this.state.rental;
+        const {latitude, longitude} = this.state.rental;
 
         switch(step){
             case 1:
