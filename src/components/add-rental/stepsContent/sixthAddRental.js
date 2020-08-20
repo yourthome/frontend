@@ -1,5 +1,5 @@
 import React, { Component, useState, useCallback, useRef } from 'react';
-import { GoogleMap, LoadScript, Marker, useLoadScript, InfoWindow } from '@react-google-maps/api'
+import { GoogleMap, Marker, useLoadScript, InfoWindow } from '@react-google-maps/api'
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from '@reach/combobox'
 import "@reach/combobox/styles.css";
@@ -22,30 +22,27 @@ export default function SixthAddRental({ prevStep, handleSubmit, handleMarker, n
     libraries
   })
 
-  const [markers, setMarkers] = useState([]);
+  const [marker, setMarker] = useState({});
   const [selected, setSelected] = useState(null);
   
-  // const onMapCLick = useCallback((event) => {
-  //   setMarkers(current => [
-  //     ...current, 
-  //     {
-  //       lat: event.latLng.lat(),
-  //       lng: event.latLng.lng()
-  //     },
-  //   ]);
-  // }, []);
-
-  const onMapClick = useCallback((event) => {
-    setMapCoordination(event.latLng.lat(), event.latLng.lng())
-  });
+  const onMapCLick = (event) => {
+    setMarker({
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng()
+    });
+    handleMarker({
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng()
+    });
+  };
 
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
 
-  const panTo = useCallback(( latitude, longitude ) => {
-    mapRef.current.panTo({ latitude, longitude });
+  const panTo = useCallback(({ lat, lng }) => {
+    mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(18);
   }, []);
 
@@ -55,13 +52,12 @@ export default function SixthAddRental({ prevStep, handleSubmit, handleMarker, n
   const prev = e => {
     e.preventDefault();
     prevStep();
-  };
+  }
 
   const next = e => {
     e.preventDefault();
     nextStep();
-  };
-
+  }
 
   return(
     <div className="rental__form__content">
@@ -73,18 +69,17 @@ export default function SixthAddRental({ prevStep, handleSubmit, handleMarker, n
         mapContainerStyle={containerStyle}
         center={center}
         zoom={12}
-        onClick={onMapClick}
+        onClick={onMapCLick}
         onLoad={onMapLoad}
       >
-        {markers.map((marker) => (
-          <Marker 
-            key={`${marker.lat}-${marker.lng}`} 
-            position={{ lat: latitude, lng: longitude }} 
-            // onClick={() => {
-            //   setSelected(marker);
-            // }}
-          />
-        ))}
+        <Marker 
+          key={`${marker.lat}-${marker.lng}`} 
+          position={{ lat: marker.lat, lng: marker.lng }} 
+          onClick={() => {
+            setSelected(marker);
+          }}
+        />
+
         {selected ? (
           <InfoWindow 
             position={{lat: selected.lat, lng: selected.lng}}
