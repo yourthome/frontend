@@ -52,6 +52,11 @@ class RentalForm extends React.Component{
         }
     }
 
+    // mapStateToForm = () =>{
+    //     const { rental } = this.state;
+    //     rental = new FormData();
+    // }
+
     toggleFacilitiesInternet = () => {
         const { facilities } = this.state.rental;
         const {rental} = this.state
@@ -258,8 +263,23 @@ class RentalForm extends React.Component{
 
     handleSubmit = (event) => {
         event.preventDefault();
+        // let formData = new FormData();
+        // formData.append('title', this.state.rental.title);
+        // formData.append('region', this.state.rental.region);
+        // formData.append('street', this.state.rental.street);
+        // formData.append('rooms', this.state.rental.rooms);
+        // formData.append('cost', this.state.rental.cost);
+        // formData.append('floor', this.state.rental.floor);
+        // formData.append('propertyType', this.state.rental.propertyType);
+        // formData.append('rentTime', this.state.rental.rentTime);
+        // formData.append('description', this.state.rental.description);
+        // formData.append('latitude', this.state.rental.latitude);
+        // formData.append('longitude', this.state.rental.longitude);
+        // formData.append('facilities', this.state.rental.facilities);
+        // formData.append('infrastructure', this.state.rental.infrastructure);
+        // formData.append('photos', this.state.rental.photos);
         this.props.postNewRental(this.state.rental);
-    }
+      }
 
     setPhotos = (file) => {
         const {rental} = this.state;
@@ -277,6 +297,7 @@ class RentalForm extends React.Component{
         this.setState({
             step: step + 1
         })
+        console.log(this.state.rental)
     }
 
     prevStep = () => {
@@ -387,14 +408,14 @@ class RentalForm extends React.Component{
                 return(
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <FifthAddRental nextStep={this.nextStep} prevStep={this.prevStep} photos={this.state.rental.photos} setPhotos={this.setPhotos}/>
+                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleMarker={this.handleMarker} nextStep={this.nextStep} />
                     </div>
                 )
             case 6:
                 return(
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleSubmit={this.handleSubmit} handleMarker={this.handleMarker} />
+                        <FifthAddRental nextStep={this.nextStep} prevStep={this.prevStep} photos={this.state.rental.photos} setPhotos={this.setPhotos} handleSubmit={this.handleSubmit}/>
                     </div>
                 )
             default:

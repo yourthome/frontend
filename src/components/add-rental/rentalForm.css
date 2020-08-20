@@ -265,13 +265,29 @@
     text-align: center;
     cursor: pointer;
     transition: ease-in-out 0.3s;
+    margin-top: 1em;
+    margin-bottom: -10em;
 }
 
 .img_inp_label label:hover{
     opacity: 0.7;
 }
 
+.add_rental_imgBlock{
+    width: 36em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
+.add_rental_imgBlock img{
+    width: 8em;
+    height: 5em;
+    border-radius: 10px;
+    border: 1px solid var(--blue);
+    background-color: var(--blue);
+    margin-top: 1em;
+}
 
 #add-rental-map {
     margin-top: 15px;
@@ -315,13 +331,13 @@ ul[role="listbox"] {
     height: auto;
 }
 
-div[role="data-reach-combobox"] {
+/* div[role="data-reach-combobox"] {
 
 }
 
 div[role="data-reach-popover"] {
 
-}
+} */
 
 li[role="option"]:hover {
     background-color: #feca15;

@@ -103,7 +103,7 @@ class AdminPanelContentUsers extends React.Component{
                             <span>{elem.username}</span>
                             <span>+996709999666</span>
                             <div className="admin_user_rentals" /*onClick={() => this.getUserRentals(elem.id)}*/>
-                                <span>Saburov_1984@gmail.com</span>
+                                <span>{elem.email}</span>
                             </div>
                         </div>
                         <div className="admin_panel_bin" onClick={this.handleDeleteUser(elem.id)}>

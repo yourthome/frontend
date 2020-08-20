@@ -59,6 +59,8 @@ class MainPage extends Component {
 
   componentDidMount(){
     this.props.serverData();
+    // let abc = document.querySelector('.thumb-item');
+    // abc.brazzersCarousel();
   }
 
   handleNewRentals = () =>{
@@ -121,9 +123,12 @@ class MainPage extends Component {
                 return(
                   <Link key={elem.rentalID} onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
                     <div className="ads__block">
-                      <img src={adsImg} alt="img"/>
+                        <img src={adsImg} alt="img"/>
                       <div className="ads__block__info">
                       <span>{elem.title}</span>
+                      <div className="appear__onhover_info">
+                      <span>{elem.description}</span>
+                      </div>
                       <div className="ads__price">
                         <span>{elem.cost}c</span>
                         <Link to="/mapfilter">

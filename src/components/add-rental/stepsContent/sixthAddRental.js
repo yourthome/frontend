@@ -15,7 +15,7 @@ const center = {
 const libraries = ["places"];
 
 
-export default function SixthAddRental({ prevStep, handleSubmit, handleMarker }, props) {
+export default function SixthAddRental({ prevStep, handleSubmit, handleMarker, nextStep }, props) {
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
@@ -52,6 +52,11 @@ export default function SixthAddRental({ prevStep, handleSubmit, handleMarker },
   const prev = e => {
     e.preventDefault();
     prevStep();
+  }
+
+  const next = e => {
+    e.preventDefault();
+    nextStep();
   }
 
   return(
@@ -95,7 +100,7 @@ export default function SixthAddRental({ prevStep, handleSubmit, handleMarker },
 
       <div className="rental__form__btns">
         <button onClick={prev}>Назад</button>
-        <button onClick={props.handleSubmit}>Готово</button>
+        <button onClick={next}>Далее</button>
       </div>
     </div>
   );
