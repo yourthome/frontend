@@ -4,7 +4,7 @@ import SecondAddRental from './stepsContent/secondAddRentals';
 import ThirdAddRental from './stepsContent/thirdAddRental';
 import FourthAddRental from './stepsContent/fourthAddRental';
 import {FifthAddRental} from './stepsContent/fiveAddRental';
-import {SixthAddRental} from './stepsContent/sixthAddRental';
+import SixthAddRental from './stepsContent/sixthAddRental';
 import './rentalForm.css';
 import FormStep from './formSteps';
 import { connect } from 'react-redux';
@@ -15,7 +15,39 @@ class RentalForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-        rental: {title:'',region:'',street:"string",rooms:'',cost:'',floor:'0',propertyType:'',rentTime:0,description:"",latitude:0,longitude:0,facilities:{internet:false,phone:false,refrigerator:false,kitchen:false,tv:false,balcony:false,washer:false,airConditioning:false},infrastructure:{cafe:false,kindergarten:false,parking:false,busStop:false,supermarket:false,park:false,hospital:false},photos: []},
+        rental: {
+            title: '',
+            region: '',
+            street: "string",
+            rooms: '',
+            cost: '',
+            floor: '0',
+            propertyType: '',
+            rentTime: 0,
+            description: "",
+            latitude: 0,
+            longitude: 0,
+            facilities: {
+                internet: false,
+                phone: false,
+                refrigerator: false,
+                kitchen: false,
+                tv: false,
+                balcony: false,
+                washer: false,
+                airConditioning: false
+            },
+            infrastructure: {
+                cafe: false,
+                kindergarten: false,
+                parking: false,
+                busStop: false,
+                supermarket: false,
+                park: false,
+                hospital: false
+            },
+            photos: ''
+        },
         step: 1
         }
     }
@@ -316,6 +348,19 @@ class RentalForm extends React.Component{
         })
     }
 
+    handleMarker = marker => {
+        const { rental } = this.state;
+        this.setState({
+            rental: ({
+                ...rental,
+                latitude: marker.lat,
+                longitude: marker.lng,
+            })
+        })
+        console.log(marker)
+    }
+    
+
     render(){
         const { step } = this.state;
         const { title, rooms, description, cost, floor, region } = this.state.rental;
@@ -327,9 +372,9 @@ class RentalForm extends React.Component{
             case 1:
                 return(
                     <>
-                     <div className="rental__form">
-                    <FormStep step={ step } />
-                    <FirstAddRental handleChange={this.handleChange} values={values} nextStep = {this.nextStep} setRegion={this.setRegion} setPropertytype={this.setPropertytype}/>
+                    <div className="rental__form">
+                        <FormStep step={ step } />
+                        <FirstAddRental handleChange={this.handleChange} values={values} nextStep = {this.nextStep} setRegion={this.setRegion} setPropertytype={this.setPropertytype}/>
                     </div>
                     </>
                 )
@@ -371,9 +416,10 @@ class RentalForm extends React.Component{
                 return(
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleSubmit={this.handleSubmit}/>
+                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleSubmit={this.handleSubmit} handleMarker={this.handleMarker} />
                     </div>
                 )
+            default:
         }
     }
 }

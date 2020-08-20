@@ -87,9 +87,9 @@ class LogIn extends Component {
 
                 <button id="login-button" type="submit">Войти</button>
                 {loggingIn &&
-                  <i class="fa fa-spinner fa-spin"></i>
+                  <i className="fa fa-spinner fa-spin"></i>
                 }
-                <button id="hide-show-button-auth" onClick={this.toggleShowPassword}><i class="fa fa-eye" aria-hidden="true"></i></button>
+                <button id="hide-show-button-auth" onClick={this.toggleShowPassword}><i className="fa fa-eye" aria-hidden="true"></i></button>
               </form>
               
               {/* <h4 onClick={this.props.onToggleWindows} className="modal__registration__string">Зарегистрироваться?</h4> */}
