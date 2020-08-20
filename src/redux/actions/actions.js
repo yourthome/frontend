@@ -1,4 +1,4 @@
-import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER, ADD_FILTER_CHARECTER, GET_FILTER_RESULT, GET_DATA_ADMIN, SET_SEARCH_VALUE, SET_SEARCH_VALUE_RENTALS, SET_SEARCH_VALUE_USERS, GET_RENTAL_ID, GET_ADMIN_FILTER_RESULT } from './constants';
+import { FETCH_DATA, GET_CARD_ID, SHOW_LOADER, HIDE_LOADER, ADD_FILTER_CHARECTER, GET_FILTER_RESULT, GET_DATA_ADMIN, SET_SEARCH_VALUE, SET_SEARCH_VALUE_RENTALS, SET_SEARCH_VALUE_USERS, GET_RENTAL_ID, GET_ADMIN_FILTER_RESULT, GET_MAP_FILTER_RESULT } from './constants';
 import axios from 'axios'
 
 
@@ -42,6 +42,15 @@ function getFilterData(items){
     const json = await response.json()
     dispatch({type: GET_FILTER_RESULT, data: json})
     dispatch(hideLoader())
+  }
+}
+
+function getMapFilterData(items){
+  return async dispatch => {
+    let itemsArr = items.slice(0, -1)
+    const response = await fetch(`https://yourthometest.herokuapp.com/rentals?${itemsArr}`)
+    const json = await response.json()
+    dispatch({type: GET_MAP_FILTER_RESULT, data: json})
   }
 }
 
@@ -111,6 +120,13 @@ const setFilterItems = (region) => {
   }
 }
 
+// const setFilterItems = (region) => {
+//   return{
+//     type: ADD_FILTER_CHARECTER,
+//     region: region
+//   }
+// }
+
 // const searching = (value) => {
 //   return{
 //     type: SEARCH_RENTAL_TITLE,
@@ -164,5 +180,6 @@ export {
   setSearchValRentals,
   setSearchValUsers,
   getRentalID,
-  getAdminFilterData
+  getAdminFilterData,
+  getMapFilterData
 };

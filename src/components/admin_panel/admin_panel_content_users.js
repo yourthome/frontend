@@ -101,7 +101,7 @@ class AdminPanelContentUsers extends React.Component{
                                 <img src={require('../../content/images/adminPanel/user.jpg')}></img>
                             </div>
                             <span>{elem.username}</span>
-                            <span>+996709999666</span>
+                            <span>{elem.phone}</span>
                             <div className="admin_user_rentals" /*onClick={() => this.getUserRentals(elem.id)}*/>
                                 <span>{elem.email}</span>
                             </div>

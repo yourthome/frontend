@@ -81,7 +81,7 @@ function _delete(id) {
         headers: authHeader()
     };
 
-    return fetch(`https://yourthometest.herokuapp.com/Users/${id}`, requestOptions).then(handleResponse);
+    return fetch(`https://yourthometest.herokuapp.com/Admin/users/${id}/delete`, requestOptions).then(handleResponse);
 }
 
 // PersonalPage
