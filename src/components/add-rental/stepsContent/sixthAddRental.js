@@ -1,4 +1,4 @@
-import React, { Component, useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { GoogleMap, Marker, useLoadScript, InfoWindow } from '@react-google-maps/api'
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from '@reach/combobox'
@@ -15,7 +15,7 @@ const center = {
 const libraries = ["places"];
 
 
-export default function SixthAddRental({ prevStep, handleSubmit, handleMarker, nextStep }, props) {
+export default function SixthAddRental({ prevStep, handleMarker, nextStep }, props) {
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
@@ -172,61 +172,3 @@ function Search({ panTo }) {
     </div>
   )
 }
-
-// const containerStyle = {
-//   width: '800px',
-//   height: '300px'
-// };
-
-// const center = {
-//   lat: 42.867695,
-//   lng: 74.610897
-// };
-
-// class SixthAddRental extends Component {
-
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-
-//     }
-//   }
-
-//   continue = e =>{
-//     e.preventDefault();
-//     this.props.nextStep();
-//   }
-//   prev = e =>{
-//       e.preventDefault();
-//       this.props.prevStep();
-//   }
-
-//   render() {
-
-
-
-//     return(
-    //   <div className="rental__form__content">
-    //     <input placeholder="Укажите адрес"></input>
-
-    //     <LoadScript
-    //       googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}
-    //     >
-    //       <GoogleMap
-    //         mapContainerStyle={containerStyle}
-    //         center={center}
-    //         zoom={15}
-    //       >
-    //         { /* Child components, such as markers, info windows, etc. */ }
-    //         <></>
-    //       </GoogleMap>
-    //     </LoadScript>
-
-    //     <div className="rental__form__btns">
-    //       <button onClick={this.props.prevStep}>Назад</button>
-    //       <button onClick={this.props.handleSubmit}>Готово</button>
-    //     </div>
-    //  </div>
-//     )
-//   }
-// }

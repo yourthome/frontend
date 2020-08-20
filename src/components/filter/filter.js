@@ -166,50 +166,49 @@ export class Filter extends Component {
     <div className="ads__blocks">
 
     {
-              this.props.app.loading ? <Loader /> :
-              this.props.data.map(elem => {
-                return(
-                  <Link onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
-                    <div className="ads__block">
-                      <img src={filterImg} alt="img"/>
-                      <div className="ads__block__info">
-                      <span>{elem.title}</span>
-                      <div className="ads__price">
-                        <span>{elem.cost}c</span>
-                        <Link to="/mapfilter">
-                          <span>На карте</span>
-                        </Link>
-                      </div>
-                      </div>
-                    </div>
-                  </Link>
-                )
-              })
-            }
-            {
-              this.props.data.length ? '' : <span className="filter_empty_alert">Нет подходящих обьявлений</span>  }
+      this.props.app.loading ? <Loader /> :
+      this.props.data.map(elem => {
+        return(
+          <Link onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
+            <div className="ads__block">
+              <img src={filterImg} alt="img"/>
+              <div className="ads__block__info">
+              <span>{elem.title}</span>
+              <div className="ads__price">
+                <span>{elem.cost}c</span>
+                <Link to="/mapfilter">
+                  <span>На карте</span>
+                </Link>
+              </div>
+              </div>
             </div>
-</>
-      )}}
+          </Link>
+        )
+      })
+    }
+    {
+      this.props.data.length ? '' : <span className="filter_empty_alert">Нет подходящих обьявлений</span>  }
+    </div>
+  </>
+)}}
 
 
-      const mapStateToProps = state => {
-        return {
-          data: state.getFilterData.data.filter(elem => elem.title.toLowerCase().includes(state.setSearchVal.search)),
-          items: state.filter,
-          app: state.app,
-          searchVal: state.setSearchVal.search,
-        }
-      }
+const mapStateToProps = state => {
+  return {
+    data: state.getFilterData.data.filter(elem => elem.title.toLowerCase().includes(state.setSearchVal.search)),
+    items: state.filter,
+    app: state.app,
+    searchVal: state.setSearchVal.search,
+  }
+}
 
-      const mapDispatchToProps = (dispatch) => {
-        return {
-          setFilterItemsD: (item) => dispatch(setFilterItems(item)),
-          CardId: (rentalID) => dispatch(getCardId(rentalID)),
-          getFilterDataD: (items) => dispatch(getFilterData(items)),
-          setInpVal: (val) => dispatch(setSearchVal(val))
-        }
-      } 
-
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setFilterItemsD: (item) => dispatch(setFilterItems(item)),
+    CardId: (rentalID) => dispatch(getCardId(rentalID)),
+    getFilterDataD: (items) => dispatch(getFilterData(items)),
+    setInpVal: (val) => dispatch(setSearchVal(val))
+  }
+} 
 
 export default connect(mapStateToProps,mapDispatchToProps)(Filter);
