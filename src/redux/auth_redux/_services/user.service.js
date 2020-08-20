@@ -97,7 +97,7 @@ function getUserRentalsService() {
 function postNewRentalService(rental){
     const requestOptions = {
         method: 'POST',
-        headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' },
+        headers: { ...authHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify(rental)  
     };
 

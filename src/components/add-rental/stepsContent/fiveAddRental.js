@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 
-export function FifthAddRental({nextStep, prevStep, photos, setPhotos}){
+export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSubmit}){
         const [file, setFile] = useState('');
         const uploadImg = e =>{
             setFile(e.target.files[0]);
@@ -122,7 +122,7 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos}){
                     </div>
             <div className="rental__form__btns">
                     <button onClick={prevStep}>Назад</button>
-                        <button onClick={nextStep}>Далее</button>
+                        <button onClick={handleSubmit}>Готово</button>
                 </div>
         </div>
     )
