@@ -391,7 +391,7 @@ class RentalForm extends React.Component{
                     <>
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <ThirdAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleChange={this.handleChange} values={values} facilities={ facilities } toggleFacilitiesInternet = {this.toggleFacilitiesInternet} toggleFacilitiesPhone = {this.toggleFacilitiesPhone} toggleFacilitiesKitchen = {this.toggleFacilitiesKitchen} toggleFacilitiesTv = {this.toggleFacilitiesTv} toggleFacilitiesBalcony ={this.toggleFacilitiesBalcony}  toggleFacilitiesWasher = {this. toggleFacilitiesWasher} toggleFacilitiesAirConditioning = {this.toggleFacilitiesAirConditioning} toggleFacilitiesRefrigerator = {this.toggleFacilitiesRefrigerator}/>
+                        <ThirdAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleChange={this.handleChange} values={values} facilities={ facilities } toggleFacilitiesInternet = {this.toggleFacilitiesInternet} toggleFacilitiesPhone = {this.toggleFacilitiesPhone} toggleFacilitiesKitchen = {this.toggleFacilitiesKitchen} toggleFacilitiesTv = {this.toggleFacilitiesTv} toggleFacilitiesBalcony ={this.toggleFacilitiesBalcony}  toggleFacilitiesWasher = {this.toggleFacilitiesWasher} toggleFacilitiesAirConditioning = {this.toggleFacilitiesAirConditioning} toggleFacilitiesRefrigerator = {this.toggleFacilitiesRefrigerator}/>
                     </div>
                     </>
                 )
@@ -408,7 +408,7 @@ class RentalForm extends React.Component{
                 return(
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <SixthAddRental nextStep={this.nextStep} prevStep={this.prevStep} handleMarker={this.handleMarker} nextStep={this.nextStep} />
+                        <SixthAddRental prevStep={this.prevStep} handleMarker={this.handleMarker} nextStep={this.nextStep} />
                     </div>
                 )
             case 6:
