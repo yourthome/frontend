@@ -64,6 +64,38 @@ class Profile extends Component {
                   <p>{user.gender}</p>
                 </div>
               </div>
+
+              {/* <div className="user-personaldata-data">
+                <div id="user-personaldata-data-group1">
+                  <label>Имя:</label>
+                  <input value={user.firstName}></input>
+                </div>
+                <div id="user-personaldata-data-group2">
+                  <label>Фамилия:</label>
+                  <input value={user.lastName}></input>
+                </div>
+                <div id="user-personaldata-data-group3">
+                  <label>Логин:</label>
+                  <input value={user.username}></input>
+                </div>
+                <div id="user-personaldata-data-group4">
+                  <label>Пароль:</label>
+                  <input value={user.password}></input>
+                </div>
+                <div id="user-personaldata-data-group5">
+                  <label>Телефон:</label>
+                  <input value={user.phone}></input>
+                </div>
+                <div id="user-personaldata-data-group6">
+                  <label>Почта:</label>
+                  <input value={user.email}></input>
+                </div>
+                <div id="user-personaldata-data-group7">
+                  <label>Пол:</label>
+                  <input value={user.gender}></input>
+                </div>
+              </div> */}
+
             </div>
             <div className="user-personaldata-buttons">
               <Link id="user-logout-link" to="/login">
@@ -91,15 +123,15 @@ class Profile extends Component {
                 <div key={elem.rentalID} className="user-ads-card">
                   <img src={filterImg} alt="user ads card pic" />
                   <div className="user-ads-card-info">
-                    <h4>{elem.description}</h4>
-                    <p>Отличная квартира в центре Бишкека, со всеми удобствами</p>
+                    <h4>{elem.title}</h4>
+                    <p>{elem.description}</p>
                     <div className="user-ads-card-price">
                       <span>{elem.cost}</span>
                       <Link to="/mapfilter">
                         <span id="user-ads-maplink">На карте</span>
                       </Link>
                       <Link to="/user/flatcard">
-                        <span>Изменить...</span>
+                        <span>Подробнее</span>
                       </Link>
                     </div>
                   </div>

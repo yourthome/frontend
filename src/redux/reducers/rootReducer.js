@@ -18,6 +18,9 @@ import { searchValUsers } from '../reducers/searchValUsers';
 import { getRentalID } from "./getRentalID";
 import { getAdminFilterData } from './getAdminFilterData';
 import { getMapFilterData } from './mapFilterData';
+import { getMapData } from './getMapData';
+import { getMarkerId } from './getMarkerId';
+import { getRentalById } from './getRentalById'
 
 export const rootReducer = combineReducers({
     getData: getData,
@@ -37,5 +40,8 @@ export const rootReducer = combineReducers({
     searchValUsers: searchValUsers,
     getRentalID: getRentalID,
     getAdminFilterData: getAdminFilterData,
-    getMapFilterData: getMapFilterData
+    getMapFilterData: getMapFilterData,
+    getMapData: getMapData,
+    getMarkerId: getMarkerId,
+    getRentalById: getRentalById
 })
