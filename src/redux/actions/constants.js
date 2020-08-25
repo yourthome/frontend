@@ -14,4 +14,6 @@ export const GET_MAP_FILTER_RESULT = 'GET_MAP_FILTER_RESULT';
 
 export const GET_CARD_ID = 'GET_CARD_ID';
 
-export const SEND_USER = 'SEND_USER';
+export const FETCH_MAP_DATA = 'FETCH_MAP_DATA';
+export const GET_MARKER_ID = 'GET_MARKER_ID';
+export const GET_RENTAL_BY_ID = 'GET_RENTAL_BY_ID';

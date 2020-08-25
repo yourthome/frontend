@@ -36,14 +36,14 @@ export class Filter extends Component {
   };
 
     setFilterItems = () =>{
-        let array = document.querySelectorAll('select');
-        let items = '';
-        array.forEach(elem => {
-          if(elem.value !== ''){
+      let array = document.querySelectorAll('select');
+      let items = '';
+      array.forEach(elem => {
+        if(elem.value !== '') {
           items +=  elem.value + '&'
-          }
-        })
-        this.props.setFilterItemsD(items);
+        }
+      })
+      this.props.setFilterItemsD(items);
     };
 
     searching = e =>{
@@ -163,31 +163,33 @@ export class Filter extends Component {
         </ul>
         <button className="btn__blue filter__btn" onClick={this.getData}>Найти</button>
     </div>
-    <div className="ads__blocks">
 
-    {
-      this.props.app.loading ? <Loader /> :
-      this.props.data.map(elem => {
-        return(
-          <Link onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
-            <div className="ads__block">
-              <img src={filterImg} alt="img"/>
-              <div className="ads__block__info">
-              <span>{elem.title}</span>
-              <div className="ads__price">
-                <span>{elem.cost}c</span>
-                <Link to="/mapfilter">
-                  <span>На карте</span>
-                </Link>
+    <div className="ads__blocks">
+      {
+        this.props.app.loading ? <Loader /> :
+        this.props.data.map(elem => {
+          return(
+            <Link onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
+              <div className="ads__block">
+                <img src={filterImg} alt="img"/>
+                <div className="ads__block__info">
+                <span>{elem.title}</span>
+                <div className="ads__price">
+                  <span>{elem.cost}c</span>
+                  <Link to="/mapfilter">
+                    <span>На карте</span>
+                  </Link>
+                </div>
+                </div>
               </div>
-              </div>
-            </div>
-          </Link>
-        )
-      })
-    }
-    {
-      this.props.data.length ? '' : <span className="filter_empty_alert">Нет подходящих обьявлений</span>  }
+            </Link>
+          )
+        })
+      }
+      {
+        this.props.data.length ? '' : 
+          <span className="filter_empty_alert">Нет подходящих обьявлений</span>  
+      }
     </div>
   </>
 )}}

@@ -12,6 +12,7 @@ import Registration from './components/registration/registration'
 import AdminPanel from './components/admin_panel/admin_panel'
 import RentalModalComp from './components/add-rental/rentalModalComp'
 import { PrivateRoute } from './components/user/PrivateRoute'
+import MapContainer from './components/map/map'
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           component = {MainPage}
         />
         <Route 
-          path = "/flatcard"
+          path = {"/flatcard/:id"}
           component = {FlatCard}
         />
         <Route
@@ -37,18 +38,6 @@ function App() {
           path = "/user/flatcard"
           component = {FlatCardUser}
         />
-        {/* <Route
-          path = "/user"
-          component = {Profile}
-        /> */}
-        {/* <Route
-          path = "/login"
-          component = {LogIn}
-        /> */}
-        {/* <Route
-          path = "/registration"
-          component = {Registration}
-        /> */}
         <Route
           path = "/admin-panel"
           component = {AdminPanel}
@@ -56,6 +45,11 @@ function App() {
         <Route
           path = "/add-rental"
           component = {RentalModalComp}
+        />
+
+        <Route 
+          path = '/map'
+          component = {MapContainer}
         />
 
         <PrivateRoute exact path="/user" component={Profile} />

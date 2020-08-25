@@ -12,6 +12,8 @@ import { connect } from 'react-redux';
 import { fetchData } from '../../redux/actions/actions';
 import { getCardId } from '../../redux/actions/actions';
 import { setSearchVal } from '../../redux/actions/actions'
+import { getRentalID } from '../../redux/actions/actions';
+import { getRentalById } from '../../redux/actions/actions'
 
 import adsImg from '../../content/images/main/ads-card.jpg'
 
@@ -57,10 +59,15 @@ class MainPage extends Component {
     this.setState(state => ({isRentalFormOpen: !state.isRentalFormOpen}));
   }
 
+  toggleRentalActive = (id) =>{
+    this.props.getRentalID(id)
+  }
+
   componentDidMount(){
     this.props.serverData();
     // let abc = document.querySelector('.thumb-item');
     // abc.brazzersCarousel();
+    this.props.getRentalById(this.props.match.params.id)
   }
 
   handleNewRentals = () =>{
@@ -121,7 +128,7 @@ class MainPage extends Component {
               this.props.app.loading ? <Loader /> :
               arr.map(elem => {
                 return(
-                  <Link key={elem.rentalID} onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
+                  <Link key={elem.rentalID} to={`/flatcard/${elem.rentalID}`}>               
                     <div className="ads__block">
                         <img src={adsImg} alt="img"/>
                       <div className="ads__block__info">
@@ -164,7 +171,8 @@ const mapDispatchToProps = (dispatch) => {
     serverData: () => dispatch(fetchData()),
     CardId: (rentalID) => dispatch(getCardId(rentalID)),
     clearAlerts: alertActions.clear,
-    setInpVal: (val) => dispatch(setSearchVal(val))
+    setInpVal: (val) => dispatch(setSearchVal(val)),
+    getRentalById,
   }
 } 
 

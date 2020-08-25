@@ -24,6 +24,7 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 
 import MapContainer from '../map/map';
+import MapFlatCard from './map-flat-card';
 
 import Header from '../header/header';
 import Footer from '../footer/footer';
@@ -41,6 +42,8 @@ import home6 from '../../content/images/flat-card/home6.png';
 import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 
+import { getRentalById, fetchData }  from '../../redux/actions/actions'
+
 class FlatCard extends Component {
   constructor(props) {
     super(props);
@@ -49,8 +52,62 @@ class FlatCard extends Component {
       endDate: null,
       modal: false,
       isModalOpen: false,
-      isRegistrationOpen: false
+      isRegistrationOpen: false,
+
+      rental: {
+        title: '',
+        region: '',
+        street: "string",
+        rooms: '',
+        cost: '',
+        floor: '0',
+        propertyType: '',
+        rentTime: 0,
+        description: "",
+        latitude: 0,
+        longitude: 0,
+        facilities: {
+            internet: false,
+            phone: false,
+            refrigerator: false,
+            kitchen: false,
+            tv: false,
+            balcony: false,
+            washer: false,
+            airConditioning: false
+        },
+        infrastructure: {
+            cafe: false,
+            kindergarten: false,
+            parking: false,
+            busStop: false,
+            supermarket: false,
+            park: false,
+            hospital: false
+        },
+        photos: ''
+      }
+
     }
+  }
+
+  componentDidMount() {
+    this.props.serverData();
+    this.props.getRentalById(this.props.match.params.id);
+    // console.log(this.props);
+    console.log(this.props.match.params.id);
+    console.log(this.props.data);
+  }
+
+  handleData = (elem) => {
+    const [rental] = this.state
+    this.setState({
+      rental: ({
+        ...rental,
+        title: elem.title
+      })
+    })
+    console.log(this.state.rental)
   }
 
   toggle = () => {
@@ -86,7 +143,13 @@ class FlatCard extends Component {
       autoplay: true,
       autoplaySpeed: 2000,
     };
-    const { description, cost, rooms, street, rentTime, facilities, infrastructure } = this.props.data;
+
+    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title } = this.props.data;
+    console.log(this.props.data)
+    const { id } = this.props.match.params;
+    console.log(id);
+    this.props.data.filter((elem) => (elem.rentalID === this.props.match.params.id ? this.handleData(elem) : null ))
+
     return (
       <>
         <Header toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}/>
@@ -138,7 +201,7 @@ class FlatCard extends Component {
           {/* </MDBContainer> */}
 
           <div className="flatcard-description">
-            <p>{description} </p>
+            <p>{title} </p>
             <div className="flatcard-description-currency">
               <div className="flatcard-description-som">
                 <p>{cost}</p><p>с</p>
@@ -171,27 +234,27 @@ class FlatCard extends Component {
               <div className="flatcard-instock">
                 <p id="flatcard-instock-title">В наличии:</p>
                 <div className="flatcard-instock-p">
-                  <p>Интернет: {facilities.internet=true ? 'Да':'Нет'}</p>
-                  <p>Телефон: {facilities.phone=true ? 'Да':'Нет'}</p>
-                  <p>Холодильник: {facilities.refrigerator=true ? 'Да':'Нет'}</p>
-                  <p>Кухня: {facilities.kitchen=true ? 'Да':'Нет'}</p>
-                  <p>Телевизор: {facilities.tv=true ? 'Да':'Нет'}</p>
-                  <p>Балкон: {facilities.balcony=true ? 'Да':'Нет'}</p>
-                  <p>Стиральная машина: {facilities.washer=true ? 'Да':'Нет'}</p>
-                  <p>Кондиционер: {facilities.airConditioning=true ? 'Да':'Нет'}</p>
+                  {/* {facilities.internet ? <p>Интернет</p> : null}
+                  {facilities.phone ? <p>Телефон</p> : null}
+                  {facilities.refrigerator ? <p>Холодильник</p> : null}
+                  {facilities.kitchen ? <p>Кухня</p> : null}
+                  {facilities.tv ? <p>Телевизор</p> : null}
+                  {facilities.balcony ? <p>Балкон</p> : null}
+                  {facilities.washer ? <p>Стиральная машина</p> : null}
+                  {facilities.airConditioning ? <p>Кондиционер</p> : null} */}
                 </div>
               </div>
 
               <div className="flatcard-near">
                 <p id="flatcard-near-title">Рядом есть:</p>
                 <div className="flatcard-near-p">
-                  <p>Рестораны, кафе: {infrastructure.cafe=true ? 'Да':'Нет'}</p>
-                  <p>Детский сад: {infrastructure.kindergarten=true ? 'Да':'Нет'}</p>
-                  <p>Стоянка: {infrastructure.parking=true ? 'Да':'Нет'}</p>
-                  <p>Остановки: {infrastructure.busStop=true ? 'Да':'Нет'}</p>
-                  <p>Супермаркет: {infrastructure.supermarket=true ? 'Да':'Нет'}</p>
-                  <p>Парк: {infrastructure.park=true ? 'Да':'Нет'}</p>
-                  <p>Больница: {infrastructure.hospital=true ? 'Да':'Нет'}</p>
+                  {/* {infrastructure.cafe ? <p>Рестораны, кафе</p> : null}
+                  {infrastructure.kindergarten ? <p>Детский сад</p> : null}
+                  {infrastructure.parking ? <p>Стоянка</p> : null}
+                  {infrastructure.busStop ? <p>Остановки</p> : null}
+                  {infrastructure.supermarket ? <p>Супермаркет</p> : null}
+                  {infrastructure.park ? <p>Парк</p> : null}
+                  {infrastructure.hospital ? <p>Больница</p> : null} */}
                 </div>
               </div>
             </div>
@@ -200,16 +263,7 @@ class FlatCard extends Component {
             <div className="flatcard-about">
               <p id="flatcard-about-title">Описание:</p>
               <div className="flatcard-about-pos-p">
-                <p id="flatcard-about-description">В Новом Роскошном Жилом Комплексе!!! <br></br> Продается 2-комнатная квартира с общей площадью 70 м2.</p>
-                <p>Преимущества Ж.К:</p>
-                <div className="flatcard-about-p">
-                  <p>- Качественная Российская входная - металлическая дверь;</p>
-                  <p>- Пластиковые рамы imzo premium;</p>
-                  <p>- Счётчики;</p>
-                  <p>- Видео наблюдение 24/7</p>
-                  <p>- Детские площадки во дворе Ж.К</p>
-                  <p>- Охраняемая территория</p>
-                </div>
+                <p id="flatcard-about-description">{description}</p>
               </div>
             </div>
 
@@ -240,7 +294,7 @@ class FlatCard extends Component {
 
             <div className="flatcard-map">
               <p id="flatcard-map-description">Расположение на карте: </p>
-              <MapContainer />
+              <MapFlatCard />
             </div>
           </div>
 
@@ -254,15 +308,16 @@ class FlatCard extends Component {
 
 const mapStateToProps = (state) => {
   return { 
-    data: state.getData.data
-      .filter((card) => card.rentalID === state.getCardId.cardId)
-      .pop()
+    data: state.getData.data,
+    rentalById: state.getRentalById.rentalById
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     CardId: (rentalID) => dispatch(getCardId(rentalID)),
+    serverData: () => dispatch(fetchData()),
+    getRentalById: (id) => getRentalById(id)
   }
 }
 

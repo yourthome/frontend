@@ -1,149 +1,143 @@
-import React, {Component, useState, useRef} from 'react';
-// import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
-// import { Link } from 'react-router-dom'
-import { GoogleMap, LoadScript, InfoWindow, withGoogleMap, withScriptjs, Marker } from '@react-google-maps/api';
-import Geocode from 'react-geocode';
+import React, { Component } from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
-// import GoogleMapReact from 'google-map-react';
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 
-import './map.css'
-import photo from '../../content/images/flat-card/home1.png'
+import { getMarkerId } from '../../redux/actions/actions';
+// import { fetchMapData } from '../../redux/actions/actions';
 
-Geocode.setApiKey("AIzaSyBdX8g6lM-w20K543TW18kRyocWnk9muNk");
-Geocode.enableDebug();
-
-const containerStyle = {
-  width: 'auto',
-  height: '541px'
-};
-
-const divStyle = {
-  background: `white`,
-  border: `1px solid #ccc`,
-  padding: 15
-}
-
-const center = {
-  lat: 42.867695,
-  lng: 74.610897
-}
-
-const onLoad = infoWindow => {
-  console.log('infoWindow: ', infoWindow)
-}
-
-const position = { lat: 42.863585, lng: 74.611787 }
+import { Carousel } from 'react-responsive-carousel';
+import './map.css';
 
 class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stores: [
-        {lat: 42.867695, lng: 74.610897},
-        {latitude: 42.863585, longitude: 74.611787},
-        {latitude: 42.862475, longitude: 74.610677},
-        {latitude: 42.861365, longitude: 74.612567},
-        {latitude: 42.869255, longitude: 74.612457},
-        {latitude: 42.863145, longitude: 74.616347}],
-        
       showingInfoWindow: false,  //Hides or the shows the infoWindow
       activeMarker: {},          //Shows the active marker upon click
-      selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
+      selectedPlace: {},          //Shows the infoWindow to the selected place upon a marker
     }
   }
 
-  // displayMarkers = () => {
-  //   return this.state.stores.map((store, index) => {
-  //     return <Marker key={index} id={index} position={{
-  //      lat: store.latitude,
-  //      lng: store.longitude
-  //    }}
-  //   //  draggable={true} 
-  //    onClick={this.onMarkerClick} 
-  //    />
-  //   })
+  // componentDidMount(){
+  //   this.props.serverMapData();
   // }
 
-  // onMarkerClick = (props, marker, e) =>
-  // this.setState({
-  //   selectedPlace: props,
-  //   activeMarker: marker,
-  //   showingInfoWindow: true
-  // });
+  displayMarkers = () => {
+    const mapArr = this.props.filteredMapData;
+    return mapArr.map((dat) => {
+      return <Marker id={dat.rentalID} key={dat.rentalID} position={{
+        lat: dat.latitude,
+        lng: dat.longitude
+      }}
+      onClick={this.onMarkerClick}
+     />
+    })
+  }
 
-  // onClose = props => {
-  //   if (this.state.showingInfoWindow) {
-  //     this.setState({
-  //       showingInfoWindow: false,
-  //       activeMarker: null
-  //     });
-  //   }
-  // };
+  onMarkerClick = (props, marker, e) => {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true,
+    });
+    this.props.MarkerId(marker.id);
+  }
+
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
 
   render() {
+    // console.log(this.props.filteredMapData)
+    // const { description, cost, rooms, street, rentTime, facilities, infrastructure, title } = this.props.mapData;
+    const markerArr = this.props.filteredMapData;
     return(
 
-
-      <LoadScript
-        googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}
+      <Map
+        className="map-component"
+        google={this.props.google}
+        zoom={12}
+        initialCenter={{ lat: 42.867695, lng: 74.610897 }}
       >
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={15}
-        >
-          <InfoWindow
-            onLoad={onLoad}
-            position={position}
-          >
-            <div style={divStyle}>
-              <h1>InfoWindow</h1>
-            </div>
-          </InfoWindow>
-        </GoogleMap>
-      </LoadScript>
-
-
-    // <Map
-    //   className="map-component"
-    //   google={this.props.google}
-    //   zoom={15}
-    //   // style={mapStyles}
-    //   initialCenter={{ lat: 42.867695, lng: 74.610897 }}
-    // >
-    //   {this.displayMarkers()}
-    //   {/* <Marker 
-    //           // position={{ lat: 42.867695, lng: 74.610897 }} 
-    //           onClick={this.onMarkerClick}
-    //           name={'Current location'}
-    //   /> */}
-    //   <InfoWindow onClose={this.onInfoWindowClose}
-    //               marker={this.state.activeMarker}
-    //               visible={this.state.showingInfoWindow}
-    //   >
-    //     <div className="map-infobox-container">
-    //       {/* {this.state.selectedPlace.name} */}
-    //       {/* <div> */}
-    //         <img id="map-infobox-img" src={photo} alt="map-infobox-img"></img>
-    //         {/* <Link className="map-infobox-description" to="/mapfilter">Сдаю 3-х комнатную квартиру.</Link> */}
-    //         <p id="map-infobox-title">Сдаю 3-х комнатную квартиру.</p>
-    //         <p id="map-infobox-location">Бишкек, Горького/Советская</p>
-    //         <p id="map-infobox-cost-dollars">$ 29 500</p>
-    //         <p id="map-infobox-cost-soms">2 216 108 сом</p>
-    //         <p id="map-infobox-description">Продаж 1 кв. Советская/Горького. Квартира не угловая, дом кирпичный. Ванная кафель рабочая стена, трубы пластик, установлены приборы учета на холодную и горячую воду. Дверь входная бронированная, тамбурная. Закрытый двор, чистый подъезд. Во дворе видеонаблюдение.</p>
-    //       {/* </div> */}
-    //     </div>
-    //   </InfoWindow>
-    // </Map>
-
-
+        {this.displayMarkers()}
+        
+        
+          {
+            markerArr.map((elem) => {
+              return (elem.rentalID === this.state.activeMarker.id ?
+                <InfoWindow onClose={this.onInfoWindowClose}
+                    marker={this.state.activeMarker}
+                    visible={this.state.showingInfoWindow}
+                >
+                  <div className="map-infobox-container">
+                    {/* <Carousel autoPlay>
+                      <div>
+                        <img alt="" src={require('../../content/images/main/michael-browning-akz0w36DpM4-unsplash.jpg')} />
+                        <p className="legend">Legend 1</p>
+                      </div>
+                      <div>
+                        <img alt="" src={require('../../content/images/main/michael-browning-akz0w36DpM4-unsplash.jpg')} />
+                        <p className="legend">Legend 2</p>
+                      </div>
+                      <div>
+                        <img alt="" src={require('../../content/images/main/michael-browning-akz0w36DpM4-unsplash.jpg')} />
+                        <p className="legend">Legend 3</p>
+                      </div>
+                    </Carousel> */}
+                    {/* <img id="map-infobox-img" src={photo} alt="map-infobox-img"></img> */}
+                    {/* <Link className="map-infobox-description" to="/mapfilter">Сдаю 3-х комнатную квартиру.</Link> */}
+                    <p id="map-infobox-title">{elem.title}</p>
+                    <p id="map-infobox-location">Бишкек, Горького/Советская</p>
+                    <p id="map-infobox-cost-soms">{elem.cost}сом</p>
+                    <p id="map-infobox-cost-dollars">{Math.floor(elem.cost / 77.8)}$</p>
+                    <p id="map-infobox-description">{elem.description}</p>
+                  </div>
+                </InfoWindow>
+              : null)
+            })
+            // <div className="map-infobox-container">
+            //     {/* <img id="map-infobox-img" src={photo} alt="map-infobox-img"></img> */}
+            //     {/* <Link className="map-infobox-description" to="/mapfilter">Сдаю 3-х комнатную квартиру.</Link> */}
+            //     <p id="map-infobox-title">Сдаю 3-х комнатную квартиру.</p>
+            //     <p id="map-infobox-location">Бишкек, Горького/Советская</p>
+            //     <p id="map-infobox-cost-dollars">$ 29 500</p>
+            //     <p id="map-infobox-cost-soms">2 216 108 сом</p>
+            //     <p id="map-infobox-description">Продаж 1 кв. Советская/Горького. Квартира не угловая, дом кирпичный. Ванная кафель рабочая стена, трубы пластик, установлены приборы учета на холодную и горячую воду. Дверь входная бронированная, тамбурная. Закрытый двор, чистый подъезд. Во дворе видеонаблюдение.</p>
+            // </div>
+          }
+        
+      </Map>
     );
   }  
 }
 
-// export default GoogleApiWrapper({
-//   apiKey: 'AIzaSyBdX8g6lM-w20K543TW18kRyocWnk9muNk'
-// })(MapContainer);
+const mapStateToProps = (state) => {
+  return {
+    // mapData: state.getMapData.mapData.filter((card) => card.rentalID === state.getMarkerId.markerId)
+    // .pop()
+  }
+}
 
-export default MapContainer;
-  
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // serverMapData: () => dispatch(fetchMapData()),
+    MarkerId: (rentalID) => dispatch(getMarkerId(rentalID)),
+  }
+} 
+
+const enhance = compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  GoogleApiWrapper({
+      apiKey: process.env.REACT_APP_GOOGLE_API_KEY
+  }),
+)
+
+export default enhance(MapContainer)
