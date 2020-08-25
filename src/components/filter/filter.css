@@ -258,3 +258,7 @@ li > ul > li:hover{
     margin-top: 3em;
     margin-bottom: 4em;
 }
+
+.select_block{
+    border-radius: 20px;
+}

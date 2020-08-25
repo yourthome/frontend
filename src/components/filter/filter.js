@@ -10,6 +10,7 @@ import {setFilterItems, getFilterData} from '../../redux/actions/actions';
 import {Loader} from '../loader/loader';
 import { getCardId } from '../../redux/actions/actions';
 import { setSearchVal } from '../../redux/actions/actions';
+import Select from 'react-select';
 
 
 
@@ -69,7 +70,12 @@ export class Filter extends Component {
 
 
   render() {
-    console.log(this.props.data)
+    const options = [
+      { value: 'Cafe=true', label: 'Кафе' },
+      { value: 'Kitchen=true', label: 'Кухня' },
+      { value: 'Internet=true', label: 'Интернет' }
+    ]
+
     return( 
       <>
         <Header toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}/>
@@ -161,6 +167,15 @@ export class Filter extends Component {
                 <option value="Hospital=true">Больница</option>   
             </select>
         </ul>
+          <Select
+            defaultValue={''}
+            isMulti
+            name="colors"
+            options={options}
+            className="basic-multi-select"
+            classNamePrefix="select"
+            id='select_block'
+          />
         <button className="btn__blue filter__btn" onClick={this.getData}>Найти</button>
     </div>
     <div className="ads__blocks">

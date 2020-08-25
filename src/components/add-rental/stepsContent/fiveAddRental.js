@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 
 export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSubmit}){
-        const [file, setFile] = useState('');
+        const [file, setFile] = useState([]);
         const uploadImg = e =>{
             setFile(e.target.files[0]);
             console.log(file)
@@ -18,8 +18,8 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSub
         const [image7, setImage7] = useState('');
         const setRentalImage = e =>{
             if(image == ''){
+            setFile(file.concat(e.target.files[0]));
             const reader = new FileReader();
-            console.log(1)
             reader.onload = () => {
                 if(reader.readyState === 2){
                     setImage({image: reader.result})
@@ -29,6 +29,7 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSub
         }
 
             else if(image1 == ''){
+                setFile(file.concat(e.target.files[0]));
                 const reader = new FileReader();
                 reader.onload = () => {
                 if(reader.readyState === 2){
@@ -39,6 +40,7 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSub
             }
 
             else if(image2 == ''){
+                setFile(file.concat(e.target.files[0]));
                 const reader = new FileReader();
                 reader.onload = () => {
                 if(reader.readyState === 2){
@@ -49,6 +51,7 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSub
             }
 
             else if(image3 == ''){
+                setFile(file.concat(e.target.files[0]));
                 const reader = new FileReader();
                 reader.onload = () => {
                 if(reader.readyState === 2){
@@ -59,6 +62,7 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSub
             }
 
             else if(image4 == ''){
+                setFile(file.concat(e.target.files[0]));
                 const reader = new FileReader();
                 reader.onload = () => {
                 if(reader.readyState === 2){
@@ -69,6 +73,7 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSub
             }
 
             else if(image5 == ''){
+                setFile(file.concat(e.target.files[0]));
                 const reader = new FileReader();
                 reader.onload = () => {
                 if(reader.readyState === 2){
@@ -79,6 +84,7 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSub
             }
 
             else if(image6 == ''){
+                setFile(file.concat(e.target.files[0]));
                 const reader = new FileReader();
                 reader.onload = () => {
                 if(reader.readyState === 2){
@@ -89,6 +95,7 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSub
             }
 
             else if(image7 == ''){
+                setFile(file.concat(e.target.files[0]));
                 const reader = new FileReader();
                 reader.onload = () => {
                 if(reader.readyState === 2){
@@ -97,6 +104,20 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSub
                 }
                 reader.readAsDataURL(e.target.files[0])
             }
+        }
+
+        const handleSubmitExp = e =>{
+            let imgArr = [image, image1, image2, image3, image4, image5, image6, image7];
+            let imgArr1 = imgArr.filter(elem => {
+                if(elem == ''){
+                    return false
+                }
+                else{
+                    return true
+                }
+            })
+            console.log(file);
+            handleSubmit(file);
         }
 
     return(
@@ -115,14 +136,14 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSub
                     <img src={image7.image}></img>
                     </div>
                     <div className="img_inp_label">
-                        <input type="file" id='file' onChange={setRentalImage}/>
+                        <input type="file" id='file' onChange={setRentalImage} accept="image/*"/>
                         <label for='file'>
                             Выберите фото
                         </label>
                     </div>
             <div className="rental__form__btns">
                     <button onClick={prevStep}>Назад</button>
-                        <button onClick={handleSubmit}>Готово</button>
+                        <button onClick={handleSubmitExp}>Готово</button>
                 </div>
         </div>
     )
