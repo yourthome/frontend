@@ -23,7 +23,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
 
-import MapContainer from '../map/map';
 import MapFlatCard from './map-flat-card';
 
 import Header from '../header/header';
@@ -42,7 +41,8 @@ import home6 from '../../content/images/flat-card/home6.png';
 import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 
-import { getRentalById, fetchData }  from '../../redux/actions/actions'
+import { fetchData }  from '../../redux/actions/actions'
+import Axios from 'axios';
 
 class FlatCard extends Component {
   constructor(props) {
@@ -53,61 +53,22 @@ class FlatCard extends Component {
       modal: false,
       isModalOpen: false,
       isRegistrationOpen: false,
-
-      rental: {
-        title: '',
-        region: '',
-        street: "string",
-        rooms: '',
-        cost: '',
-        floor: '0',
-        propertyType: '',
-        rentTime: 0,
-        description: "",
-        latitude: 0,
-        longitude: 0,
-        facilities: {
-            internet: false,
-            phone: false,
-            refrigerator: false,
-            kitchen: false,
-            tv: false,
-            balcony: false,
-            washer: false,
-            airConditioning: false
-        },
-        infrastructure: {
-            cafe: false,
-            kindergarten: false,
-            parking: false,
-            busStop: false,
-            supermarket: false,
-            park: false,
-            hospital: false
-        },
-        photos: ''
-      }
-
+      rental: '',
     }
+  }
+
+  getRentalById = (id) => {
+    Axios.get(`https://yourthometest.herokuapp.com/rentals/${id}`)
+    .then(res => {
+      this.setState({
+        rental: res.data
+      })
+    })
   }
 
   componentDidMount() {
     this.props.serverData();
-    this.props.getRentalById(this.props.match.params.id);
-    // console.log(this.props);
-    console.log(this.props.match.params.id);
-    console.log(this.props.data);
-  }
-
-  handleData = (elem) => {
-    const [rental] = this.state
-    this.setState({
-      rental: ({
-        ...rental,
-        title: elem.title
-      })
-    })
-    console.log(this.state.rental)
+    this.getRentalById(this.props.match.params.id);
   }
 
   toggle = () => {
@@ -144,11 +105,7 @@ class FlatCard extends Component {
       autoplaySpeed: 2000,
     };
 
-    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title } = this.props.data;
-    console.log(this.props.data)
-    const { id } = this.props.match.params;
-    console.log(id);
-    this.props.data.filter((elem) => (elem.rentalID === this.props.match.params.id ? this.handleData(elem) : null ))
+    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title } = this.state.rental;
 
     return (
       <>
@@ -233,29 +190,29 @@ class FlatCard extends Component {
             <div className="flatcard-instock-and-near">
               <div className="flatcard-instock">
                 <p id="flatcard-instock-title">В наличии:</p>
-                <div className="flatcard-instock-p">
-                  {/* {facilities.internet ? <p>Интернет</p> : null}
+                {facilities && <div className="flatcard-instock-p">
+                  {facilities.internet ? <p>Интернет</p> : null}
                   {facilities.phone ? <p>Телефон</p> : null}
                   {facilities.refrigerator ? <p>Холодильник</p> : null}
                   {facilities.kitchen ? <p>Кухня</p> : null}
                   {facilities.tv ? <p>Телевизор</p> : null}
                   {facilities.balcony ? <p>Балкон</p> : null}
                   {facilities.washer ? <p>Стиральная машина</p> : null}
-                  {facilities.airConditioning ? <p>Кондиционер</p> : null} */}
-                </div>
+                  {facilities.airConditioning ? <p>Кондиционер</p> : null}
+                </div>}
               </div>
 
               <div className="flatcard-near">
                 <p id="flatcard-near-title">Рядом есть:</p>
-                <div className="flatcard-near-p">
-                  {/* {infrastructure.cafe ? <p>Рестораны, кафе</p> : null}
+                {infrastructure && <div className="flatcard-near-p">
+                  {infrastructure.cafe ? <p>Рестораны, кафе</p> : null}
                   {infrastructure.kindergarten ? <p>Детский сад</p> : null}
                   {infrastructure.parking ? <p>Стоянка</p> : null}
                   {infrastructure.busStop ? <p>Остановки</p> : null}
                   {infrastructure.supermarket ? <p>Супермаркет</p> : null}
                   {infrastructure.park ? <p>Парк</p> : null}
-                  {infrastructure.hospital ? <p>Больница</p> : null} */}
-                </div>
+                  {infrastructure.hospital ? <p>Больница</p> : null}
+                </div>}
               </div>
             </div>
             
@@ -294,7 +251,7 @@ class FlatCard extends Component {
 
             <div className="flatcard-map">
               <p id="flatcard-map-description">Расположение на карте: </p>
-              <MapFlatCard />
+              <MapFlatCard lati={this.state.rental.latitude} longi={this.state.rental.longitude} markerId={this.state.rental.rentalById} />
             </div>
           </div>
 
@@ -317,7 +274,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     CardId: (rentalID) => dispatch(getCardId(rentalID)),
     serverData: () => dispatch(fetchData()),
-    getRentalById: (id) => getRentalById(id)
   }
 }
 

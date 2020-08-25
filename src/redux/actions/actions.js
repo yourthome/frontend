@@ -163,7 +163,7 @@ export function getDataAdmin() {
 } 
 
 
-export function getRentalById(id) {
+const getRentalById = (id) => {
   return async dispatch => {
     await axios.get(`https://yourthometest.herokuapp.com/rentals/${id}`)
     .then(json => {
@@ -171,6 +171,24 @@ export function getRentalById(id) {
     })
   }
 }
+
+// const fetchDataSuccess = (json) => {
+//   return {
+//     type: FETCH_DATA,
+//     payload: json
+//   }
+// }
+
+// const fetchData = () => {
+//   return async dispatch => {
+//     dispatch(showLoader())
+//     await axios.get('https://yourthometest.herokuapp.com/rentals')
+//     .then(res => {
+//       dispatch(fetchDataSuccess(res.data))
+//       dispatch(hideLoader())
+//     })
+//   }
+// }
 
 
 export {
@@ -190,4 +208,5 @@ export {
   fetchMapDataSuccess,
   fetchMapData,
   getMarkerId, 
+  getRentalById
 };
