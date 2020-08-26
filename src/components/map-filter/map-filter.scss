@@ -127,6 +127,7 @@ body {
   }
 }
 
+
 .map-filter-header {
 	width: 100%;
 	height: 110px;
@@ -144,7 +145,20 @@ body {
     display: flex;
     flex-direction: row;
     img {
-      width: 200px;
+      width: 100px;
+    }
+    #map-filter-header__logo-1 {
+      position: absolute;
+      transition: transform 0.3s;
+    }
+    
+    #map-filter-header__logo-2 {
+      position: relative;
+      transition: transform 0.3s;
+      transform: translate(-3px, -3px);
+      &:hover {
+        transform: translate(-6px, -6px);
+      }
     }
   }
   .map-filter-header__input-group {
