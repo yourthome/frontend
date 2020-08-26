@@ -102,7 +102,10 @@ function postNewRentalService(rental){
     };
 
     return fetch(`https://yourthometest.herokuapp.com/Rentals
-    `, requestOptions).then(handleResponse);
+    `, requestOptions).then(res => {
+        if(res.ok){
+            
+    }});
 
 }
 
@@ -119,7 +122,6 @@ function handleResponse(response) {
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
         }
-
         return data;
     });
 }

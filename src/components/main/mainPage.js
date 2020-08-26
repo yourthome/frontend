@@ -127,23 +127,10 @@ class MainPage extends Component {
             {
               this.props.app.loading ? <Loader /> :
               arr.map(elem => {
-                let image = '';
-                const reader = new FileReader();
-                       reader.onload = () => {
-                           if(reader.readyState === 2){
-                               image = reader.result
-                           }
-                       }
-                       console.log(elem.photos[0]);
-                      //  reader.readAsDataURL(elem.photos[0])
                 return(
-                  <Link key={elem.rentalID} to={`/flatcard/${elem.rentalID}`}>
-                    {
-                      // 
-                       console.log(elem.photos[0])
-                    }               
+                  <Link key={elem.rentalID} to={`/flatcard/${elem.rentalID}`}>             
                     <div className="ads__block">
-                        <img src={elem.photos[0]} alt="img"/>
+                        <img src={elem.photos[0].path} alt="img"/>
                       <div className="ads__block__info">
                       <span>{elem.title}</span>
                       <div className="appear__onhover_info">
