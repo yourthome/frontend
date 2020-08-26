@@ -44,6 +44,9 @@ import Registration from '../registration/registration';
 import { fetchData }  from '../../redux/actions/actions'
 import Axios from 'axios';
 
+import {Carousel} from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 class FlatCard extends Component {
   constructor(props) {
     super(props);
@@ -105,7 +108,8 @@ class FlatCard extends Component {
       autoplaySpeed: 2000,
     };
 
-    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title } = this.state.rental;
+    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos } = this.state.rental;
+    console.log(photos);
 
     return (
       <>
@@ -123,7 +127,9 @@ class FlatCard extends Component {
           }  
         <section className="flatcard-container">
           
-          <div className="flatcard-images">
+        {/* { photos && <img id="slider-image" src={photos[0].path} alt="flatcard-image1"></img>}  */}
+
+          {/* <div className="flatcard-images">
             <img id="flatcard-images-main" src={home2} alt="flatcard-image1"></img>
             <div className="flatcard-images-secondary">
               <img src={home3} alt="flatcard-image2"></img>
@@ -131,13 +137,38 @@ class FlatCard extends Component {
               <img src={home1} alt="flatcard-image4"></img>
               <img id="darken-image" src={home6} alt="flatcard-image5"></img>
             </div>
-          </div>         
+          </div>         */}
+
+          {/* <div className=''> */}
+            <Carousel
+              autoPlay
+              showIndicators={false}
+              infiniteLoop={true}
+              width={`100%`}
+              swipeable={true}
+              className="slider-main"
+
+            >
+              {/* <img id="slider-image" src={home2} alt="flatcard-image1"></img>
+              <img id="slider-image" src={home3} alt="flatcard-image2"></img>
+              <img id="slider-image" src={home5} alt="flatcard-image3"></img>
+              <img id="slider-image" src={home1} alt="flatcard-image4"></img>
+              <img id="slider-image" src={home6} alt="flatcard-image5"></img> */}
+              {photos && photos.map(item => {
+                return item ?
+                  <div className='' key={item}>
+                    <img id="slider-image" src={`${item.path}`} alt="flatcard-images"/>
+                  </div>
+                : null
+              })}
+            </Carousel>
+          {/* </div>  */}
 
           {/* <MDBContainer> */}
-            <MDBBtn className="mdbbtn" onClick={this.toggle}>Еще+</MDBBtn>
-            <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
+            {/* <MDBBtn className="mdbbtn" onClick={this.toggle}>Еще+</MDBBtn> */}
+            {/* <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg"> */}
               {/* <MDBModalHeader toggle={this.toggle}>Изображения</MDBModalHeader> */}
-              <MDBModalBody>
+              {/* <MDBModalBody>
                 <div>
                   <div>
                     <Slider {...slickSettings}>
@@ -149,16 +180,16 @@ class FlatCard extends Component {
                     </Slider>
                   </div>
                 </div>
-              </MDBModalBody>
+              </MDBModalBody> */}
               {/* <MDBModalFooter> */}
                 {/* <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn> */}
                 {/* <MDBBtn color="primary">Save changes</MDBBtn> */}
               {/* </MDBModalFooter> */}
-            </MDBModal>
+            {/* </MDBModal> */}
           {/* </MDBContainer> */}
 
           <div className="flatcard-description">
-            <p>{title} </p>
+            <p>{title}</p>
             <div className="flatcard-description-currency">
               <div className="flatcard-description-som">
                 <p>{cost}</p><p>с</p>

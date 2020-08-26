@@ -16,19 +16,19 @@ export default class Footer extends Component {
       <footer className="footer">
         
         <div className="footer__icons">
-          <p>Следите за нами в:</p>
-          <Link to="/">
+          {/* <p>Следите за нами в:</p> */}
+          {/* <Link to="/"> */}
             {/* <Facebook width="40px"/> */}
-            <img className="footer__logo" src={facebook} alt="facebook logo"/>
-          </Link>
-          <Link to="/">
+            {/* <img className="footer__logo" src={facebook} alt="facebook logo"/> */}
+          {/* </Link> */}
+          {/* <Link to="/"> */}
             {/* <Instagram width="40px"/> */}
-            <img className="footer__logo" src={instagram} alt="instagram logo"/>
-          </Link>
-          <Link to="/">
+            {/* <img className="footer__logo" src={instagram} alt="instagram logo"/> */}
+          {/* </Link> */}
+          {/* <Link to="/"> */}
             {/* <Whatsapp width="40px"/> */}
-            <img className="footer__logo" src={whatsapp} alt="whatsapp logo"/>
-          </Link>
+            {/* <img className="footer__logo" src={whatsapp} alt="whatsapp logo"/> */}
+          {/* </Link> */}
         </div>
 
         <div className="footer__group">
