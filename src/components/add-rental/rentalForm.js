@@ -261,24 +261,31 @@ class RentalForm extends React.Component{
         } )
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        // let formData = new FormData();
-        // formData.append('title', this.state.rental.title);
-        // formData.append('region', this.state.rental.region);
-        // formData.append('street', this.state.rental.street);
-        // formData.append('rooms', this.state.rental.rooms);
-        // formData.append('cost', this.state.rental.cost);
-        // formData.append('floor', this.state.rental.floor);
-        // formData.append('propertyType', this.state.rental.propertyType);
-        // formData.append('rentTime', this.state.rental.rentTime);
-        // formData.append('description', this.state.rental.description);
-        // formData.append('latitude', this.state.rental.latitude);
-        // formData.append('longitude', this.state.rental.longitude);
-        // formData.append('facilities', this.state.rental.facilities);
-        // formData.append('infrastructure', this.state.rental.infrastructure);
-        // formData.append('photos', this.state.rental.photos);
-        this.props.postNewRental(this.state.rental);
+    handleSubmit = (arr) => {
+        // event.preventDefault();
+        let formData = new FormData();
+        formData.append('title', this.state.rental.title);
+        formData.append('region', this.state.rental.region);
+        formData.append('street', this.state.rental.street);
+        formData.append('rooms', this.state.rental.rooms);
+        formData.append('cost', this.state.rental.cost);
+        formData.append('floor', this.state.rental.floor);
+        formData.append('propertyType', this.state.rental.propertyType);
+        formData.append('rentTime', this.state.rental.rentTime);
+        formData.append('description', this.state.rental.description);
+        formData.append('latitude', this.state.rental.latitude);
+        formData.append('longitude', this.state.rental.longitude);
+        formData.append('facilities', this.state.rental.facilities);
+        formData.append('infrastructure', this.state.rental.infrastructure);
+        formData.append('photos', arr[0]);
+        formData.append('photos', arr[1]);
+        formData.append('photos', arr[2]);
+        formData.append('photos', arr[3]);
+        formData.append('photos', arr[4]);
+        formData.append('photos', arr[5]);
+        formData.append('photos', arr[6]);
+        formData.append('photos', arr[7]);
+        this.props.postNewRental(formData);
       }
 
     setPhotos = (file) => {
@@ -415,7 +422,7 @@ class RentalForm extends React.Component{
                 return(
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <FifthAddRental nextStep={this.nextStep} prevStep={this.prevStep} photos={this.state.rental.photos} setPhotos={this.setPhotos} handleSubmit={this.handleSubmit}/>
+                        <FifthAddRental nextStep={this.nextStep} prevStep={this.prevStep} photos={this.state.rental.photos} setPhotos={this.setPhotos} handleSubmit={this.handleSubmit} rental={this.state.rental} />
                     </div>
                 )
             default:

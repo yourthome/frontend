@@ -8,9 +8,9 @@ import MapContainer from '../map/map'
 import Footer from '../footer/footer'
 
 import './map-filter.css'
-import arrow from '../../content/images/filter/next.png'
 
 import { fetchMapData } from '../../redux/actions/actions';
+import Select from 'react-select';
 
 class MapFilter extends Component {
 
@@ -32,6 +32,25 @@ class MapFilter extends Component {
 
     
   render() {
+    const options = [
+      { value: 'Internet=true', label: 'Интернет' },
+      { value: 'Phone=true', label: 'Телефон' },
+      { value: 'Kitchen=true', label: 'Гарнитура' },
+      { value: 'TV=true', label: 'Телевизор' },
+      { value: 'Balcony=true', label: 'Балкон' },
+      { value: 'Washer=true', label: 'Стиральная машина' },
+      { value: 'AirConditioning=true', label: 'Кондеционер' },
+    ]
+
+    const options2 = [
+      { value: 'Cafe=true', label: 'Интернет' },
+      { value: 'KinderGarten=true', label: 'Телефон' },
+      { value: 'Parking=true', label: 'Парковка' },
+      { value: 'BusStop=true', label: 'Остановка' },
+      { value: 'Supermarket=true', label: 'Магазин' },
+      { value: 'Park=true', label: 'Парк' },
+      { value: 'Hospital=true', label: 'Больница' },
+    ]
     return (
       <>
         {console.log(this.props.filteredMapData)}
@@ -103,7 +122,7 @@ class MapFilter extends Component {
                 </select>
               </ul>
 
-              <ul className="main_filter map_main_filter">
+              <ul className="main_filter map_main_filter ">
                 <select className="selct__block__filter" >
                     <option value="">Цена от</option>
                     <option value="CostrangeStart=5000">5000с</option>
@@ -124,27 +143,27 @@ class MapFilter extends Component {
                 </select>
               </ul>
 
-              <ul className="main_filter map_main_filter">
-                <select className="selct__block__filter" >
-                    <option value="">В квартире есть</option>
-                    <option value="Internet=true">Интернет</option>
-                    <option value="Phone=true">Телефон</option>
-                    <option value="Kitchen=true">Гарнитура</option>  
-                    <option value="TV=true">Телевизор</option>  
-                    <option value="Balcony=true">Балкон</option>  
-                    <option value="Washer=true">Стиральная машина</option>
-                    <option value="AirConditioning=true">Кондиционер</option>        
-                </select>
-                <select className="selct__block__filter" >
-                    <option value="">Рядом есть</option>
-                    <option value="Cafe=true">Кафе</option>
-                    <option value="KinderGarten=true">Детский сад</option>
-                    <option value="Parking=true">Парковка</option>
-                    <option value="BusStop=true">Остановка</option>
-                    <option value="Supermarket=true">Супермаркет</option>
-                    <option value="Park=true">Парк</option>
-                    <option value="Hospital=true">Больница</option>   
-                </select>
+              <ul className="main_filter map_main_filter map_main_filter123">
+                    <Select
+                      defaultValue={''}
+                      isMulti
+                      name="colors"
+                      options={options}
+                      className="select_filter_fasilities"
+                      classNamePrefix="select"
+                      placeholder="В наличии есть..."
+                    />
+                  </ul>
+              <ul className="main_filter map_main_filter  map_main_filter123">
+                  <Select
+                    defaultValue={''}
+                    isMulti
+                    name="colors"
+                    options={options2}
+                    className="select_filter_fasilities"
+                    classNamePrefix="select"
+                    placeholder="Рядом есть..."
+                  />
               </ul>
               <button className="btn__blue filter_map_btn filter__btn" onClick={this.setFilterItems}>Найти</button>
             </div>

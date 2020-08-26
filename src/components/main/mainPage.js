@@ -128,9 +128,9 @@ class MainPage extends Component {
               this.props.app.loading ? <Loader /> :
               arr.map(elem => {
                 return(
-                  <Link key={elem.rentalID} to={`/flatcard/${elem.rentalID}`}>               
+                  <Link key={elem.rentalID} to={`/flatcard/${elem.rentalID}`}>             
                     <div className="ads__block">
-                        <img src={adsImg} alt="img"/>
+                        <img src={elem.photos[0].path} alt="img"/>
                       <div className="ads__block__info">
                       <span>{elem.title}</span>
                       <div className="appear__onhover_info">

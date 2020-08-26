@@ -59,7 +59,7 @@ const fetchMapData = () => {
 function getFilterData(items){
   return async dispatch => {
     dispatch(showLoader())
-    let itemsArr = items.region.slice(0, -1)
+    let itemsArr = items.slice(0, -1)
     const response = await fetch(`https://yourthometest.herokuapp.com/rentals?${itemsArr}`)
     const json = await response.json()
     dispatch({type: GET_FILTER_RESULT, data: json})

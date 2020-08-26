@@ -10,6 +10,7 @@ import {setFilterItems, getFilterData} from '../../redux/actions/actions';
 import {Loader} from '../loader/loader';
 import { getCardId } from '../../redux/actions/actions';
 import { setSearchVal } from '../../redux/actions/actions';
+import Select from 'react-select';
 
 
 
@@ -62,14 +63,57 @@ export class Filter extends Component {
     } 
 
     getData = () => {
-      this.props.getFilterDataD(this.props.items);
+      let array = document.querySelectorAll('select');
+    let items = '';
+    array.forEach(elem => {
+      if(elem.value !== '') {
+        items += elem.value + '&'
+      }
+    })
+    let attr = document.getElementsByName('colors');
+    attr.forEach(elem => {
+      if(elem.value !== '') {
+        items += elem.value + '&'
+      }
+    })
+    console.log(items)
+      this.props.getFilterDataD(items);
       // this.setState({data: this.props.data});
     };
 
 
 
   render() {
-    console.log(this.props.data)
+    const styles ={
+        border: 'none',
+        borderRadius: '20px',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        background: 'rgba(194, 199, 208, 0.4)',
+        fontSize: '13px'
+    }
+    
+    const options = [
+      { value: 'Internet=true', label: 'Интернет' },
+      { value: 'Phone=true', label: 'Телефон' },
+      { value: 'Kitchen=true', label: 'Гарнитура' },
+      { value: 'TV=true', label: 'Телевизор' },
+      { value: 'Balcony=true', label: 'Балкон' },
+      { value: 'Washer=true', label: 'Стиральная машина' },
+      { value: 'AirConditioning=true', label: 'Кондеционер' },
+    ]
+
+    const options2 = [
+      { value: 'Cafe=true', label: 'Интернет' },
+      { value: 'KinderGarten=true', label: 'Телефон' },
+      { value: 'Parking=true', label: 'Парковка' },
+      { value: 'BusStop=true', label: 'Остановка' },
+      { value: 'Supermarket=true', label: 'Магазин' },
+      { value: 'Park=true', label: 'Парк' },
+      { value: 'Hospital=true', label: 'Больница' },
+    ]
+
     return( 
       <>
         <Header toggleModal = {this.toggleModal} toggleRegistration = {this.toggleRegistration}/>
@@ -112,7 +156,9 @@ export class Filter extends Component {
                 <option value="floor=6">7</option>
                 <option value="floor=7">8</option>
             </select>
-            <select className="selct__block__filter" onChange={(e) => this.setFilterItems(e.target.value)}>
+        </ul>
+        <ul className="main_filter">
+        <select className="selct__block__filter" onChange={(e) => this.setFilterItems(e.target.value)}>
                 <option value="">Кол-во комнат</option>
                 <option value="rooms=1">1</option>
                 <option value="rooms=2">2</option>  
@@ -120,8 +166,6 @@ export class Filter extends Component {
                 <option value="rooms=4">4</option>  
                 <option value="rooms=5">5</option>
             </select>
-        </ul>
-        <ul className="main_filter">
         <select className="selct__block__filter" onChange={(e) => this.setFilterItems(e.target.value)}>
                 <option value="">Цена от</option>
                 <option value="CostrangeStart=5000">5000с</option>
@@ -140,27 +184,28 @@ export class Filter extends Component {
                 <option value="CostrangeEnd=30000">30000с</option> 
                 <option value="CostrangeEnd=40000">40000с</option>   
             </select>
-            <select className="selct__block__filter" onChange={(e) => this.setFilterItems(e.target.value)}>
-                <option value="">В квартире есть</option>
-                <option value="Internet=true">Интернет</option>
-                <option value="Phone=true">Телефон</option>
-                <option value="Kitchen=true">Гарнитура</option>  
-                <option value="TV=true">Телевизор</option>  
-                <option value="Balcony=true">Балкон</option>  
-                <option value="Washer=true">Стиральная машина</option>
-                <option value="AirConditioning=true">Кондиционер</option>        
-            </select>
-            <select className="selct__block__filter" onChange={(e) => this.setFilterItems(e.target.value)}>
-                <option value="">Рядом есть</option>
-                <option value="Cafe=true">Кафе</option>
-                <option value="KinderGarten=true">Детский сад</option>
-                <option value="Parking=true">Парковка</option>
-                <option value="BusStop=true">Остановка</option>
-                <option value="Supermarket=true">Супермаркет</option>
-                <option value="Park=true">Парк</option>
-                <option value="Hospital=true">Больница</option>   
-            </select>
         </ul>
+        <div className="select_filter_fasilities_div">
+          <Select
+            defaultValue={''}
+            style={styles}
+            isMulti
+            name="colors"
+            options={options}
+            className="select_filter_fasilities"
+            classNamePrefix="select"
+            placeholder="В наличии есть..."
+          />
+          <Select
+            defaultValue={''}
+            isMulti
+            name="colors"
+            options={options2}
+            className="select_filter_fasilities"
+            classNamePrefix="select"
+            placeholder="Рядом есть..."
+          />
+          </div>
         <button className="btn__blue filter__btn" onClick={this.getData}>Найти</button>
     </div>
 

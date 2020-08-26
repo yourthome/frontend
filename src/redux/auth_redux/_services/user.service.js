@@ -91,18 +91,21 @@ function getUserRentalsService() {
         headers: authHeader()
     };
 
-    return fetch(`https://yourthometest.herokuapp.com/PersonalPage/getuserrentals`, requestOptions).then(handleResponse);
+    return fetch(`https://yourthometest.herokuapp.com/Rentals`, requestOptions).then(handleResponse);
 }
 
 function postNewRentalService(rental){
     const requestOptions = {
         method: 'POST',
-        headers: { ...authHeader(), 'Content-Type': 'application/json' },
-        body: JSON.stringify(rental)  
+        headers: { ...authHeader()},
+        body: rental
     };
 
     return fetch(`https://yourthometest.herokuapp.com/Rentals
-    `, requestOptions).then(handleResponse);
+    `, requestOptions).then(res => {
+        if(res.ok){
+            
+    }});
 
 }
 
@@ -119,7 +122,6 @@ function handleResponse(response) {
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
         }
-
         return data;
     });
 }
