@@ -169,7 +169,7 @@ export class Filter extends Component {
         this.props.app.loading ? <Loader /> :
         this.props.data.map(elem => {
           return(
-            <Link onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
+            <Link onClick={() => this.props.CardId(elem.rentalID)} to={`/flatcard/${elem.rentalID}`}>               
               <div className="ads__block">
                 <img src={filterImg} alt="img"/>
                 <div className="ads__block__info">
