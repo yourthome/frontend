@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 // import { Link } from 'react-router-dom';
 
 import 'react-dates/initialize';
@@ -35,15 +36,34 @@ import home5 from '../../../content/images/flat-card/home5.png';
 import home1 from '../../../content/images/flat-card/home1.png';
 import home6 from '../../../content/images/flat-card/home6.png';
 
-export default class FlatCardUser extends Component {
+import MapFlatCard from '../../flat-card/map-flat-card';
+import Axios from 'axios'
+
+import {Carousel} from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+class FlatCardUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
       startDate: null,
       endDate: null,
       modal: false,
-      
+      rental: '',
     }
+  }
+
+  getRentalById = (id) => {
+    Axios.get(`https://yourthometest.herokuapp.com/rentals/${id}`)
+    .then(res => {
+      this.setState({
+        rental: res.data
+      })
+    })
+  }
+
+  componentDidMount() {
+    this.getRentalById(this.props.match.params.id);
   }
 
   toggle = () => {
@@ -66,13 +86,14 @@ export default class FlatCardUser extends Component {
       autoplay: true,
       autoplaySpeed: 2000,
     };
+    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos } = this.state.rental;
     return (
       <>
         <Header />
 
         <section className="flatcard-container">
 
-          <div className="flatcard-images">
+          {/* <div className="flatcard-images">
             <img id="flatcard-images-main" src={home2} alt="flatcard-image1"></img>
             <div className="flatcard-images-secondary">
               <img src={home3} alt="flatcard-image2"></img>
@@ -80,13 +101,36 @@ export default class FlatCardUser extends Component {
               <img src={home1} alt="flatcard-image4"></img>
               <img id="darken-image" src={home6} alt="flatcard-image5"></img>
             </div>
-          </div>         
+          </div>          */}
+
+            <Carousel
+              autoPlay
+              showIndicators={false}
+              infiniteLoop={true}
+              width={`100%`}
+              swipeable={true}
+              className="slider-main"
+
+            >
+              {/* <img id="slider-image" src={home2} alt="flatcard-image1"></img>
+              <img id="slider-image" src={home3} alt="flatcard-image2"></img>
+              <img id="slider-image" src={home5} alt="flatcard-image3"></img>
+              <img id="slider-image" src={home1} alt="flatcard-image4"></img>
+              <img id="slider-image" src={home6} alt="flatcard-image5"></img> */}
+              {photos && photos.map(item => {
+                return item ?
+                  <div className='' key={item}>
+                    <img id="slider-image" src={`${item.path}`} alt="flatcard-images"/>
+                  </div>
+                : null
+              })}
+            </Carousel>
 
           {/* <MDBContainer> */}
-            <MDBBtn className="mdbbtn" onClick={this.toggle}>Еще+</MDBBtn>
-            <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
+            {/* <MDBBtn className="mdbbtn" onClick={this.toggle}>Еще+</MDBBtn> */}
+            {/* <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg"> */}
               {/* <MDBModalHeader toggle={this.toggle}>Изображения</MDBModalHeader> */}
-              <MDBModalBody>
+              {/* <MDBModalBody>
                 <div>
                   <div>
                     <Slider {...slickSettings}>
@@ -98,22 +142,22 @@ export default class FlatCardUser extends Component {
                     </Slider>
                   </div>
                 </div>
-              </MDBModalBody>
+              </MDBModalBody> */}
               {/* <MDBModalFooter> */}
                 {/* <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn> */}
                 {/* <MDBBtn color="primary">Save changes</MDBBtn> */}
               {/* </MDBModalFooter> */}
-            </MDBModal>
+            {/* </MDBModal> */}
           {/* </MDBContainer> */}
 
           <div className="flatcard-description">
-            <p>Сдаю 3-х комнатную квартиру.</p>
+            <p>{title}</p>
             <div className="flatcard-description-currency">
               <div className="flatcard-description-som">
-                <p>18000</p><p>с</p>
+                <p>{cost}</p><p>с</p>
               </div>
               <div className="flatcard-description-dollar">
-                <p>250</p><p>$</p>
+                <p>{Math.floor(cost / 77.8)}</p><p>$</p>
               </div>
             </div>
           </div>
@@ -122,44 +166,38 @@ export default class FlatCardUser extends Component {
             <div className="flatcard-details">
               <p id="flatcard-details-title">Детали:</p>
               <div className="flatcard-details-p">
-                <p>Комнат: 3</p>
-                <p>Этаж: 3</p>
-                <p>Этажность дома: 3</p>
-                <p>Тип ремонта: Евро</p>
-                <p>Мебелирована: Да</p>
-                <p>Общая площадь: 117м2</p>
-                <p>Тип строения: кирпичное</p>
-                <p>Планировка: раздельная</p>
+                <p>Комнат: {rooms}</p>
+                <p>Улица: {street}</p>
+                <p>Срок аренды: {rentTime}</p>
               </div>
             </div>
 
             <div className="flatcard-instock-and-near">
               <div className="flatcard-instock">
                 <p id="flatcard-instock-title">В наличии:</p>
-                <div className="flatcard-instock-p">
-                  <p>Интернет</p>
-                  <p>Телефон</p>
-                  <p>Холодильник</p>
-                  <p>Кухня</p>
-                  <p>Телевизор</p>
-                  <p>Балкон</p>
-                  <p>Стиральная машина</p>
-                  <p>Кондиционер</p>
-                </div>
+                {facilities && <div className="flatcard-instock-p">
+                {facilities.internet ? <p>Интернет</p> : null}
+                  {facilities.phone ? <p>Телефон</p> : null}
+                  {facilities.refrigerator ? <p>Холодильник</p> : null}
+                  {facilities.kitchen ? <p>Кухня</p> : null}
+                  {facilities.tv ? <p>Телевизор</p> : null}
+                  {facilities.balcony ? <p>Балкон</p> : null}
+                  {facilities.washer ? <p>Стиральная машина</p> : null}
+                  {facilities.airConditioning ? <p>Кондиционер</p> : null}
+                </div>}
               </div>
 
               <div className="flatcard-near">
                 <p id="flatcard-near-title">Рядом есть:</p>
-                <div className="flatcard-near-p">
-                  <p>Рестораны, кафе</p>
-                  <p>Детский сад</p>
-                  <p>Стоянка</p>
-                  <p>Остановки</p>
-                  <p>Супермаркет</p>
-                  <p>Парк</p>
-                  <p>Зелёная зона</p>
-                  <p>Больница</p>
-                </div>
+                {infrastructure && <div className="flatcard-near-p">
+                  {infrastructure.cafe ? <p>Рестораны, кафе</p> : null}
+                  {infrastructure.kindergarten ? <p>Детский сад</p> : null}
+                  {infrastructure.parking ? <p>Стоянка</p> : null}
+                  {infrastructure.busStop ? <p>Остановки</p> : null}
+                  {infrastructure.supermarket ? <p>Супермаркет</p> : null}
+                  {infrastructure.park ? <p>Парк</p> : null}
+                  {infrastructure.hospital ? <p>Больница</p> : null}
+                </div>}
               </div>
             </div>
             
@@ -167,16 +205,7 @@ export default class FlatCardUser extends Component {
             <div className="flatcard-about">
               <p id="flatcard-about-title">Описание:</p>
               <div className="flatcard-about-pos-p">
-                <p id="flatcard-about-description">В Новом Роскошном Жилом Комплексе!!! <br></br> Продается 2-комнатная квартира с общей площадью 70 м2.</p>
-                <p>Преимущества Ж.К:</p>
-                <div className="flatcard-about-p">
-                  <p>- Качественная Российская входная - металлическая дверь;</p>
-                  <p>- Пластиковые рамы imzo premium;</p>
-                  <p>- Счётчики;</p>
-                  <p>- Видео наблюдение 24/7</p>
-                  <p>- Детские площадки во дворе Ж.К</p>
-                  <p>- Охраняемая территория</p>
-                </div>
+                <p id="flatcard-about-description">{description}</p>
               </div>
             </div>
 
@@ -207,7 +236,7 @@ export default class FlatCardUser extends Component {
 
             <div className="flatcard-map">
               <p id="flatcard-map-description">Расположение на карте: </p>
-              <MapContainer />
+              <MapFlatCard />
             </div>
           </div>
 
@@ -218,3 +247,18 @@ export default class FlatCardUser extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return { 
+    data: state.getData.data,
+    rentalById: state.getRentalById.rentalById
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FlatCardUser);

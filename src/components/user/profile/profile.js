@@ -18,14 +18,14 @@ class Profile extends Component {
     this.props.getUserRentals();
   }
 
-  handleDeleteUser(id) {
-    return (e) => this.props.deleteUser(id);
-  }
+  // handleDeleteUser(id) {
+  //   return (e) => this.props.deleteUser(id);
+  // }
 
   render() {
     const { user, users } = this.props;
     let rentals = this.props.rentals;
-    console.log(rentals);
+    // console.log(rentals);
     return (
       <>
         <Header />
@@ -130,8 +130,8 @@ class Profile extends Component {
                       <Link to="/mapfilter">
                         <span id="user-ads-maplink">На карте</span>
                       </Link>
-                      <Link to="/user/flatcard">
-                        <span>Подробнее</span>
+                      <Link to={`/user/flatcard/${elem.rentalID}`}>
+                        <span>Изменить</span>
                       </Link>
                     </div>
                   </div>
@@ -179,7 +179,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getUsers: userActions.getAll,
-  deleteUser: userActions.delete,
+  // deleteUser: userActions.delete,
   getUserRentals: userActions.getUserRentals
 }
 

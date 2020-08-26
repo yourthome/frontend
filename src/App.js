@@ -35,7 +35,7 @@ function App() {
           component = {Filter}
         />
         <Route
-          path = "/user/flatcard"
+          path = {"/user/flatcard/:id"}
           component = {FlatCardUser}
         />
         <Route

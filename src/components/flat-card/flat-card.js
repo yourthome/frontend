@@ -23,7 +23,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
 
-import MapContainer from '../map/map';
 import MapFlatCard from './map-flat-card';
 
 import Header from '../header/header';
@@ -42,7 +41,11 @@ import home6 from '../../content/images/flat-card/home6.png';
 import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 
-import { getRentalById, fetchData }  from '../../redux/actions/actions'
+import { fetchData }  from '../../redux/actions/actions'
+import Axios from 'axios';
+
+import {Carousel} from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 class FlatCard extends Component {
   constructor(props) {
@@ -53,62 +56,22 @@ class FlatCard extends Component {
       modal: false,
       isModalOpen: false,
       isRegistrationOpen: false,
-
-      rental: {
-        title: '',
-        region: '',
-        street: "string",
-        rooms: '',
-        cost: '',
-        floor: '0',
-        propertyType: '',
-        rentTime: 0,
-        description: "",
-        latitude: 0,
-        longitude: 0,
-        facilities: {
-            internet: false,
-            phone: false,
-            refrigerator: false,
-            kitchen: false,
-            tv: false,
-            balcony: false,
-            washer: false,
-            airConditioning: false
-        },
-        infrastructure: {
-            cafe: false,
-            kindergarten: false,
-            parking: false,
-            busStop: false,
-            supermarket: false,
-            park: false,
-            hospital: false
-        },
-        photos: ''
-      }
-
+      rental: '',
     }
+  }
+
+  getRentalById = (id) => {
+    Axios.get(`https://yourthometest.herokuapp.com/rentals/${id}`)
+    .then(res => {
+      this.setState({
+        rental: res.data
+      })
+    })
   }
 
   componentDidMount() {
     this.props.serverData();
-    this.props.getRentalById(this.props.match.params.id);
-    
-    // console.log(this.props);
-    console.log(this.props.match.params.id);
-    console.log(this.props.data);
-  }
-
-  handleData = (elem) => {
-    const [rental] = this.state
-    this.setState({
-      rental: ({
-        ...rental,
-        title: elem.title
-      })
-    })
-    console.log(this.state.rental)
+    this.getRentalById(this.props.match.params.id);
   }
 
   toggle = () => {
@@ -145,11 +108,8 @@ class FlatCard extends Component {
       autoplaySpeed: 2000,
     };
 
-    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title } = this.props.data;
-    console.log(this.props.data)
-    const { id } = this.props.match.params;
-    console.log(id);
-    this.props.data.filter((elem) => (elem.rentalID === this.props.match.params.id ? this.handleData(elem) : null ))
+    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos } = this.state.rental;
+    console.log(photos);
 
     return (
       <>
@@ -167,7 +127,9 @@ class FlatCard extends Component {
           }  
         <section className="flatcard-container">
           
-          <div className="flatcard-images">
+        {/* { photos && <img id="slider-image" src={photos[0].path} alt="flatcard-image1"></img>}  */}
+
+          {/* <div className="flatcard-images">
             <img id="flatcard-images-main" src={home2} alt="flatcard-image1"></img>
             <div className="flatcard-images-secondary">
               <img src={home3} alt="flatcard-image2"></img>
@@ -175,13 +137,38 @@ class FlatCard extends Component {
               <img src={home1} alt="flatcard-image4"></img>
               <img id="darken-image" src={home6} alt="flatcard-image5"></img>
             </div>
-          </div>         
+          </div>         */}
+
+          {/* <div className=''> */}
+            <Carousel
+              autoPlay
+              showIndicators={false}
+              infiniteLoop={true}
+              width={`100%`}
+              swipeable={true}
+              className="slider-main"
+
+            >
+              {/* <img id="slider-image" src={home2} alt="flatcard-image1"></img>
+              <img id="slider-image" src={home3} alt="flatcard-image2"></img>
+              <img id="slider-image" src={home5} alt="flatcard-image3"></img>
+              <img id="slider-image" src={home1} alt="flatcard-image4"></img>
+              <img id="slider-image" src={home6} alt="flatcard-image5"></img> */}
+              {photos && photos.map(item => {
+                return item ?
+                  <div className='' key={item}>
+                    <img id="slider-image" src={`${item.path}`} alt="flatcard-images"/>
+                  </div>
+                : null
+              })}
+            </Carousel>
+          {/* </div>  */}
 
           {/* <MDBContainer> */}
-            <MDBBtn className="mdbbtn" onClick={this.toggle}>Еще+</MDBBtn>
-            <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
+            {/* <MDBBtn className="mdbbtn" onClick={this.toggle}>Еще+</MDBBtn> */}
+            {/* <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg"> */}
               {/* <MDBModalHeader toggle={this.toggle}>Изображения</MDBModalHeader> */}
-              <MDBModalBody>
+              {/* <MDBModalBody>
                 <div>
                   <div>
                     <Slider {...slickSettings}>
@@ -193,16 +180,16 @@ class FlatCard extends Component {
                     </Slider>
                   </div>
                 </div>
-              </MDBModalBody>
+              </MDBModalBody> */}
               {/* <MDBModalFooter> */}
                 {/* <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn> */}
                 {/* <MDBBtn color="primary">Save changes</MDBBtn> */}
               {/* </MDBModalFooter> */}
-            </MDBModal>
+            {/* </MDBModal> */}
           {/* </MDBContainer> */}
 
           <div className="flatcard-description">
-            <p>{title} </p>
+            <p>{title}</p>
             <div className="flatcard-description-currency">
               <div className="flatcard-description-som">
                 <p>{cost}</p><p>с</p>
@@ -234,29 +221,29 @@ class FlatCard extends Component {
             <div className="flatcard-instock-and-near">
               <div className="flatcard-instock">
                 <p id="flatcard-instock-title">В наличии:</p>
-                <div className="flatcard-instock-p">
-                  {/* {facilities.internet ? <p>Интернет</p> : null}
+                {facilities && <div className="flatcard-instock-p">
+                  {facilities.internet ? <p>Интернет</p> : null}
                   {facilities.phone ? <p>Телефон</p> : null}
                   {facilities.refrigerator ? <p>Холодильник</p> : null}
                   {facilities.kitchen ? <p>Кухня</p> : null}
                   {facilities.tv ? <p>Телевизор</p> : null}
                   {facilities.balcony ? <p>Балкон</p> : null}
                   {facilities.washer ? <p>Стиральная машина</p> : null}
-                  {facilities.airConditioning ? <p>Кондиционер</p> : null} */}
-                </div>
+                  {facilities.airConditioning ? <p>Кондиционер</p> : null}
+                </div>}
               </div>
 
               <div className="flatcard-near">
                 <p id="flatcard-near-title">Рядом есть:</p>
-                <div className="flatcard-near-p">
-                  {/* {infrastructure.cafe ? <p>Рестораны, кафе</p> : null}
+                {infrastructure && <div className="flatcard-near-p">
+                  {infrastructure.cafe ? <p>Рестораны, кафе</p> : null}
                   {infrastructure.kindergarten ? <p>Детский сад</p> : null}
                   {infrastructure.parking ? <p>Стоянка</p> : null}
                   {infrastructure.busStop ? <p>Остановки</p> : null}
                   {infrastructure.supermarket ? <p>Супермаркет</p> : null}
                   {infrastructure.park ? <p>Парк</p> : null}
-                  {infrastructure.hospital ? <p>Больница</p> : null} */}
-                </div>
+                  {infrastructure.hospital ? <p>Больница</p> : null}
+                </div>}
               </div>
             </div>
             
@@ -295,7 +282,7 @@ class FlatCard extends Component {
 
             <div className="flatcard-map">
               <p id="flatcard-map-description">Расположение на карте: </p>
-              <MapFlatCard />
+              <MapFlatCard lati={this.state.rental.latitude} longi={this.state.rental.longitude} markerId={this.state.rental.rentalById} />
             </div>
           </div>
 
@@ -318,7 +305,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     CardId: (rentalID) => dispatch(getCardId(rentalID)),
     serverData: () => dispatch(fetchData()),
-    getRentalById: (id) => getRentalById(id)
   }
 }
 

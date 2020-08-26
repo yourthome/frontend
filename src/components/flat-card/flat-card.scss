@@ -9,6 +9,33 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.carousel-root {
+  padding: 0 125px;
+  border-radius: 15px;
+}
+
+.slider_main {
+  // width: 100%;
+  li.slide.selected img {
+    // width: 100% !important;
+    height: 400px !important;
+  }
+}
+
+.carousel {
+  height: auto !important;
+}
+
+.carousel.carousel-slider {
+  height: auto !important;
+  border-radius: 15px !important;
+}
+
+
+.slider-wrapper {
+  height: 400px !important;
+}
+
 
 /* FlatCard component */
 .flatcard-container {
@@ -40,7 +67,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    // flex-direction: column;
 		img {
 			margin: 0 0 20px 20px;
 			border-radius: 5px;
@@ -50,7 +76,6 @@ body {
 	.modal-body {
 		padding: 0 0 20px 0;
 		background-color: #feca15;
-		// border: 1px solid #feca15;
 		border-radius: 5px;
 		img {
 			width: 200%;
@@ -58,6 +83,8 @@ body {
   }
   #slider-image {
     border-radius: 5px;
+    width: 100%;
+    height: auto;
   }
 	.modal-content {
 		// border: 1px solid #feca15;
@@ -86,7 +113,7 @@ body {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
-		padding: 0 50px;
+		padding: 0 100px;
 		margin-top: 80px;
 		font-weight: 600;
 		line-height: 61px;

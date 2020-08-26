@@ -9,6 +9,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.carousel-root {
+  padding: 0 125px;
+  border-radius: 15px;
+}
+
+.slider_main li.slide.selected img {
+  height: 400px !important;
+}
+
+.carousel {
+  height: auto !important;
+}
+
+.carousel.carousel-slider {
+  height: auto !important;
+  border-radius: 15px !important;
+}
+
+.slider-wrapper {
+  height: 400px !important;
+}
+
 /* FlatCard component */
 .flatcard-container {
   width: 100%;
@@ -53,6 +75,8 @@ body {
 }
 .flatcard-container #slider-image {
   border-radius: 5px;
+  width: 100%;
+  height: auto;
 }
 .flatcard-container .modal-content {
   border-radius: 5px;
@@ -79,7 +103,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 0 50px;
+  padding: 0 100px;
   margin-top: 80px;
   font-weight: 600;
   line-height: 61px;
@@ -132,8 +156,7 @@ body {
   align-items: flex-start;
   flex-direction: column;
   flex-wrap: wrap;
-  /* height: 350px; */
-  height: 50px;
+  height: 350px;
   padding-left: 25px;
 }
 .flatcard-container .flatcard-info .flatcard-details-p p {
