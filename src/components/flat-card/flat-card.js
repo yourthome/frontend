@@ -94,6 +94,7 @@ class FlatCard extends Component {
   componentDidMount() {
     this.props.serverData();
     this.props.getRentalById(this.props.match.params.id);
+    
     // console.log(this.props);
     console.log(this.props.match.params.id);
     console.log(this.props.data);

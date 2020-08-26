@@ -23,6 +23,7 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSub
             reader.onload = () => {
                 if(reader.readyState === 2){
                     setImage({image: reader.result})
+                    console.log(image);
                 }
             }
             reader.readAsDataURL(e.target.files[0])
@@ -116,7 +117,6 @@ export function FifthAddRental({nextStep, prevStep, photos, setPhotos, handleSub
                     return true
                 }
             })
-            console.log(file);
             handleSubmit(file);
         }
 
