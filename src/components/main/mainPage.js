@@ -14,8 +14,8 @@ import { getCardId } from '../../redux/actions/actions';
 import { setSearchVal } from '../../redux/actions/actions'
 import { getRentalID } from '../../redux/actions/actions';
 import { getRentalById } from '../../redux/actions/actions'
+import noPhoto from '../../content/images/main/no_photo.jpg'
 
-import adsImg from '../../content/images/main/ads-card.jpg'
 
 import { history } from '../../redux/auth_redux/_helpers'
 import { alertActions } from '../../redux/auth_redux/_actions/';
@@ -130,7 +130,7 @@ class MainPage extends Component {
                 return(elem.photos &&
                   <Link key={elem.rentalID} to={`/flatcard/${elem.rentalID}`}>             
                     <div className="ads__block">
-                      <img src={elem.photos[0].path} alt="img"/>
+                      <img src={elem.photos[0] == undefined ? noPhoto : elem.photos[0].path} alt="img"/>
                       <div className="ads__block__info">
                       <span>{elem.title}</span>
                       <div className="appear__onhover_info">
