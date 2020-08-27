@@ -102,10 +102,7 @@ function postNewRentalService(rental){
     };
 
     return fetch(`https://yourthometest.herokuapp.com/Rentals
-    `, requestOptions).then(res => {
-        if(res.ok){
-            
-    }});
+    `, requestOptions).then(handleResponse)
 
 }
 

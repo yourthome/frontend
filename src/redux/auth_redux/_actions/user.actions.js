@@ -147,7 +147,6 @@ function postNewRental(rental){
             .then(
                 rental => { 
                     dispatch(success());
-                    history.push('/');
                 },
                 error => {
                     dispatch(failure(error));

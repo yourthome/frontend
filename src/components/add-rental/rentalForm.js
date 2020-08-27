@@ -28,14 +28,14 @@ class RentalForm extends React.Component{
             latitude: 0,
             longitude: 0,
             facilities: {
-                internet: false,
-                phone: false,
                 refrigerator: false,
                 kitchen: false,
                 tv: false,
                 balcony: false,
+                phone: false,
                 washer: false,
-                airConditioning: false
+                airConditioning: false,
+                internet: false,
             },
             infrastructure: {
                 cafe: false,
@@ -51,11 +51,6 @@ class RentalForm extends React.Component{
         step: 1
         }
     }
-
-    // mapStateToForm = () =>{
-    //     const { rental } = this.state;
-    //     rental = new FormData();
-    // }
 
     toggleFacilitiesInternet = () => {
         const { facilities } = this.state.rental;
@@ -286,7 +281,8 @@ class RentalForm extends React.Component{
         formData.append('photos', arr[5]);
         formData.append('photos', arr[6]);
         formData.append('photos', arr[7]);
-        // this.props.postNewRental(formData);
+        console.log(formData.get('facilities'))
+        this.props.postNewRental(formData);
       }
 
     setPhotos = (file) => {
@@ -374,7 +370,7 @@ class RentalForm extends React.Component{
         const values = { rooms, description, cost, title, floor, region };
         const { facilities, infrastructure } = this.state.rental;
         const { propertyType } = this.state.rental;
-
+        console.log(facilities)
         switch(step){
             case 1:
                 return(
