@@ -264,6 +264,7 @@ class RentalForm extends React.Component{
     handleSubmit = (arr) => {
         // event.preventDefault();
         let formData = new FormData();
+        console.log(this.state.rental.infrastructure);
         formData.append('title', this.state.rental.title);
         formData.append('region', this.state.rental.region);
         formData.append('street', this.state.rental.street);
@@ -285,7 +286,7 @@ class RentalForm extends React.Component{
         formData.append('photos', arr[5]);
         formData.append('photos', arr[6]);
         formData.append('photos', arr[7]);
-        this.props.postNewRental(formData);
+        // this.props.postNewRental(formData);
       }
 
     setPhotos = (file) => {
