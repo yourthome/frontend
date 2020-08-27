@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Header from '../header/header';
 import './filter.css';
 import { Link } from 'react-router-dom';
@@ -6,12 +6,11 @@ import filterImg from '../../content/images/filter/home3.jpg';
 import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 import { connect } from 'react-redux';
-import {setFilterItems, getFilterData} from '../../redux/actions/actions';
-import {Loader} from '../loader/loader';
+import { setFilterItems, getFilterData } from '../../redux/actions/actions';
+import { Loader } from '../loader/loader';
 import { getCardId } from '../../redux/actions/actions';
 import { setSearchVal } from '../../redux/actions/actions';
 import Select from 'react-select';
-
 
 
 export class Filter extends Component {
@@ -214,7 +213,7 @@ export class Filter extends Component {
         this.props.app.loading ? <Loader /> :
         this.props.data.map(elem => {
           return(
-            <Link onClick={() => this.props.CardId(elem.rentalID)} to="/flatcard">               
+            <Link onClick={() => this.props.CardId(elem.rentalID)} to={`/flatcard/${elem.rentalID}`}>               
               <div className="ads__block">
                 <img src={filterImg} alt="img"/>
                 <div className="ads__block__info">

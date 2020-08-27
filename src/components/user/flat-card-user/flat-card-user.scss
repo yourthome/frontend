@@ -70,7 +70,7 @@ body {
 		border-radius: 15px;
 		background-color: transparent;
 		position: absolute !important;
-  }
+  	}
 	.btn-default {
     background: transparent !important;
     &:hover {
@@ -83,8 +83,9 @@ body {
   }
   
 	.flatcard-description {
+		width: 50%;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		justify-content: space-around;
 		padding: 0 50px;
 		margin-top: 80px;
@@ -93,25 +94,25 @@ body {
 		p {
 			font-size: 40px;
 		}
-  }
+  	}
   
 	.flatcard-description-currency {
 		display: flex;
 		flex-direction: row;
-  }
+  	}
   
 	.flatcard-description-som {
 		display: flex;
 		flex-direction: row;
 		padding-right: 25px;
-		border-right: 5px solid #C4C4C4;
+		// border-right: 5px solid #C4C4C4;
 		p {
 			color: #264989;
 			&:last-child {
 				color: #feca15;
 			}
 		}
-  }
+  	}
   
 	.flatcard-description-dollar {
 		display: flex;
@@ -123,7 +124,7 @@ body {
 				color: #feca15;
 			}
 		}
-  }
+  	}
   
 	.flatcard-info {
 		display: flex;
@@ -142,7 +143,7 @@ body {
 			align-items: flex-start;
 			flex-direction: column;
 			flex-wrap: wrap;
-			height: 350px;
+			height: auto;
 			padding-left: 25px;
 			p {
 				margin-top: 20px;

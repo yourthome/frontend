@@ -109,7 +109,7 @@ class FlatCard extends Component {
     };
 
     const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos } = this.state.rental;
-    console.log(photos);
+    // console.log(photos);
 
     return (
       <>
@@ -126,20 +126,8 @@ class FlatCard extends Component {
             </Registration>
           }  
         <section className="flatcard-container">
-          
-        {/* { photos && <img id="slider-image" src={photos[0].path} alt="flatcard-image1"></img>}  */}
 
-          {/* <div className="flatcard-images">
-            <img id="flatcard-images-main" src={home2} alt="flatcard-image1"></img>
-            <div className="flatcard-images-secondary">
-              <img src={home3} alt="flatcard-image2"></img>
-              <img src={home5} alt="flatcard-image3"></img>
-              <img src={home1} alt="flatcard-image4"></img>
-              <img id="darken-image" src={home6} alt="flatcard-image5"></img>
-            </div>
-          </div>         */}
-
-          {/* <div className=''> */}
+          <div className='first-info'>
             <Carousel
               autoPlay
               showIndicators={false}
@@ -147,13 +135,7 @@ class FlatCard extends Component {
               width={`100%`}
               swipeable={true}
               className="slider-main"
-
             >
-              {/* <img id="slider-image" src={home2} alt="flatcard-image1"></img>
-              <img id="slider-image" src={home3} alt="flatcard-image2"></img>
-              <img id="slider-image" src={home5} alt="flatcard-image3"></img>
-              <img id="slider-image" src={home1} alt="flatcard-image4"></img>
-              <img id="slider-image" src={home6} alt="flatcard-image5"></img> */}
               {photos && photos.map(item => {
                 return item ?
                   <div className='' key={item}>
@@ -162,43 +144,71 @@ class FlatCard extends Component {
                 : null
               })}
             </Carousel>
-          {/* </div>  */}
+          
 
           {/* <MDBContainer> */}
-            {/* <MDBBtn className="mdbbtn" onClick={this.toggle}>Еще+</MDBBtn> */}
-            {/* <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg"> */}
+            <MDBBtn className="mdbbtn" onClick={this.toggle}><i class="fas fa-search"></i></MDBBtn>
+            <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
               {/* <MDBModalHeader toggle={this.toggle}>Изображения</MDBModalHeader> */}
-              {/* <MDBModalBody>
+              <MDBModalBody>
                 <div>
                   <div>
                     <Slider {...slickSettings}>
-                      <img id="slider-image" src={home2} alt="flatcard-image1"></img>
-                      <img id="slider-image" src={home3} alt="flatcard-image2"></img>
-                      <img id="slider-image" src={home5} alt="flatcard-image3"></img>
-                      <img id="slider-image" src={home1} alt="flatcard-image4"></img>
-                      <img id="slider-image" src={home6} alt="flatcard-image5"></img>
+                    {photos && photos.map(item => {
+                      return item ?
+                        <div className='' key={item}>
+                          <img id="slick-slider-image" src={`${item.path}`} alt="flatcard-images"/>
+                        </div>
+                      : null
+                    })}
                     </Slider>
                   </div>
                 </div>
-              </MDBModalBody> */}
-              {/* <MDBModalFooter> */}
-                {/* <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn> */}
-                {/* <MDBBtn color="primary">Save changes</MDBBtn> */}
-              {/* </MDBModalFooter> */}
-            {/* </MDBModal> */}
-          {/* </MDBContainer> */}
+              </MDBModalBody>
+            </MDBModal>
 
-          <div className="flatcard-description">
-            <p>{title}</p>
-            <div className="flatcard-description-currency">
-              <div className="flatcard-description-som">
-                <p>{cost}</p><p>с</p>
+            <div className="first-info-right">
+              <div className="flatcard-description">
+                <p>{title}</p>
+                <div className="flatcard-description-currency">
+                  <div className="flatcard-description-som">
+                    <p>{cost}</p><p>с</p>
+                  </div>
+                  <p style={{color: '#feca15', fontSize: "25px"}}>|</p>
+                  <div className="flatcard-description-dollar">
+                    <p>{Math.floor(cost / 77.8)}</p><p>$</p>
+                  </div>
+                </div>
               </div>
-              <div className="flatcard-description-dollar">
-                <p>{Math.floor(cost / 77.8)}</p><p>$</p>
-              </div>
+
+              <div className="flatcard-datepicker">
+              <p>Забронированные дни: </p>
+              <DateRangePicker
+                // customInputIcon={<TestCustomInputIcon />}
+                // customArrowIcon={<TestCustomArrowIcon />}
+                // customCloseIcon={<TestCustomCloseIcon />}
+                showClearDates
+                showDefaultInputIcon
+                withPortal
+                // autoFocusEndDate 
+                  startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                  endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                  onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                  focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                  onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                  // isDayBlocked={isDayBlocked} 
+                  // isDayHighlighted={isDayHighlighted}
+                  // renderCalendarDay={renderCalendarDay}
+                  // minimumNights={3} 
+                  autoFocus keepOpenOnDateSelect hideKeyboardShortcutsPanel
+              />
             </div>
-          </div>
+              
+            </div>
+
+          </div> 
 
           <div className="flatcard-info">
             
@@ -255,34 +265,11 @@ class FlatCard extends Component {
               </div>
             </div>
 
-            <div className="flatcard-datepicker">
-              <p>Забронированные дни: </p>
-              <DateRangePicker
-              // customInputIcon={<TestCustomInputIcon />}
-              // customArrowIcon={<TestCustomArrowIcon />}
-              // customCloseIcon={<TestCustomCloseIcon />}
-              showClearDates
-              showDefaultInputIcon
-              withPortal
-              // autoFocusEndDate 
-                startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                // isDayBlocked={isDayBlocked} 
-                // isDayHighlighted={isDayHighlighted}
-                // renderCalendarDay={renderCalendarDay}
-                // minimumNights={3} 
-                autoFocus keepOpenOnDateSelect hideKeyboardShortcutsPanel
-              />
-            </div>
+            
 
             <div className="flatcard-map">
               <p id="flatcard-map-description">Расположение на карте: </p>
-              <MapFlatCard lati={this.state.rental.latitude} longi={this.state.rental.longitude} markerId={this.state.rental.rentalById} />
+              <MapFlatCard latitude={this.state.rental.latitude} longitude={this.state.rental.longitude} markerId={this.state.rental.rentalById} />
             </div>
           </div>
 

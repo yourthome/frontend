@@ -15,21 +15,17 @@ class MapFlatCard extends Component {
   }
 
   render() {
-    const latitude = this.props.lati;
-    console.log(latitude)
-    const longitude = this.props.longi;
-    console.log(longitude)
     return(
       <Map
         className="map-component"
         google={this.props.google}
-        zoom={14}
-        initialCenter={{ lat: 42.867695, lng: 74.610897 }}
+        zoom={18}
+        center={{ lat: this.props.latitude, lng: this.props.longitude }}
       >
         <Marker id={this.props.markerId} key={this.props.markerId} position={{
-            lat: this.props.lati,
-            lng: this.props.longi
-          }}
+          lat: this.props.latitude,
+          lng: this.props.longitude
+        }}
           onClick={this.onMarkerClick}
         />
       </Map>

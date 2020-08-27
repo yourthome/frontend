@@ -9,32 +9,70 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.carousel-root {
-  padding: 0 125px;
-  border-radius: 15px;
+
+.first-info {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
 }
 
+.first-info-right {
+  width: 40% !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.flatcard-datepicker {
+  width: 100%;
+  padding: 20px 0 0 75px;
+  p {
+    color: #FECA15;
+    font-weight: 500;
+    // margin: 60px 0;
+  }
+  .CalendarMonth .CalendarMonth_1 table {
+    margin-top: 15px !important;
+  }
+  .DayPicker_weekHeader_ul .DayPicker_weekHeader_ul_1 ul > li {
+    margin: 0 8px !important;
+  }
+}
+
+
+.carousel-root {
+  width: 60% !important;
+  padding-left: 125px;
+  border-radius: 10px;
+}
 .slider_main {
-  // width: 100%;
+  width: 60% !important;
   li.slide.selected img {
     // width: 100% !important;
     height: 400px !important;
   }
 }
-
 .carousel {
+  width: 100% !important;
   height: auto !important;
 }
-
 .carousel.carousel-slider {
+  width: 100% !important;
   height: auto !important;
   border-radius: 15px !important;
 }
-
-
-.slider-wrapper {
-  height: 400px !important;
+.carousel ul {
+  width: 100%;
+  height: 100% !important;
+  justify-content: left !important;
+  li {
+    width: 100px !important;
+  }
 }
+.carousel .thumbs-wrapper {
+  margin: 20px 0 !important;
+}
+
 
 
 /* FlatCard component */
@@ -81,7 +119,7 @@ body {
 			width: 200%;
 		}
   }
-  #slider-image {
+  #slick-slider-image {
     border-radius: 5px;
     width: 100%;
     height: auto;
@@ -91,17 +129,27 @@ body {
 		border-radius: 5px;
   }
 	.mdbbtn {
-		transform: translate(1065%, -385%);
-		border: 3px solid #FFFFFF;
+		// transform: translate(1425%, 50%);
+    // border: 3px solid #FFFFFF;
+    top: 4%;
+    right: 42%;
+    border: none !important;
+    outline: none;
+    box-shadow: none;
 		box-sizing: border-box;
 		border-radius: 15px;
 		background-color: transparent;
-		position: absolute !important;
+    position: absolute !important;
+    padding: 5px 10px;
+    i {
+      font-size: 30px;
+      color: #ffffff
+    }
   }
 	.btn-default {
     background: transparent !important;
     &:hover {
-      background: rgb(0, 0, 0) !important;
+      // background: rgb(0, 0, 0) !important;
       transition: .3s ease-out;
     }
   }
@@ -110,15 +158,16 @@ body {
   }
   
 	.flatcard-description {
+    width: 100%;
 		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
-		padding: 0 100px;
-		margin-top: 80px;
+		flex-direction: column;
+		justify-content: start;
+		padding: 10px 0 0 75px;
+		// margin-top: 80px;
 		font-weight: 600;
 		line-height: 61px;
 		p {
-			font-size: 40px;
+			font-size: 35px;
 		}
   }
   
@@ -131,9 +180,10 @@ body {
 		display: flex;
 		flex-direction: row;
 		padding-right: 25px;
-		border-right: 5px solid #C4C4C4;
+		// border-right: 5px solid #C4C4C4;
 		p {
-			color: #264989;
+      color: #264989;
+      font-size: 25px;
 			&:last-child {
 				color: #feca15;
 			}
@@ -145,7 +195,8 @@ body {
 		flex-direction: row;
 		padding-left: 25px;
 		p {
-			color: #264989;
+      color: #264989;
+      font-size: 25px;
 			&:last-child {
 				color: #feca15;
 			}
@@ -155,13 +206,14 @@ body {
 	.flatcard-info {
 		display: flex;
 		flex-direction: column;
-		margin-top: 50px;
+		margin-top: 20px;
 		.flatcard-details {
 			width: 100%;
 			padding: 0 125px;
 			#flatcard-details-title {
 				text-align: start;
-				color: #FECA15;
+        color: #FECA15;
+        font-weight: 500;
 			}
 		}
 		.flatcard-details-p {
@@ -169,7 +221,7 @@ body {
 			align-items: flex-start;
 			flex-direction: column;
 			flex-wrap: wrap;
-			height: 350px;
+			height: auto;
 			padding-left: 25px;
 			p {
 				margin-top: 20px;
@@ -183,7 +235,8 @@ body {
 				padding: 0 125px;
 				#flatcard-instock-title {
 					text-align: start;
-					color: #FECA15;
+          color: #FECA15;
+          font-weight: 500;
 					margin-top: 50px;
 				}
 			}
@@ -201,7 +254,8 @@ body {
 				padding: 0 125px;
 				#flatcard-near-title {
 					text-align: start;
-					color: #FECA15;
+          color: #FECA15;
+          font-weight: 500;
 					margin-top: 50px;
 				}
 			}
@@ -221,7 +275,8 @@ body {
 			padding: 0 125px;
 			#flatcard-about-title {
 				text-align: start;
-				color: #FECA15;
+        color: #FECA15;
+        font-weight: 500;
 				margin-top: 50px;
 			}
 			.flatcard-about-pos-p {
@@ -240,25 +295,13 @@ body {
 				}
 			}
 		}
-		.flatcard-datepicker {
-			width: 100%;
-			padding: 0 125px;
-			p {
-				color: #FECA15;
-				margin: 60px 0;
-      }
-      // .CalendarMonth .CalendarMonth_1 table {
-      //   margin-top: 15px !important;
-      // }
-      // .DayPicker_weekHeader_ul .DayPicker_weekHeader_ul_1 ul > li {
-      //   margin: 0 8px !important;
-      // }
-    }
+		
 		.flatcard-map {
 			width: 100%;
 			padding: 0 125px;
 			#flatcard-map-description {
-				color: #FECA15;
+        color: #FECA15;
+        font-weight: 500;
 				margin: 60px 0;
 			}
 		}
