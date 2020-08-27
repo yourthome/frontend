@@ -46,6 +46,9 @@ import Axios from 'axios';
 
 import {Carousel} from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import noPhoto from '../../content/images/main/no_photo.jpg'
+
+import Geocode from "react-geocode";
 
 class FlatCard extends Component {
   constructor(props) {
@@ -139,13 +142,13 @@ class FlatCard extends Component {
               {photos && photos.map(item => {
                 return item ?
                   <div className='' key={item}>
-                    <img id="slider-image" src={`${item.path}`} alt="flatcard-images"/>
+                    <img id="slider-image" src={item === undefined ? noPhoto :`${item.path}`} alt="flatcard-images"/>
                   </div>
                 : null
               })}
             </Carousel>
           
-            <MDBBtn className="mdbbtn" onClick={this.toggle}><i class="fas fa-search"></i></MDBBtn>
+            <MDBBtn className="mdbbtn" onClick={this.toggle}><i className="fas fa-search"></i></MDBBtn>
             <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
               <MDBModalBody>
                 <div>

@@ -44,6 +44,13 @@ class LogIn extends Component {
     }
   }
 
+  pushIfLoggedIn = () => {
+    if(this.props.loggedIn) { 
+      this.props.history.replace(`/user`);
+    } 
+  }
+
+
   toggleShowPassword = () => {
     this.setState({ hidden: !this.state.hidden });
   }
@@ -51,8 +58,6 @@ class LogIn extends Component {
   render() {
     const { loggingIn, loggedIn } = this.props;
     const { username, password, submitted } = this.state;
-
-    // if(loggedIn) { return <Redirect to="/user" /> }
     
     return(
       <>
@@ -85,6 +90,7 @@ class LogIn extends Component {
                   }
                 </div>
 
+                {this.pushIfLoggedIn()}
                 <button id="login-button" type="submit">Войти</button>
                 {loggingIn &&
                   <i className="fa fa-spinner fa-spin"></i>

@@ -5,7 +5,7 @@ export function postNewRentalData(state = {}, action) {
     case userConstants.POST_NEW_RENTAL_REQUEST:
       return { posting: true };
     case userConstants.POST_NEW_RENTAL_SUCCESS:
-      return {};
+      return { posted: true };
     case userConstants.POST_NEW_RENTAL_FAILURE:
       return {};
     default:

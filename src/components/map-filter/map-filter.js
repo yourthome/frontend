@@ -182,7 +182,8 @@ class MapFilter extends Component {
 
 const mapStateToProps = state => {
   return {
-    filteredMapData: state.getMapFilterData.filteredMapData.filter(elem => elem.title.toLowerCase().includes(state.setSearchVal.search)),
+    filteredMapData: state.getMapFilterData.filteredMapData,
+    // .filter(elem => elem.title.toLowerCase().includes(state.setSearchVal.search)),
     searchVal: state.setSearchVal.search,
     mapData: state.getMapData.mapData.filter((card) => card.rentalID === state.getMarkerId.markerId).pop()
   }

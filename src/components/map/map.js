@@ -95,7 +95,7 @@ class MapContainer extends Component {
                     {/* <img id="map-infobox-img" src={photo} alt="map-infobox-img"></img> */}
                     {/* <Link className="map-infobox-description" to="/mapfilter">Сдаю 3-х комнатную квартиру.</Link> */}
                     <p id="map-infobox-title">{elem.title}</p>
-                    <p id="map-infobox-location">Бишкек, Горького/Советская</p>
+                    <p id="map-infobox-location">{elem.street}</p>
                     <p id="map-infobox-cost-soms">{elem.cost}сом</p>
                     <p id="map-infobox-cost-dollars">{Math.floor(elem.cost / 77.8)}$</p>
                     <p id="map-infobox-description">{elem.description}</p>

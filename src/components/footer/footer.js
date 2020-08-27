@@ -7,28 +7,32 @@ import instagram from '../../content/images/footer/instagram.svg';
 import whatsapp from '../../content/images/footer/whatsapp.svg';
 
 export default class Footer extends Component {
+
   render() {
     const { 
       toggleModal, 
       // toggleRentalForm 
-    } = this.props
+    } = this.props;
+
+    let user = JSON.parse(localStorage.getItem('user'));
+
     return (
       <footer className="footer">
         
         <div className="footer__icons">
           {/* <p>Следите за нами в:</p> */}
-          {/* <Link to="/"> */}
-            {/* <Facebook width="40px"/> */}
-            {/* <img className="footer__logo" src={facebook} alt="facebook logo"/> */}
-          {/* </Link> */}
-          {/* <Link to="/"> */}
-            {/* <Instagram width="40px"/> */}
-            {/* <img className="footer__logo" src={instagram} alt="instagram logo"/> */}
-          {/* </Link> */}
-          {/* <Link to="/"> */}
-            {/* <Whatsapp width="40px"/> */}
-            {/* <img className="footer__logo" src={whatsapp} alt="whatsapp logo"/> */}
-          {/* </Link> */}
+          {/* <Link to="/">
+            <Facebook width="40px"/>
+            <img className="footer__logo" src={facebook} alt="facebook logo"/>
+          </Link>
+          <Link to="/">
+            <Instagram width="40px"/>
+            <img className="footer__logo" src={instagram} alt="instagram logo"/>
+          </Link>
+          <Link to="/">
+            <Whatsapp width="40px"/>
+            <img className="footer__logo" src={whatsapp} alt="whatsapp logo"/>
+          </Link> */}
         </div>
 
         <div className="footer__group">
@@ -41,18 +45,21 @@ export default class Footer extends Component {
               <p>Фильтр</p>
             </Link>
 
-            <Link to='/' onClick={toggleModal}>
+            <Link to='/login'>
               <p>Войти</p>
             </Link>
 
-            <Link to='/'>
+            <Link to='/registration'>
               <p>Заявка</p>
             </Link>
           </div>
           <div className="footer-button">
-            <Link className="footer-button-link" to='/add-rental'>
-              <p>Подать объявление</p>
-            </Link>
+            {!user ? <Link className="footer-button-link" to='/registration'>
+                      <p>Подать объявление</p>
+                    </Link> 
+            : <Link className="footer-button-link" to='/add-rental'>
+                <p>Подать объявление</p>
+              </Link>}
           </div>
         </div>
 

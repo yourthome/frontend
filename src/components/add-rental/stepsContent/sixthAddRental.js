@@ -3,6 +3,7 @@ import { GoogleMap, Marker, useLoadScript, InfoWindow } from '@react-google-maps
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from '@reach/combobox'
 import "@reach/combobox/styles.css";
+import Geocode from "react-geocode";
 
 const containerStyle = {
   width: '800px',
@@ -15,12 +16,17 @@ const center = {
 const libraries = ["places"];
 
 
-export default function SixthAddRental({ prevStep, handleMarker, nextStep }, props) {
+export default function SixthAddRental({ prevStep, handleMarker, nextStep, toggleAddress }, props) {
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries
   })
+
+  Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+  Geocode.setLanguage("ru");
+  Geocode.setRegion("ky-KG");
+  Geocode.enableDebug();
 
   const [marker, setMarker] = useState({});
   const [selected, setSelected] = useState(null);
@@ -34,7 +40,27 @@ export default function SixthAddRental({ prevStep, handleMarker, nextStep }, pro
       lat: event.latLng.lat(),
       lng: event.latLng.lng()
     });
+    toggleAddress(event.latLng.lat(), event.latLng.lng())
   };
+
+  // const toggleAddress = () => {
+  //   Geocode.fromLatLng(this.state.rental.latitude, this.state.rental.longitude)
+  //   .then(
+  //     response => {
+  //       const address = response.results[0].formatted_address;
+  //       const { rental } = this.state
+  //       this.setState({
+  //         rental: ({
+  //           ...rental,
+  //           street: address
+  //         })
+  //       })
+  //     },
+  //     error => {
+  //       console.error(error);
+  //     }
+  //   );
+  // }
 
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
@@ -149,6 +175,7 @@ function Search({ panTo }) {
     } catch (error) {
       console.log("😱 Error: ", error);
     }
+    console.log(address)
   };
 
   return (

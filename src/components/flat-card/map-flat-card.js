@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+
 // import { compose } from 'redux';
 // import { connect } from 'react-redux';
 // import { fetchMapData } from '../../redux/actions/actions';

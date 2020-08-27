@@ -68,9 +68,15 @@ class Registration extends Component{
   toggleShowPassword = () => {
     this.setState({ hidden: !this.state.hidden });
   }
+
+  pushIfRegisteredIn = () => {
+    if(this.props.registered) { 
+      this.props.history.replace(`/login`);
+    } 
+  }
   
   render() {
-    const { registering  } = this.props;
+    const { registering, registered  } = this.props;
     const { user, submitted } = this.state;
     return(
       <>
@@ -145,6 +151,7 @@ class Registration extends Component{
                   }
                 </FormControl>
 
+                {this.pushIfRegisteredIn()}
                 <button type="submit">Отправить</button>
                 {registering && 
                   <i className="fa fa-spinner fa-spin"></i>
@@ -163,8 +170,8 @@ class Registration extends Component{
 }
 
 const mapStateToProps = state => {
-  const { registering } = state.registration;
-  return { registering }
+  const { registering, registered } = state.registration;
+  return { registering, registered }
 }
 
 const mapDispatchToProps = {
