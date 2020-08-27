@@ -165,24 +165,47 @@ class FlatCard extends Component {
                   </div>
                 </div>
               </MDBModalBody>
-              {/* <MDBModalFooter> */}
-                {/* <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn> */}
-                {/* <MDBBtn color="primary">Save changes</MDBBtn> */}
-              {/* </MDBModalFooter> */}
             </MDBModal>
-          {/* </MDBContainer> */}
 
-            <div className="flatcard-description">
-              <p>{title}</p>
-              <div className="flatcard-description-currency">
-                <div className="flatcard-description-som">
-                  <p>{cost}</p><p>с</p>
-                </div>
-                <p style={{color: '#feca15', fontSize: "25px"}}>|</p>
-                <div className="flatcard-description-dollar">
-                  <p>{Math.floor(cost / 77.8)}</p><p>$</p>
+            <div className="first-info-right">
+              <div className="flatcard-description">
+                <p>{title}</p>
+                <div className="flatcard-description-currency">
+                  <div className="flatcard-description-som">
+                    <p>{cost}</p><p>с</p>
+                  </div>
+                  <p style={{color: '#feca15', fontSize: "25px"}}>|</p>
+                  <div className="flatcard-description-dollar">
+                    <p>{Math.floor(cost / 77.8)}</p><p>$</p>
+                  </div>
                 </div>
               </div>
+
+              <div className="flatcard-datepicker">
+              <p>Забронированные дни: </p>
+              <DateRangePicker
+                // customInputIcon={<TestCustomInputIcon />}
+                // customArrowIcon={<TestCustomArrowIcon />}
+                // customCloseIcon={<TestCustomCloseIcon />}
+                showClearDates
+                showDefaultInputIcon
+                withPortal
+                // autoFocusEndDate 
+                  startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                  endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                  onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                  focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                  onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                  // isDayBlocked={isDayBlocked} 
+                  // isDayHighlighted={isDayHighlighted}
+                  // renderCalendarDay={renderCalendarDay}
+                  // minimumNights={3} 
+                  autoFocus keepOpenOnDateSelect hideKeyboardShortcutsPanel
+              />
+            </div>
+              
             </div>
 
           </div> 
@@ -242,30 +265,7 @@ class FlatCard extends Component {
               </div>
             </div>
 
-            <div className="flatcard-datepicker">
-              <p>Забронированные дни: </p>
-              <DateRangePicker
-              // customInputIcon={<TestCustomInputIcon />}
-              // customArrowIcon={<TestCustomArrowIcon />}
-              // customCloseIcon={<TestCustomCloseIcon />}
-              showClearDates
-              showDefaultInputIcon
-              withPortal
-              // autoFocusEndDate 
-                startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                // isDayBlocked={isDayBlocked} 
-                // isDayHighlighted={isDayHighlighted}
-                // renderCalendarDay={renderCalendarDay}
-                // minimumNights={3} 
-                autoFocus keepOpenOnDateSelect hideKeyboardShortcutsPanel
-              />
-            </div>
+            
 
             <div className="flatcard-map">
               <p id="flatcard-map-description">Расположение на карте: </p>

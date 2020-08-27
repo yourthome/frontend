@@ -22,10 +22,39 @@ body {
   position: relative;
 }
 
+.first-info-right {
+  width: 40% !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.flatcard-datepicker {
+  width: 100%;
+  padding: 20px 0 0 75px;
+}
+
+.flatcard-datepicker p {
+  color: #FECA15;
+  font-weight: 500;
+}
+
+.flatcard-datepicker .CalendarMonth .CalendarMonth_1 table {
+  margin-top: 15px !important;
+}
+
+.flatcard-datepicker .DayPicker_weekHeader_ul .DayPicker_weekHeader_ul_1 ul > li {
+  margin: 0 8px !important;
+}
+
 .carousel-root {
   width: 60% !important;
   padding-left: 125px;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .slider_main {
@@ -140,8 +169,8 @@ body {
 }
 
 .flatcard-container .mdbbtn {
-  -webkit-transform: translate(1425%, 50%);
-          transform: translate(1425%, 50%);
+  top: 4%;
+  right: 42%;
   border: none !important;
   outline: none;
   -webkit-box-shadow: none;
@@ -173,7 +202,7 @@ body {
 }
 
 .flatcard-container .flatcard-description {
-  width: 50%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -184,7 +213,7 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
-  padding: 0 100px;
+  padding: 10px 0 0 75px;
   font-weight: 600;
   line-height: 61px;
 }
@@ -251,7 +280,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .flatcard-container .flatcard-info .flatcard-details {
@@ -394,17 +423,6 @@ body {
 
 .flatcard-container .flatcard-info .flatcard-about .flatcard-about-pos-p-p p {
   margin-top: 15px;
-}
-
-.flatcard-container .flatcard-info .flatcard-datepicker {
-  width: 100%;
-  padding: 0 125px;
-}
-
-.flatcard-container .flatcard-info .flatcard-datepicker p {
-  color: #FECA15;
-  font-weight: 500;
-  margin: 60px 0;
 }
 
 .flatcard-container .flatcard-info .flatcard-map {

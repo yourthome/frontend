@@ -17,11 +17,33 @@ body {
   position: relative;
 }
 
+.first-info-right {
+  width: 40% !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.flatcard-datepicker {
+  width: 100%;
+  padding: 20px 0 0 75px;
+  p {
+    color: #FECA15;
+    font-weight: 500;
+    // margin: 60px 0;
+  }
+  .CalendarMonth .CalendarMonth_1 table {
+    margin-top: 15px !important;
+  }
+  .DayPicker_weekHeader_ul .DayPicker_weekHeader_ul_1 ul > li {
+    margin: 0 8px !important;
+  }
+}
+
 
 .carousel-root {
   width: 60% !important;
   padding-left: 125px;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .slider_main {
   width: 60% !important;
@@ -107,8 +129,10 @@ body {
 		border-radius: 5px;
   }
 	.mdbbtn {
-		transform: translate(1425%, 50%);
+		// transform: translate(1425%, 50%);
     // border: 3px solid #FFFFFF;
+    top: 4%;
+    right: 42%;
     border: none !important;
     outline: none;
     box-shadow: none;
@@ -134,11 +158,11 @@ body {
   }
   
 	.flatcard-description {
-    width: 50%;
+    width: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: start;
-		padding: 0 100px;
+		padding: 10px 0 0 75px;
 		// margin-top: 80px;
 		font-weight: 600;
 		line-height: 61px;
@@ -182,7 +206,7 @@ body {
 	.flatcard-info {
 		display: flex;
 		flex-direction: column;
-		margin-top: 50px;
+		margin-top: 20px;
 		.flatcard-details {
 			width: 100%;
 			padding: 0 125px;
@@ -271,21 +295,7 @@ body {
 				}
 			}
 		}
-		.flatcard-datepicker {
-			width: 100%;
-			padding: 0 125px;
-			p {
-        color: #FECA15;
-        font-weight: 500;
-				margin: 60px 0;
-      }
-      // .CalendarMonth .CalendarMonth_1 table {
-      //   margin-top: 15px !important;
-      // }
-      // .DayPicker_weekHeader_ul .DayPicker_weekHeader_ul_1 ul > li {
-      //   margin: 0 8px !important;
-      // }
-    }
+		
 		.flatcard-map {
 			width: 100%;
 			padding: 0 125px;
