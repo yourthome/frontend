@@ -53,6 +53,7 @@ class FlatCard extends Component {
     this.state = {
       startDate: null,
       endDate: null,
+      focusedInput: null,
       modal: false,
       isModalOpen: false,
       isRegistrationOpen: false,
@@ -108,8 +109,7 @@ class FlatCard extends Component {
       autoplaySpeed: 2000,
     };
 
-    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos } = this.state.rental;
-    // console.log(photos);
+    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos, bookings } = this.state.rental;
 
     return (
       <>
@@ -145,11 +145,8 @@ class FlatCard extends Component {
               })}
             </Carousel>
           
-
-          {/* <MDBContainer> */}
             <MDBBtn className="mdbbtn" onClick={this.toggle}><i class="fas fa-search"></i></MDBBtn>
             <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
-              {/* <MDBModalHeader toggle={this.toggle}>Изображения</MDBModalHeader> */}
               <MDBModalBody>
                 <div>
                   <div>
@@ -183,7 +180,7 @@ class FlatCard extends Component {
 
               <div className="flatcard-datepicker">
               <p>Забронированные дни: </p>
-              <DateRangePicker
+              {bookings && <DateRangePicker
                 // customInputIcon={<TestCustomInputIcon />}
                 // customArrowIcon={<TestCustomArrowIcon />}
                 // customCloseIcon={<TestCustomCloseIcon />}
@@ -192,8 +189,12 @@ class FlatCard extends Component {
                 withPortal
                 // autoFocusEndDate 
                   startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
                   endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+
+                  // startDate={bookings[0].checkInDate} // momentPropTypes.momentObj or null,
+                  // endDate={bookings[0].evictionDate} // momentPropTypes.momentObj or null,
+                 
+                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
                   endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
                   onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                   focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
@@ -203,7 +204,7 @@ class FlatCard extends Component {
                   // renderCalendarDay={renderCalendarDay}
                   // minimumNights={3} 
                   autoFocus keepOpenOnDateSelect hideKeyboardShortcutsPanel
-              />
+              />}
             </div>
               
             </div>

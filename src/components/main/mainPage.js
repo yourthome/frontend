@@ -29,8 +29,9 @@ class MainPage extends Component {
     super(props);
 
     history.listen((location, action) => {
-        // clear alert on location change
-        this.props.clearAlerts();
+      // clear alert on location change
+      this.props.clearAlerts();
+      console.log("OK");
     });
   }
 
