@@ -27,6 +27,7 @@ body {
 .map-filter-container-left {
   float: left;
   width: 40%;
+  height: 612px;
   border: 1px solid #9F9D9D;
   --blue: #264989;
   --yellow: #FECA15;

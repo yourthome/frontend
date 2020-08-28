@@ -43,8 +43,8 @@ class MapFilter extends Component {
     ]
 
     const options2 = [
-      { value: 'Cafe=true', label: 'Интернет' },
-      { value: 'KinderGarten=true', label: 'Телефон' },
+      { value: 'Cafe=true', label: 'Кафе, Рестораны' },
+      { value: 'KinderGarten=true', label: 'Детский садик' },
       { value: 'Parking=true', label: 'Парковка' },
       { value: 'BusStop=true', label: 'Остановка' },
       { value: 'Supermarket=true', label: 'Магазин' },
@@ -68,9 +68,9 @@ class MapFilter extends Component {
           </div>
 
           <div className="map-filter-header__menu">
-            <Link className="map-filter-header__menu-1" to='/mapfilter'>
+            {/* <Link className="map-filter-header__menu-1" to='/mapfilter'>
               <p>Подать заявку</p>
-            </Link>
+            </Link> */}
 
             {/* <Link className="map-filter-header__menu-2" to='/mapfilter'>
               <p>Войти</p>
@@ -182,7 +182,8 @@ class MapFilter extends Component {
 
 const mapStateToProps = state => {
   return {
-    filteredMapData: state.getMapFilterData.filteredMapData.filter(elem => elem.title.toLowerCase().includes(state.setSearchVal.search)),
+    filteredMapData: state.getMapFilterData.filteredMapData,
+    // .filter(elem => elem.title.toLowerCase().includes(state.setSearchVal.search)),
     searchVal: state.setSearchVal.search,
     mapData: state.getMapData.mapData.filter((card) => card.rentalID === state.getMarkerId.markerId).pop()
   }

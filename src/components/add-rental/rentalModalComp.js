@@ -4,6 +4,13 @@ import RentalForm from './rentalForm';
 import { Link } from 'react-router-dom';
 
 export default class RentalModalComp extends Component{
+
+    pushIfPosted = (posted) => {
+        if (posted) {
+            this.props.history.replace("/")
+        }
+    }
+
     render(){
         console.log(1)
     return(
@@ -13,7 +20,7 @@ export default class RentalModalComp extends Component{
                 </div> */}
                 <div className="modal__cross__icon"></div>
             </Link>
-            <RentalForm />
+            <RentalForm pushIfPosted={this.pushIfPosted}/>
         </div>
     )}
 }

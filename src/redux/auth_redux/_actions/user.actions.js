@@ -1,8 +1,7 @@
 import { userConstants } from '../_constants';
 import { userService } from '../_services';
 import { alertActions } from './';
-import { history } from '../_helpers';
-import { Redirect } from 'react-router-dom';
+// import { history } from '../_helpers';
 
 export const userActions = {
     login,
@@ -23,7 +22,7 @@ function login(username, password) {
             .then(
                 user => { 
                     dispatch(success(user));
-                    history.push('/user');
+                    // history.push('/user');
                 },
                 error => {
                     dispatch(failure(error));
@@ -50,7 +49,7 @@ function register(user) {
             .then(
                 user => { 
                     dispatch(success());
-                    history.push('/login');
+                    // history.push('/login');
                     dispatch(alertActions.success('Registration successful'));
                 },
                 error => {
@@ -147,6 +146,7 @@ function postNewRental(rental){
             .then(
                 rental => { 
                     dispatch(success());
+                    // history.push('/');
                 },
                 error => {
                     dispatch(failure(error));

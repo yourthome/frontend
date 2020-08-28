@@ -29,8 +29,10 @@ class MainPage extends Component {
     super(props);
 
     history.listen((location, action) => {
-        // clear alert on location change
-        this.props.clearAlerts();
+      // clear alert on location change
+      // location.replace("new url");
+      this.props.clearAlerts();
+      console.log("OK");
     });
   }
 
@@ -130,7 +132,7 @@ class MainPage extends Component {
                 return(elem.photos &&
                   <Link key={elem.rentalID} to={`/flatcard/${elem.rentalID}`}>             
                     <div className="ads__block">
-                      <img src={elem.photos[0] == undefined ? noPhoto : elem.photos[0].path} alt="img"/>
+                      <img src={elem.photos[0] === undefined ? noPhoto : elem.photos[0].path} alt="img"/>
                       <div className="ads__block__info">
                       <span>{elem.title}</span>
                       <div className="appear__onhover_info">

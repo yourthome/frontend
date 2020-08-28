@@ -10,6 +10,7 @@ import FormStep from './formSteps';
 import { connect } from 'react-redux';
 import { userActions } from '../../redux/auth_redux/_actions/user.actions'
 
+import Geocode from "react-geocode";
 
 class RentalForm extends React.Component{
     constructor(props){
@@ -50,6 +51,11 @@ class RentalForm extends React.Component{
         },
         step: 1
         }
+
+        Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+        Geocode.setLanguage("ru");
+        Geocode.setRegion("ky-KG");
+        Geocode.enableDebug();
     }
 
     toggleFacilitiesInternet = () => {
@@ -281,7 +287,6 @@ class RentalForm extends React.Component{
         formData.append('photos', arr[5]);
         formData.append('photos', arr[6]);
         formData.append('photos', arr[7]);
-        console.log(formData.get('facilities'))
         this.props.postNewRental(formData);
       }
 
@@ -362,7 +367,25 @@ class RentalForm extends React.Component{
         })
         console.log(marker)
     }
-    
+
+    toggleAddress = (lat, lng) => {
+        Geocode.fromLatLng(lat, lng)
+        .then(
+          response => {
+            const address = response.results[0].formatted_address;
+            const { rental } = this.state
+            this.setState({
+              rental: ({
+                ...rental,
+                street: address
+              })
+            })
+          },
+          error => {
+            console.error(error);
+          }
+        );
+    }    
 
     render(){
         const { step } = this.state;
@@ -370,7 +393,8 @@ class RentalForm extends React.Component{
         const values = { rooms, description, cost, title, floor, region };
         const { facilities, infrastructure } = this.state.rental;
         const { propertyType } = this.state.rental;
-        console.log(facilities)
+        console.log(this.state)
+
         switch(step){
             case 1:
                 return(
@@ -412,13 +436,14 @@ class RentalForm extends React.Component{
                 return(
                     <div className="rental__form">
                         <FormStep step={step} />
-                        <SixthAddRental prevStep={this.prevStep} handleMarker={this.handleMarker} nextStep={this.nextStep} />
+                        <SixthAddRental toggleAddress={this.toggleAddress} prevStep={this.prevStep} handleMarker={this.handleMarker} nextStep={this.nextStep} />
                     </div>
                 )
             case 6:
                 return(
                     <div className="rental__form">
                         <FormStep step={step} />
+                        {this.props.pushIfPosted(this.props.posted)}
                         <FifthAddRental nextStep={this.nextStep} prevStep={this.prevStep} photos={this.state.rental.photos} setPhotos={this.setPhotos} handleSubmit={this.handleSubmit} rental={this.state.rental} />
                     </div>
                 )
@@ -429,8 +454,8 @@ class RentalForm extends React.Component{
 
 
 const mapStateToProps = state => {
-    const { posting } = state.postNewRentalData;
-    return { posting }
+    const { posting, posted } = state.postNewRentalData;
+    return { posting, posted }
   }
   
   const mapDispatchToProps = {
