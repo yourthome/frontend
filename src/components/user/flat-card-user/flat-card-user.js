@@ -86,7 +86,7 @@ class FlatCardUser extends Component {
       autoplay: true,
       autoplaySpeed: 2000,
     };
-    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos } = this.state.rental;
+    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos, floor } = this.state.rental;
     return (
       <>
         <Header />
@@ -145,43 +145,20 @@ class FlatCardUser extends Component {
                 </div>
               </div>
 
-              <div className="flatcard-datepicker">
-              <p>Забронированные дни: </p>
-              <DateRangePicker
-              // customInputIcon={<TestCustomInputIcon />}
-              // customArrowIcon={<TestCustomArrowIcon />}
-              // customCloseIcon={<TestCustomCloseIcon />}
-              showClearDates
-              showDefaultInputIcon
-              withPortal
-              // autoFocusEndDate 
-                startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                // isDayBlocked={isDayBlocked} 
-                // isDayHighlighted={isDayHighlighted}
-                // renderCalendarDay={renderCalendarDay}
-                // minimumNights={3} 
-                autoFocus keepOpenOnDateSelect hideKeyboardShortcutsPanel
-              />
-            </div>
+              <div className="flatcard-details">
+                <p id="flatcard-details-title">Детали:</p>
+                <div className="flatcard-details-p">
+                  <p>Этаж: <p id="flatcard-details-p-child">{floor}</p></p>
+                  <p>Комнат: <p id="flatcard-details-p-child">{rooms}</p></p>
+                  <p>Улица: <p id="flatcard-details-p-child">{street}</p></p>
+                  <p>Срок аренды: <p id="flatcard-details-p-child">{rentTime}</p></p>
+                </div>
+              </div>
+
             </div>
           </div>
 
           <div className="flatcard-info">          
-            <div className="flatcard-details">
-              <p id="flatcard-details-title">Детали:</p>
-              <div className="flatcard-details-p">
-                <p>Комнат: {rooms}</p>
-                <p>Улица: {street}</p>
-                <p>Срок аренды: {rentTime}</p>
-              </div>
-            </div>
-
             <div className="flatcard-instock-and-near">
               <div className="flatcard-instock">
                 <p id="flatcard-instock-title">В наличии:</p>
@@ -218,6 +195,31 @@ class FlatCardUser extends Component {
                 <p id="flatcard-about-description">{description}</p>
               </div>
             </div>
+
+            <div className="flatcard-datepicker">
+              <p>Забронированные дни: </p>
+              <DateRangePicker
+                // customInputIcon={<TestCustomInputIcon />}
+                // customArrowIcon={<TestCustomArrowIcon />}
+                // customCloseIcon={<TestCustomCloseIcon />}
+                showClearDates
+                showDefaultInputIcon
+                withPortal
+                // autoFocusEndDate 
+                  startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                  endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                  onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                  focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                  onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                  // isDayBlocked={isDayBlocked} 
+                  // isDayHighlighted={isDayHighlighted}
+                  // renderCalendarDay={renderCalendarDay}
+                  // minimumNights={3} 
+                  autoFocus keepOpenOnDateSelect hideKeyboardShortcutsPanel
+                />
+              </div>
 
             <div className="flatcard-map">
               <p id="flatcard-map-description">Расположение на карте: </p>
