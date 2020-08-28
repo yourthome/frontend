@@ -22,35 +22,6 @@ body {
   position: relative;
 }
 
-.first-info-right {
-  width: 40% !important;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.flatcard-datepicker {
-  width: 100%;
-  padding: 20px 0 0 75px;
-}
-
-.flatcard-datepicker p {
-  color: #FECA15;
-  font-weight: 500;
-}
-
-.flatcard-datepicker .CalendarMonth .CalendarMonth_1 table {
-  margin-top: 15px !important;
-}
-
-.flatcard-datepicker .DayPicker_weekHeader_ul .DayPicker_weekHeader_ul_1 ul > li {
-  margin: 0 8px !important;
-}
-
 .carousel-root {
   width: 60% !important;
   padding-left: 125px;
@@ -92,11 +63,70 @@ body {
   margin: 20px 0 !important;
 }
 
+.first-info-right {
+  width: 40% !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.flatcard-details {
+  width: 100%;
+  padding: 30px 0 0 50px;
+}
+
+.flatcard-details #flatcard-details-title {
+  text-align: start;
+  color: #FECA15;
+  font-weight: 500;
+}
+
+.flatcard-details-p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: auto;
+  padding: 0 125px 0 25px;
+  line-height: 2.5em;
+}
+
+.flatcard-details-p p {
+  display: inline;
+}
+
+.flatcard-details-p #flatcard-details-p-child {
+  color: #264989;
+  font-weight: 400;
+}
+
+.flatcard-datepicker {
+  width: 100%;
+  padding: 20px 0 0 125px;
+}
+
+.flatcard-datepicker p {
+  color: #FECA15;
+  font-weight: 500;
+}
+
 /* FlatCard component */
 .flatcard-container {
   width: 100%;
   height: auto;
-  padding: 25px;
+  padding: 50px 25px 25px 25px;
 }
 
 .flatcard-container p {
@@ -158,6 +188,10 @@ body {
   width: 200%;
 }
 
+.flatcard-container .modal-dialog {
+  max-width: 1000px;
+}
+
 .flatcard-container #slick-slider-image {
   border-radius: 5px;
   width: 100%;
@@ -213,7 +247,7 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
-  padding: 10px 0 0 75px;
+  padding: 10px 0 0 50px;
   font-weight: 600;
   line-height: 61px;
 }
@@ -283,38 +317,6 @@ body {
   margin-top: 20px;
 }
 
-.flatcard-container .flatcard-info .flatcard-details {
-  width: 100%;
-  padding: 0 125px;
-}
-
-.flatcard-container .flatcard-info .flatcard-details #flatcard-details-title {
-  text-align: start;
-  color: #FECA15;
-  font-weight: 500;
-}
-
-.flatcard-container .flatcard-info .flatcard-details-p {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  height: auto;
-  padding-left: 25px;
-}
-
-.flatcard-container .flatcard-info .flatcard-details-p p {
-  margin-top: 20px;
-}
-
 .flatcard-container .flatcard-info .flatcard-instock-and-near {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -334,7 +336,7 @@ body {
   text-align: start;
   color: #FECA15;
   font-weight: 500;
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
 .flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-instock-p {
@@ -364,7 +366,7 @@ body {
   text-align: start;
   color: #FECA15;
   font-weight: 500;
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
 .flatcard-container .flatcard-info .flatcard-instock-and-near .flatcard-near-p {

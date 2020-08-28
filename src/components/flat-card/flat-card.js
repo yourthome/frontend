@@ -1,54 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Axios from 'axios';
 // import { Link } from 'react-router-dom';
 
 import 'react-dates/initialize';
-import { 
-  DateRangePicker, 
-  // SingleDatePicker, 
-  // DayPickerRangeController 
-} from 'react-dates';
+import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { 
-  // MDBContainer, 
-  MDBBtn, MDBModal, MDBModalBody, 
-  // MDBModalHeader, 
-  // MDBModalFooter 
-} from 'mdbreact';
+import {Carousel} from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+import { MDBBtn, MDBModal, MDBModalBody } from 'mdbreact';
 import '@fortawesome/fontawesome-free/css/all.min.css'; 
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
 
-import MapFlatCard from './map-flat-card';
+import { getCardId } from '../../redux/actions/actions';
+import { fetchData }  from '../../redux/actions/actions'
 
+import MapFlatCard from './map-flat-card';
 import Header from '../header/header';
 import Footer from '../footer/footer';
-
-import { connect } from 'react-redux';
-import { getCardId } from '../../redux/actions/actions';
-
-import './flat-card.css';
-import home2 from '../../content/images/flat-card/home2.png';
-import home3 from '../../content/images/flat-card/home3.png';
-import home5 from '../../content/images/flat-card/home5.png';
-import home1 from '../../content/images/flat-card/home1.png';
-import home6 from '../../content/images/flat-card/home6.png';
-
 import LogIn from '../logIn/logIn';
 import Registration from '../registration/registration';
 
-import { fetchData }  from '../../redux/actions/actions'
-import Axios from 'axios';
-
-import {Carousel} from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import './flat-card.css';
 import noPhoto from '../../content/images/main/no_photo.jpg'
-
-import Geocode from "react-geocode";
 
 class FlatCard extends Component {
   constructor(props) {
@@ -112,7 +93,7 @@ class FlatCard extends Component {
       autoplaySpeed: 2000,
     };
 
-    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos, bookings } = this.state.rental;
+    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos, bookings, floor } = this.state.rental;
 
     return (
       <>
@@ -181,56 +162,31 @@ class FlatCard extends Component {
                 </div>
               </div>
 
-              <div className="flatcard-datepicker">
-              <p>Забронированные дни: </p>
-              {bookings && <DateRangePicker
-                // customInputIcon={<TestCustomInputIcon />}
-                // customArrowIcon={<TestCustomArrowIcon />}
-                // customCloseIcon={<TestCustomCloseIcon />}
-                showClearDates
-                showDefaultInputIcon
-                withPortal
-                // autoFocusEndDate 
-                  startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                  endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+              <div className="flatcard-details">
+                <p id="flatcard-details-title">Детали:</p>
+                <div className="flatcard-details-p">
+                  <p>Этаж: <p id="flatcard-details-p-child">{floor}</p></p>
+                  <p>Комнат: <p id="flatcard-details-p-child">{rooms}</p></p>
+                  <p>Улица: <p id="flatcard-details-p-child">{street}</p></p>
+                  <p>Срок аренды: <p id="flatcard-details-p-child">{rentTime}</p></p>
+                </div>
+              </div>
 
-                  // startDate={bookings[0].checkInDate} // momentPropTypes.momentObj or null,
-                  // endDate={bookings[0].evictionDate} // momentPropTypes.momentObj or null,
-                 
-                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                  onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                  focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                  onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                  // isDayBlocked={isDayBlocked} 
-                  // isDayHighlighted={isDayHighlighted}
-                  // renderCalendarDay={renderCalendarDay}
-                  // minimumNights={3} 
-                  autoFocus keepOpenOnDateSelect hideKeyboardShortcutsPanel
-              />}
-            </div>
               
             </div>
-
           </div> 
 
           <div className="flatcard-info">
             
-            <div className="flatcard-details">
+            {/* <div className="flatcard-details">
               <p id="flatcard-details-title">Детали:</p>
               <div className="flatcard-details-p">
+                <p>Этаж: {floor}</p>
                 <p>Комнат: {rooms}</p>
                 <p>Улица: {street}</p>
                 <p>Срок аренды: {rentTime}</p>
-                {/* <p>Этаж: undefined</p>
-                <p>Этажность дома: undefined</p>
-                <p>Тип ремонта: undefined</p>
-                <p>Мебелирована: undefined</p>
-                <p>Общая площадь: undefined</p>
-                <p>Тип строения: undefined</p>
-                <p>Планировка: undefined</p> */}
               </div>
-            </div>
+            </div> */}
 
             <div className="flatcard-instock-and-near">
               <div className="flatcard-instock">
@@ -269,7 +225,34 @@ class FlatCard extends Component {
               </div>
             </div>
 
-            
+            <div className="flatcard-datepicker">
+                <p>Забронированные дни: </p>
+                {bookings && <DateRangePicker
+                  // customInputIcon={<TestCustomInputIcon />}
+                  // customArrowIcon={<TestCustomArrowIcon />}
+                  // customCloseIcon={<TestCustomCloseIcon />}
+                  showClearDates
+                  showDefaultInputIcon
+                  withPortal
+                  // autoFocusEndDate 
+                    startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                    endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+
+                    // startDate={bookings[0].checkInDate} // momentPropTypes.momentObj or null,
+                    // endDate={bookings[0].evictionDate} // momentPropTypes.momentObj or null,
+                  
+                    startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                    endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                    onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                    focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                    onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                    // isDayBlocked={isDayBlocked} 
+                    // isDayHighlighted={isDayHighlighted}
+                    // renderCalendarDay={renderCalendarDay}
+                    // minimumNights={3} 
+                    autoFocus keepOpenOnDateSelect hideKeyboardShortcutsPanel
+                />}
+              </div>
 
             <div className="flatcard-map">
               <p id="flatcard-map-description">Расположение на карте: </p>

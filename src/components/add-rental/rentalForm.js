@@ -52,7 +52,7 @@ class RentalForm extends React.Component{
         step: 1
         }
 
-        Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+        Geocode.setApiKey("AIzaSyBdX8g6lM-w20K543TW18kRyocWnk9muNk");
         Geocode.setLanguage("ru");
         Geocode.setRegion("ky-KG");
         Geocode.enableDebug();
