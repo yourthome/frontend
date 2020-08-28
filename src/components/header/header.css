@@ -98,6 +98,7 @@ body {
   font-weight: 400;
 }
 
+
 .dropdown-toggle::after {
   border-radius: 3px;
   border-top: 10px solid !important;
@@ -133,4 +134,22 @@ body {
 
 .dropdown-item:hover {
   background-color: #feca15;
+}
+
+div[data-test="dropdown-menu-component"] {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  color: #000 !important;
+}
+div[data-test="dropdown-menu-component"] a {
+  color: black !important;
+  font-weight: 400 !important;
+  width: 100%;
+  height: auto;
+  padding: 5px 5px 0 10px;
+}
+div[data-test="dropdown-menu-component"] a:hover {
+  background-color: #feca15 !important;
+  transition: all .3s ease-in-out !important;
 }
