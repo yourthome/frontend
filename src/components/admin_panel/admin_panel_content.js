@@ -120,7 +120,7 @@ class AdminPanelContent extends React.Component{
 
 const mapStateToProps = state => {
     return {
-        dataRentals: state.getAdminFilterData.data
+        dataRentals: state.getAdminFilterData.data.filter(elem => elem.title.toLowerCase().includes(state.searchValRentals.data))
     }
   }
   

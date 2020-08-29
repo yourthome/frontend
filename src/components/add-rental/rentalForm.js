@@ -8,7 +8,9 @@ import SixthAddRental from './stepsContent/sixthAddRental';
 import './rentalForm.css';
 import FormStep from './formSteps';
 import { connect } from 'react-redux';
-import { userActions } from '../../redux/auth_redux/_actions/user.actions'
+import { userActions } from '../../redux/auth_redux/_actions/user.actions';
+import { alertActions } from '../../redux/auth_redux/_actions/alert.actions';
+import ModalAlert from './modalAlert';
 
 import Geocode from "react-geocode";
 
@@ -442,8 +444,10 @@ class RentalForm extends React.Component{
             case 6:
                 return(
                     <div className="rental__form">
+                        {this.props.posted && <ModalAlert posted={this.props.posted} posting={this.props.posting} changeSuccessPosted={this.props.changeSuccessPosted}/>}
+                        {this.props.posting && <ModalAlert posted={this.props.posted} posting={this.props.posting} changeSuccessPosted={this.props.changeSuccessPosted}/>}
                         <FormStep step={step} />
-                        {this.props.pushIfPosted(this.props.posted)}
+                        {/* {this.props.pushIfPosted(this.props.posted)} */}
                         <FifthAddRental nextStep={this.nextStep} prevStep={this.prevStep} photos={this.state.rental.photos} setPhotos={this.setPhotos} handleSubmit={this.handleSubmit} rental={this.state.rental} />
                     </div>
                 )
@@ -459,7 +463,8 @@ const mapStateToProps = state => {
   }
   
   const mapDispatchToProps = {
-    postNewRental: userActions.postNewRental
+    postNewRental: userActions.postNewRental,
+    changeSuccessPosted: alertActions.changeSuccessPosted
   }
   
   export default connect(mapStateToProps, mapDispatchToProps)(RentalForm);
