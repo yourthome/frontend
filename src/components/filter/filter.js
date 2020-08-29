@@ -12,6 +12,8 @@ import { getCardId } from '../../redux/actions/actions';
 import { setSearchVal } from '../../redux/actions/actions';
 import Select from 'react-select';
 
+import noPhoto from '../../content/images/main/no_photo.jpg'
+
 
 export class Filter extends Component {
   constructor(){
@@ -104,8 +106,8 @@ export class Filter extends Component {
     ]
 
     const options2 = [
-      { value: 'Cafe=true', label: 'Интернет' },
-      { value: 'KinderGarten=true', label: 'Телефон' },
+      { value: 'Cafe=true', label: 'Кафе, рестораны' },
+      { value: 'KinderGarten=true', label: 'Детский сад' },
       { value: 'Parking=true', label: 'Парковка' },
       { value: 'BusStop=true', label: 'Остановка' },
       { value: 'Supermarket=true', label: 'Магазин' },
@@ -215,7 +217,7 @@ export class Filter extends Component {
           return(
             <Link onClick={() => this.props.CardId(elem.rentalID)} to={`/flatcard/${elem.rentalID}`}>               
               <div className="ads__block">
-                <img src={filterImg} alt="img"/>
+                <img src={elem.photos[0] === undefined ? noPhoto : elem.photos[0].path} alt="img"/>
                 <div className="ads__block__info">
                 <span>{elem.title}</span>
                 <div className="ads__price">
@@ -241,7 +243,7 @@ export class Filter extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.getFilterData.data.filter(elem => elem.title.toLowerCase().includes(state.setSearchVal.search)),
+    data: state.getFilterData.data.filter(elem => elem.street.toLowerCase().includes(state.setSearchVal.search)),
     items: state.filter,
     app: state.app,
     searchVal: state.setSearchVal.search,

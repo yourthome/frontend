@@ -46,7 +46,7 @@ class LogIn extends Component {
 
   pushIfLoggedIn = () => {
     if(this.props.loggedIn) { 
-      this.props.history.replace(`/user`);
+      this.props.history.push(`/user`);
     } 
   }
 

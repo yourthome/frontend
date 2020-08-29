@@ -128,13 +128,13 @@ function getUserRentals() {
 
         userService.getUserRentalsService()
             .then(
-                rentals => dispatch(success(rentals)),
+                userRentals => dispatch(success(userRentals)),
                 error => dispatch(failure(error))
             );
     };
 
     function request() { return { type: userConstants.GETALL_USERRENTALS_REQUEST } }
-    function success(rentals) { return { type: userConstants.GETALL_USERRENTALS_SUCCESS, rentals } }
+    function success(userRentals) { return { type: userConstants.GETALL_USERRENTALS_SUCCESS, userRentals } }
     function failure(error) { return { type: userConstants.GETALL_USERRENTALS_FAILURE, error } }
 }
 

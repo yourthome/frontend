@@ -65,8 +65,8 @@ class MapContainer extends Component {
       <Map
         className="map-component"
         google={this.props.google}
-        zoom={12}
-        initialCenter={{ lat: 42.867695, lng: 74.610897 }}
+        zoom={7}
+        initialCenter={{ lat: 41.867695, lng: 74.610897 }}
       >
         {this.displayMarkers()}
         

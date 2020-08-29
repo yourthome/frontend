@@ -133,13 +133,16 @@ class FlatCardUser extends Component {
 
             <div className="first-info-right">
               <div className="flatcard-description">
+                {/* <input value={title}></input> */}
                 <p>{title}</p>
                 <div className="flatcard-description-currency">
                   <div className="flatcard-description-som">
+                    {/* <input value={cost}></input><p>с</p> */}
                     <p>{cost}</p><p>с</p>
                   </div>
                   <p style={{color: '#feca15', fontSize: "25px"}}>|</p>
                   <div className="flatcard-description-dollar">
+                    {/* <input value={Math.floor(cost / 77.8)}></input><p>$</p> */}
                     <p>{Math.floor(cost / 77.8)}</p><p>$</p>
                   </div>
                 </div>
@@ -152,6 +155,10 @@ class FlatCardUser extends Component {
                   <p>Комнат: <p id="flatcard-details-p-child">{rooms}</p></p>
                   <p>Улица: <p id="flatcard-details-p-child">{street}</p></p>
                   <p>Срок аренды: <p id="flatcard-details-p-child">{rentTime}</p></p>
+                  {/* <p>Этаж: <input value={floor} id="flatcard-details-p-child"></input></p> */}
+                  {/* <p>Комнат: <input value={rooms} id="flatcard-details-p-child"></input></p> */}
+                  {/* <p>Улица: <input value={street} id="flatcard-details-p-child"></input></p> */}
+                  {/* <p>Срок аренды: <input value={rentTime} id="flatcard-details-p-child"></input></p> */}
                 </div>
               </div>
 

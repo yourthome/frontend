@@ -187,8 +187,22 @@ class FlatCard extends Component {
                 <p>Срок аренды: {rentTime}</p>
               </div>
             </div> */}
-
             <div className="flatcard-instock-and-near">
+              <div className="flatcard-instock">
+                <p id="flatcard-instock-title">В наличии:</p>
+                <div className="flatcard-instock-p">
+                  <p>Интернет</p>
+                  <p>Телефон</p>
+                  <p>Холодильник</p>
+                  <p>Кухня</p>
+                  <p>Телевизор</p>
+                  <p>Балкон</p>
+                  <p>Стиральная машина</p>
+                  <p>Кондиционер</p>
+                </div>
+              </div>
+
+            {/* <div className="flatcard-instock-and-near">
               <div className="flatcard-instock">
                 <p id="flatcard-instock-title">В наличии:</p>
                 {facilities && <div className="flatcard-instock-p">
@@ -201,9 +215,23 @@ class FlatCard extends Component {
                   {facilities.washer ? <p>Стиральная машина</p> : null}
                   {facilities.airConditioning ? <p>Кондиционер</p> : null}
                 </div>}
-              </div>
+              </div> */}
 
               <div className="flatcard-near">
+                <p id="flatcard-near-title">Рядом есть:</p>
+                <div className="flatcard-near-p">
+                  <p>Рестораны, кафе</p>
+                  <p>Детский сад</p>
+                  <p>Стоянка</p>
+                  <p>Остановки</p>
+                  <p>Супермаркет</p>
+                  <p>Парк</p>
+                  <p>Больница</p>
+                </div>
+              </div>
+            </div>
+
+            {/* <div className="flatcard-near">
                 <p id="flatcard-near-title">Рядом есть:</p>
                 {infrastructure && <div className="flatcard-near-p">
                   {infrastructure.cafe ? <p>Рестораны, кафе</p> : null}
@@ -215,7 +243,7 @@ class FlatCard extends Component {
                   {infrastructure.hospital ? <p>Больница</p> : null}
                 </div>}
               </div>
-            </div>
+            </div> */}
             
 
             <div className="flatcard-about">

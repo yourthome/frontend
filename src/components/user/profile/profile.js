@@ -16,7 +16,7 @@ import './profile.css'
 class Profile extends Component {
 
   componentDidMount() {
-    this.props.getUsers();
+    // this.props.getUsers();
     this.props.getUserRentals();
   }
 
@@ -37,8 +37,8 @@ class Profile extends Component {
 
   render() {
     const { user, users } = this.props;
-    let rentals = this.props.rentals;
-    // console.log(rentals);
+    const userRentals = this.props.userRentals;
+    // console.log(userRentals);
     return (
       <>
         <Header />
@@ -64,10 +64,10 @@ class Profile extends Component {
                   <label>Пароль:</label>
                   <p>{user.password}</p>
                 </div> */}
-                <div id="user-personaldata-data-group5">
+                {/* <div id="user-personaldata-data-group5">
                   <label>Телефон:</label>
                   <p>{user.phone}</p>
-                </div>
+                </div> */}
                 {/* <div id="user-personaldata-data-group6">
                   <label>Почта:</label>
                   <p>{user.email}</p>
@@ -131,10 +131,11 @@ class Profile extends Component {
         <div className="user-ads-block">
           <p id="user-ads-title">Мои объявления</p>
           {
-            rentals ? rentals.map(elem => {
-              return(elem.photos &&             
+            userRentals ? userRentals.map(elem => {
+              return(user.id === elem.userID &&
+                // elem.photos &&             
                 <div key={elem.rentalID} className="user-ads-card">
-                  <img src={elem.photos[0] === undefined ? noPhoto : elem.photos[0].path} alt="user ads card pic" />
+                  {elem.photos !== null || undefined ? <img src={elem.photos[0].path} alt="user ads card pic" /> : <img src={noPhoto}alt="user ads card pic" />}
                   <div className="user-ads-card-info">
                     <h4>{elem.title}</h4>
                     <p>{elem.description}</p>
@@ -155,7 +156,7 @@ class Profile extends Component {
                   </div>
                 </div>
               )
-            }) : <div>Загрузка</div>
+            }) : <div>Объявлений нет</div>
           }
         </div>
 
@@ -171,7 +172,7 @@ const mapStateToProps = state => {
   return { 
     user, 
     users,
-    rentals: state.getUserRentalsData.rentals
+    userRentals: state.getUserRentalsData.userRentals
   };
 }
 

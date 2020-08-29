@@ -71,7 +71,7 @@ class Registration extends Component{
 
   pushIfRegisteredIn = () => {
     if(this.props.registered) { 
-      this.props.history.replace(`/login`);
+      this.props.history.push(`/login`);
     } 
   }
   

@@ -12,7 +12,7 @@ export const userService = {
     postNewRentalService
 };
 
-function login(username, password) {
+async function login(username, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -21,14 +21,11 @@ function login(username, password) {
 
     
 
-    return fetch(`https://yourthometest.herokuapp.com/Users/authenticate`, requestOptions)
-        .then(handleResponse)
-        .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('user', JSON.stringify(user));
-
-            return user;
-        });
+    const response = await fetch(`https://yourthometest.herokuapp.com/Users/authenticate`, requestOptions);
+    const user = await handleResponse(response);
+    // store user details and jwt token in local storage to keep user logged in between page refreshes
+    localStorage.setItem('user', JSON.stringify(user));
+    return user;
 }
 
 function logout() {
@@ -36,77 +33,80 @@ function logout() {
     localStorage.removeItem('user');
 }
 
-function getAll() {
+async function getAll() {
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
 
-    return fetch(`https://yourthometest.herokuapp.com/Admin/users`, requestOptions).then(handleResponse);
+    const response = await fetch(`https://yourthometest.herokuapp.com/Admin/users`, requestOptions);
+    return handleResponse(response);
 }
 
-function getById(id) {
+async function getById(id) {
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
 
-    return fetch(`https://yourthometest.herokuapp.com/Users/${id}`, requestOptions).then(handleResponse);
+    const response = await fetch(`https://yourthometest.herokuapp.com/Users/${id}`, requestOptions);
+    return handleResponse(response);
 }
 
-function register(user) {
+async function register(user) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
 
-    return fetch(`https://yourthometest.herokuapp.com/Users/register`, requestOptions).then(handleResponse);
+    const response = await fetch(`https://yourthometest.herokuapp.com/Users/register`, requestOptions);
+    return handleResponse(response);
 }
 
-function _update(user) {
+async function _update(user) {
     const requestOptions = {
         method: 'PUT',
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
 
-    return fetch(`https://yourthometest.herokuapp.com/Users/${user.id}`, requestOptions).then(handleResponse);;
+    const response = await fetch(`https://yourthometest.herokuapp.com/Users/${user.id}`, requestOptions);
+    return handleResponse(response);;
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
-function _delete(id) {
+async function _delete(id) {
     const requestOptions = {
         method: 'DELETE',
         headers: authHeader()
     };
 
-    return fetch(`https://yourthometest.herokuapp.com/Admin/users/${id}/delete`, requestOptions).then(handleResponse);
+    const response = await fetch(`https://yourthometest.herokuapp.com/Admin/users/${id}/delete`, requestOptions);
+    return handleResponse(response);
 }
 
 // PersonalPage
-function getUserRentalsService() {
+async function getUserRentalsService() {
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
 
-    return fetch(`https://yourthometest.herokuapp.com/Rentals`, requestOptions).then(handleResponse);
+    const response = await fetch(`https://yourthometest.herokuapp.com/Rentals`, requestOptions);
+    return handleResponse(response);
 }
 
-function postNewRentalService(rental){
+async function postNewRentalService(rental){
     const requestOptions = {
         method: 'POST',
         headers: { ...authHeader()},
         body: rental
     };
 
-    return fetch(`https://yourthometest.herokuapp.com/Rentals
-    `, requestOptions).then(res => {
-        if(res.ok){
-            
-    }});
-
+    const res = await fetch(`https://yourthometest.herokuapp.com/Rentals`, requestOptions);
+    if (res.ok) {
+    }
 }
 
 function handleResponse(response) {

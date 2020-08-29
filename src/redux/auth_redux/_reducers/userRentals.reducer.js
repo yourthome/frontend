@@ -1,7 +1,7 @@
 import { userConstants } from '../_constants';
 
 const initialState = {
-    rentals: [],
+    userRentals: [],
 }
 
 export const getUserRentalsData = (state = initialState, action) => {
@@ -12,7 +12,7 @@ export const getUserRentalsData = (state = initialState, action) => {
             }
         case userConstants.GETALL_USERRENTALS_SUCCESS:
             return {
-                ...state, rentals: action.rentals 
+                ...state, userRentals: action.userRentals 
             };
         case userConstants.GETALL_USERRENTALS_FAILURE:
             return { 
