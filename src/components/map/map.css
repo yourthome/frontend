@@ -15,6 +15,7 @@
 
 #map-infobox-img {
   border-radius: 5px;
+  width: 100%;
 }
 
 #map-infobox-title, #map-infobox-location, #map-infobox-cost-dollars, #map-infobox-cost-soms {

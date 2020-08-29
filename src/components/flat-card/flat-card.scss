@@ -17,29 +17,6 @@ body {
   position: relative;
 }
 
-.first-info-right {
-  width: 40% !important;
-  display: flex;
-  flex-direction: column;
-}
-
-.flatcard-datepicker {
-  width: 100%;
-  padding: 20px 0 0 75px;
-  p {
-    color: #FECA15;
-    font-weight: 500;
-    // margin: 60px 0;
-  }
-  .CalendarMonth .CalendarMonth_1 table {
-    margin-top: 15px !important;
-  }
-  .DayPicker_weekHeader_ul .DayPicker_weekHeader_ul_1 ul > li {
-    margin: 0 8px !important;
-  }
-}
-
-
 .carousel-root {
   width: 60% !important;
   padding-left: 125px;
@@ -74,12 +51,64 @@ body {
 }
 
 
+.first-info-right {
+  width: 40% !important;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.flatcard-details {
+  width: 100%;
+  padding: 30px 0 0 50px;
+  #flatcard-details-title {
+    text-align: start;
+    color: #FECA15;
+    font-weight: 500;
+  }
+}
+.flatcard-details-p {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: auto;
+  padding: 0 125px 0 25px;
+  line-height: 2.5em;
+  p {
+    // margin-top: 20px;
+    // font-weight: 400;
+    display: inline;
+  }
+  #flatcard-details-p-child {
+    color: #264989;
+    font-weight: 400;
+  }
+}
+
+
+.flatcard-datepicker {
+  width: 100%;
+  padding: 20px 0 0 125px;
+  p {
+    color: #FECA15;
+    font-weight: 500;
+    // margin: 60px 0;
+  }
+  // .CalendarMonth .CalendarMonth_1 table {
+  //   margin-top: 15px !important;
+  // }
+  // .DayPicker_weekHeader_ul .DayPicker_weekHeader_ul_1 ul > li {
+  //   margin: 0 8px !important;
+  // }
+}
+
 
 /* FlatCard component */
 .flatcard-container {
 	width: 100%;
 	height: auto;
-	padding: 25px;
+  padding: 50px 25px 25px 25px;
 	p {
 		margin: 0;
 		font-size: 25px;
@@ -118,6 +147,9 @@ body {
 		img {
 			width: 200%;
 		}
+  }
+  .modal-dialog {
+    max-width: 1000px;
   }
   #slick-slider-image {
     border-radius: 5px;
@@ -162,7 +194,7 @@ body {
 		display: flex;
 		flex-direction: column;
 		justify-content: start;
-		padding: 10px 0 0 75px;
+		padding: 10px 0 0 50px;
 		// margin-top: 80px;
 		font-weight: 600;
 		line-height: 61px;
@@ -207,26 +239,7 @@ body {
 		display: flex;
 		flex-direction: column;
 		margin-top: 20px;
-		.flatcard-details {
-			width: 100%;
-			padding: 0 125px;
-			#flatcard-details-title {
-				text-align: start;
-        color: #FECA15;
-        font-weight: 500;
-			}
-		}
-		.flatcard-details-p {
-			display: flex;
-			align-items: flex-start;
-			flex-direction: column;
-			flex-wrap: wrap;
-			height: auto;
-			padding-left: 25px;
-			p {
-				margin-top: 20px;
-			}
-		}
+		
 		.flatcard-instock-and-near {
 			display: flex;
 			flex-direction: row;
@@ -237,7 +250,7 @@ body {
 					text-align: start;
           color: #FECA15;
           font-weight: 500;
-					margin-top: 50px;
+					margin-top: 25px;
 				}
 			}
 			.flatcard-instock-p {
@@ -256,7 +269,7 @@ body {
 					text-align: start;
           color: #FECA15;
           font-weight: 500;
-					margin-top: 50px;
+					margin-top: 25px;
 				}
 			}
 			.flatcard-near-p {

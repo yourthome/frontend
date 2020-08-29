@@ -19,11 +19,11 @@ const libraries = ["places"];
 export default function SixthAddRental({ prevStep, handleMarker, nextStep, toggleAddress }, props) {
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+    googleMapsApiKey: "AIzaSyBdX8g6lM-w20K543TW18kRyocWnk9muNk",
     libraries
   })
 
-  Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+  Geocode.setApiKey("AIzaSyBdX8g6lM-w20K543TW18kRyocWnk9muNk");
   Geocode.setLanguage("ru");
   Geocode.setRegion("ky-KG");
   Geocode.enableDebug();

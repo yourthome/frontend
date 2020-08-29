@@ -55,4 +55,4 @@ class MapFlatCard extends Component {
 
 // export default enhance(MapFlatCard)
 
-export default GoogleApiWrapper({apiKey: process.env.REACT_APP_GOOGLE_API_KEY})(MapFlatCard)
+export default GoogleApiWrapper({apiKey: "AIzaSyBdX8g6lM-w20K543TW18kRyocWnk9muNk"})(MapFlatCard)

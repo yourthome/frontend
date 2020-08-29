@@ -55,8 +55,10 @@ class Header extends Component {
               <img id="header-user-image" src={require(`../../content/images/user/alex-harvey.png`)} alt="img"></img>
             </MDBDropdownToggle>
             <MDBDropdownMenu className="dropdown-default">
-              <MDBDropdownItem href="/user">Мой профиль</MDBDropdownItem>
-              <MDBDropdownItem href="/login">Выйти</MDBDropdownItem>
+              {/* <MDBDropdownItem href="/user">Мой профиль</MDBDropdownItem> */}
+              <Link to="/user">Мой профиль</Link>
+              <Link to="/login">Выйти</Link>
+              {/* <MDBDropdownItem href="/login">Выйти</MDBDropdownItem> */}
             </MDBDropdownMenu>
           </MDBDropdown>
         }

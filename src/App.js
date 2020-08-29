@@ -48,7 +48,7 @@ function App() {
         />
 
         <Route 
-          path = '/map'
+          path = '/googlemap'
           component = {MapContainer}
         />
 

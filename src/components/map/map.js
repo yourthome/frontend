@@ -9,6 +9,7 @@ import { getMarkerId } from '../../redux/actions/actions';
 // import { fetchMapData } from '../../redux/actions/actions';
 
 import { Carousel } from 'react-responsive-carousel';
+import noPhoto from '../../content/images/main/no_photo.jpg'
 import './map.css';
 
 class MapContainer extends Component {
@@ -92,13 +93,13 @@ class MapContainer extends Component {
                         <p className="legend">Legend 3</p>
                       </div>
                     </Carousel> */}
-                    {/* <img id="map-infobox-img" src={photo} alt="map-infobox-img"></img> */}
+                    <img id="map-infobox-img" src={elem.photos[0] === undefined ? noPhoto : elem.photos[0].path} alt="map-infobox-img"></img>
                     {/* <Link className="map-infobox-description" to="/mapfilter">Сдаю 3-х комнатную квартиру.</Link> */}
                     <p id="map-infobox-title">{elem.title}</p>
                     <p id="map-infobox-location">{elem.street}</p>
-                    <p id="map-infobox-cost-soms">{elem.cost}сом</p>
-                    <p id="map-infobox-cost-dollars">{Math.floor(elem.cost / 77.8)}$</p>
+                    <p id="map-infobox-cost-soms">{elem.cost}сом | {Math.floor(elem.cost / 77.8)}$</p>
                     <p id="map-infobox-description">{elem.description}</p>
+                    {/* <Link to={`/flatcard/${elem.rentalID}`}></Link> */}
                   </div>
                 </InfoWindow>
               : null)
@@ -136,7 +137,7 @@ const mapDispatchToProps = (dispatch) => {
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
   GoogleApiWrapper({
-      apiKey: process.env.REACT_APP_GOOGLE_API_KEY
+      apiKey: "AIzaSyBdX8g6lM-w20K543TW18kRyocWnk9muNk"
   }),
 )
 
