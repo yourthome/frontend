@@ -103,9 +103,9 @@ class MainPage extends Component {
             <Registration onClose={this.toggleRegistration} onToggleWindows={this.toggleModalWindows}>
             </Registration>
           }        */}
-          {alert.message &&
+          {/* {alert.message &&
             <div className={`alert ${alert.type}`}>{alert.message}</div>
-          }
+          } */}
           {/* <Switch>
             <PrivateRoute exact path="/user" component={Profile} />
             <Route path="/login" component={LogIn} />

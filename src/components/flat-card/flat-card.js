@@ -93,7 +93,7 @@ class FlatCard extends Component {
       autoplaySpeed: 2000,
     };
 
-    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos, bookings, floor } = this.state.rental;
+    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos, bookings, floor, phone } = this.state.rental;
 
     return (
       <>
@@ -169,6 +169,7 @@ class FlatCard extends Component {
                   <p>Комнат: <p id="flatcard-details-p-child">{rooms}</p></p>
                   <p>Улица: <p id="flatcard-details-p-child">{street}</p></p>
                   <p>Срок аренды: <p id="flatcard-details-p-child">{rentTime}</p></p>
+                  <p>Телефон: <p id="flatcard-details-p-child">{phone}</p></p>
                 </div>
               </div>
 
@@ -253,7 +254,7 @@ class FlatCard extends Component {
               </div>
             </div>
 
-            <div className="flatcard-datepicker">
+            {/* <div className="flatcard-datepicker">
                 <p>Забронированные дни: </p>
                 {bookings && <DateRangePicker
                   // customInputIcon={<TestCustomInputIcon />}
@@ -280,7 +281,7 @@ class FlatCard extends Component {
                     // minimumNights={3} 
                     autoFocus keepOpenOnDateSelect hideKeyboardShortcutsPanel
                 />}
-              </div>
+              </div> */}
 
             <div className="flatcard-map">
               <p id="flatcard-map-description">Расположение на карте: </p>

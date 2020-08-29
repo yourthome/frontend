@@ -7,7 +7,7 @@ import './admin-panel.css';
 
 export default class AdminPanel extends React.Component{
     state = {
-        active: true,
+        active: false,
         usersComp: false
         }
     

@@ -52,7 +52,7 @@ class Header extends Component {
           </div> : 
           <MDBDropdown>
             <MDBDropdownToggle nav caret>
-              <img id="header-user-image" src={require(`../../content/images/user/alex-harvey.png`)} alt="img"></img>
+              <img id="header-user-image" src={require(`../../content/images/user/no-avatar-300x300.jpg`)} alt="img"></img>
             </MDBDropdownToggle>
             <MDBDropdownMenu className="dropdown-default">
               {/* <MDBDropdownItem href="/user">Мой профиль</MDBDropdownItem> */}
