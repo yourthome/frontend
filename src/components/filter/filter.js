@@ -11,6 +11,7 @@ import { Loader } from '../loader/loader';
 import { getCardId } from '../../redux/actions/actions';
 import { setSearchVal } from '../../redux/actions/actions';
 import Select from 'react-select';
+import noPhoto from '../../content/images/main/no_photo.jpg'
 
 import noPhoto from '../../content/images/main/no_photo.jpg'
 
@@ -213,7 +214,7 @@ export class Filter extends Component {
     <div className="ads__blocks">
       {
         this.props.app.loading ? <Loader /> :
-        this.props.data.map(elem => {
+        this.props.data.reverse().map(elem => {
           return(
             <Link onClick={() => this.props.CardId(elem.rentalID)} to={`/flatcard/${elem.rentalID}`}>               
               <div className="ads__block">

@@ -84,7 +84,7 @@ class MainPage extends Component {
 
   render() {
     let six = 6;
-    let arr = this.props.data.slice(0, this.state.six);
+    let arr = this.props.data.reverse().slice(0, this.state.six);
     console.log(arr, this.state.six)
     const { alert } = this.props;
     return( 

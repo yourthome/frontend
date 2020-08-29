@@ -8,6 +8,8 @@ export function postNewRentalData(state = {}, action) {
       return { posted: true };
     case userConstants.POST_NEW_RENTAL_FAILURE:
       return {};
+    case userConstants.POST_NEW_RENTAL_SUCCESS_AFTER:
+      return { posted: false };
     default:
       return state
   }

@@ -1,9 +1,11 @@
 import { alertConstants } from '../_constants';
+import { userConstants } from '../_constants';
 
 export const alertActions = {
     success,
     error,
-    clear
+    clear,
+    changeSuccessPosted
 };
 
 function success(message) {
@@ -16,4 +18,9 @@ function error(message) {
 
 function clear() {
     return { type: alertConstants.CLEAR };
+}
+
+
+function changeSuccessPosted() {
+    return { type:  userConstants.POST_NEW_RENTAL_SUCCESS_AFTER}
 }

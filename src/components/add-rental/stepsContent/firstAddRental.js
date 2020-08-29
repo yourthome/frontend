@@ -8,6 +8,7 @@ export default class FirstAddRental extends Component{
 
     render(){
         const { values, handleChange } = this.props;
+        
         return(     
                 <div className="rental__form__content">
                     <input placeholder="Название обьявления" onChange={handleChange('title')} defaultValue={values.title}></ input>
