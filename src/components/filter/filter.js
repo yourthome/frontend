@@ -13,8 +13,6 @@ import { setSearchVal } from '../../redux/actions/actions';
 import Select from 'react-select';
 import noPhoto from '../../content/images/main/no_photo.jpg'
 
-import noPhoto from '../../content/images/main/no_photo.jpg'
-
 
 export class Filter extends Component {
   constructor(){
