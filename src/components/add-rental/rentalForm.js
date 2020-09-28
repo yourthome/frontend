@@ -30,6 +30,7 @@ class RentalForm extends React.Component{
             description: "",
             latitude: 0,
             longitude: 0,
+            phone: '',
             facilities: {
                 refrigerator: false,
                 kitchen: false,
@@ -277,6 +278,7 @@ class RentalForm extends React.Component{
         formData.append('propertyType', this.state.rental.propertyType);
         formData.append('rentTime', this.state.rental.rentTime);
         formData.append('description', this.state.rental.description);
+        formData.append('phone', this.state.rental.phone);
         formData.append('latitude', this.state.rental.latitude);
         formData.append('longitude', this.state.rental.longitude);
         formData.append('facilities', this.state.rental.facilities);
@@ -391,8 +393,8 @@ class RentalForm extends React.Component{
 
     render(){
         const { step } = this.state;
-        const { title, rooms, description, cost, floor, region } = this.state.rental;
-        const values = { rooms, description, cost, title, floor, region };
+        const { title, rooms, description, cost, floor, region, phone} = this.state.rental;
+        const values = { rooms, description, cost, title, floor, region, phone };
         const { facilities, infrastructure } = this.state.rental;
         const { propertyType } = this.state.rental;
         console.log(this.state)

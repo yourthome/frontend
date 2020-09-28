@@ -17,7 +17,7 @@ export default class ModalAlert extends Component{
                 {this.props.posted !== true ?  <Loader /> : <><img src={check} alt='icon'></img>
                 <h4>Обьявление загружено!</h4>
                 <Link to='/' className='modal_alert_link' onClick={this.props.changeSuccessPosted}>
-                  <button>ok</button>
+                  <button>Хорошо</button>
                 </Link></>}
               </div>
           </div> 

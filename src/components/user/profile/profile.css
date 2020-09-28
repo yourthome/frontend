@@ -25,6 +25,9 @@
       flex-direction: row;
       height: 216px;
     }
+    .user-personaldata-card img {
+      width: 200px;
+    }
     .user-personaldata-data {
       display: flex;
       flex-direction: column;

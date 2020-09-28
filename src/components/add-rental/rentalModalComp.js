@@ -7,7 +7,7 @@ export default class RentalModalComp extends Component{
 
     pushIfPosted = (posted) => {
         if (posted) {
-            this.props.history.push("/")
+            this.props.history.replace("/")
         }
     }
 

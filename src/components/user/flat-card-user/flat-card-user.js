@@ -86,7 +86,7 @@ class FlatCardUser extends Component {
       autoplay: true,
       autoplaySpeed: 2000,
     };
-    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos, floor } = this.state.rental;
+    const { description, cost, rooms, street, rentTime, facilities, infrastructure, title, photos, floor, phone } = this.state.rental;
     return (
       <>
         <Header />
@@ -155,6 +155,7 @@ class FlatCardUser extends Component {
                   <p>Комнат: <p id="flatcard-details-p-child">{rooms}</p></p>
                   <p>Улица: <p id="flatcard-details-p-child">{street}</p></p>
                   <p>Срок аренды: <p id="flatcard-details-p-child">{rentTime}</p></p>
+                  <p>Телефон: <p id="flatcard-details-p-child">{phone}</p></p>
                   {/* <p>Этаж: <input value={floor} id="flatcard-details-p-child"></input></p> */}
                   {/* <p>Комнат: <input value={rooms} id="flatcard-details-p-child"></input></p> */}
                   {/* <p>Улица: <input value={street} id="flatcard-details-p-child"></input></p> */}
@@ -169,7 +170,7 @@ class FlatCardUser extends Component {
             <div className="flatcard-instock-and-near">
               <div className="flatcard-instock">
                 <p id="flatcard-instock-title">В наличии:</p>
-                {facilities && <div className="flatcard-instock-p">
+                {/* {facilities && <div className="flatcard-instock-p">
                 {facilities.internet ? <p>Интернет</p> : null}
                   {facilities.phone ? <p>Телефон</p> : null}
                   {facilities.refrigerator ? <p>Холодильник</p> : null}
@@ -178,12 +179,22 @@ class FlatCardUser extends Component {
                   {facilities.balcony ? <p>Балкон</p> : null}
                   {facilities.washer ? <p>Стиральная машина</p> : null}
                   {facilities.airConditioning ? <p>Кондиционер</p> : null}
-                </div>}
+                </div>} */}
+                <div className="flatcard-instock-p">
+                  <p>Интернет</p>
+                  <p>Телефон</p>
+                  <p>Холодильник</p>
+                  <p>Кухня</p>
+                  <p>Телевизор</p>
+                  <p>Балкон</p>
+                  <p>Стиральная машина</p>
+                  <p>Кондиционер</p>
+                </div>
               </div>
 
               <div className="flatcard-near">
                 <p id="flatcard-near-title">Рядом есть:</p>
-                {infrastructure && <div className="flatcard-near-p">
+                {/* {infrastructure && <div className="flatcard-near-p">
                   {infrastructure.cafe ? <p>Рестораны, кафе</p> : null}
                   {infrastructure.kindergarten ? <p>Детский сад</p> : null}
                   {infrastructure.parking ? <p>Стоянка</p> : null}
@@ -191,7 +202,16 @@ class FlatCardUser extends Component {
                   {infrastructure.supermarket ? <p>Супермаркет</p> : null}
                   {infrastructure.park ? <p>Парк</p> : null}
                   {infrastructure.hospital ? <p>Больница</p> : null}
-                </div>}
+                </div>} */}
+                <div className="flatcard-near-p">
+                  <p>Рестораны, кафе</p>
+                  <p>Детский сад</p>
+                  <p>Стоянка</p>
+                  <p>Остановки</p>
+                  <p>Супермаркет</p>
+                  <p>Парк</p>
+                  <p>Больница</p>
+                </div>
               </div>
             </div>
             
@@ -203,7 +223,7 @@ class FlatCardUser extends Component {
               </div>
             </div>
 
-            <div className="flatcard-datepicker">
+            {/* <div className="flatcard-datepicker">
               <p>Забронированные дни: </p>
               <DateRangePicker
                 // customInputIcon={<TestCustomInputIcon />}
@@ -226,11 +246,11 @@ class FlatCardUser extends Component {
                   // minimumNights={3} 
                   autoFocus keepOpenOnDateSelect hideKeyboardShortcutsPanel
                 />
-              </div>
+              </div> */}
 
             <div className="flatcard-map">
               <p id="flatcard-map-description">Расположение на карте: </p>
-              <MapFlatCard />
+              <MapFlatCard  latitude={this.state.rental.latitude} longitude={this.state.rental.longitude} markerId={this.state.rental.rentalById} />
             </div>
           </div>
 

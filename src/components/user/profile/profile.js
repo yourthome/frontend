@@ -10,7 +10,7 @@ import { authHeader } from '../../../redux/auth_redux/_helpers/auth-header';
 
 import filterImg from '../../../content/images/filter/home3.jpg';
 import noPhoto from '../../../content/images/main/no_photo.jpg'
-import userImage from '../../../content/images/user/alex-harvey.png'
+import userImage from '../../../content/images/user/no-avatar-300x300.jpg'
 import './profile.css'
 
 class Profile extends Component {
@@ -113,7 +113,7 @@ class Profile extends Component {
             <div className="user-personaldata-buttons">
               <Link id="user-logout-link" to="/login">
                 <button id="user-logout-button">
-                  Logout
+                  Выйти
                 </button>
               </Link>
               <button id="user-personaldata-button">Изменить</button>
