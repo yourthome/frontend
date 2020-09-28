@@ -32,7 +32,6 @@ a {
     font-family: 'Rubik', sans-serif;
     color: #FECA15;
     text-shadow: 2px 4px 2px rgb(0, 0, 0, 0.8);
-    font-size: 3.5vw;
     font-weight: bold;
 }
 
@@ -357,11 +356,28 @@ a {
     }
 }
 
-@media screen and (max-width: 470px){
+@media screen and (max-width: 500px){
     .intro > h1{
-        /* font-size: 1.em; */
-        width: 80%;
+        font-size: 2em;
         text-align: center;
         line-height: 1.8em;
+    }
+
+    .onMap{
+        width: 15em;
+        font-size: 15px;
+        
+    }
+
+    .search__block{
+        height: 4em;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .search__block{
+        height: 4em;
+        font-size: 10px;
     }
 }

@@ -26,7 +26,7 @@
 .search__block__filter input{
     border: none;
     border-radius: 20px 0px 0px 20px;
-    width: 25em;
+    width: 70%;
     padding: 1em;
     font-size: 1.2em;
     transition: ease-in-out 0.2s;
@@ -38,6 +38,7 @@
 
 .search__block__filter button{
     border-radius: 0px 20px 20px 0px;
+    width: 30%;
 }
 
 .filter__block{
@@ -276,4 +277,11 @@ li > ul > li:hover{
     margin-top: 1em;
     border: 1px solid black;
     border-radius: 4px;
+}
+
+@media screen and (max-width: 650px){
+    .search__block__filter{
+        width: 30em;
+        margin-left: calc(50% - 15em);
+    }
 }
